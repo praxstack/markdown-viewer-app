@@ -284,13 +284,14 @@ export class FolderBrowserService {
   countFiles(items) {
     let count = 0;
 
-    items.forEach(item => {
+    // Performance optimization: using for...of instead of .forEach() to avoid callback closure overhead in recursive scans
+    for (const item of items) {
       if (item.type === 'file') {
         count++;
       } else if (item.type === 'directory' && item.children) {
         count += this.countFiles(item.children);
       }
-    });
+    }
 
     return count;
   }
@@ -304,13 +305,14 @@ export class FolderBrowserService {
   getAllFiles(items) {
     const files = [];
 
-    items.forEach(item => {
+    // Performance optimization: using for...of instead of .forEach() to avoid callback closure overhead in recursive scans
+    for (const item of items) {
       if (item.type === 'file') {
         files.push(item);
       } else if (item.type === 'directory' && item.children) {
         files.push(...this.getAllFiles(item.children));
       }
-    });
+    }
 
     return files;
   }
@@ -326,11 +328,12 @@ export class FolderBrowserService {
     const results = [];
     const lowerQuery = query.toLowerCase();
 
-    this.getAllFiles(items).forEach(file => {
+    // Performance optimization: using for...of instead of .forEach() to reduce callback overhead in high-frequency searches
+    for (const file of this.getAllFiles(items)) {
       if (file.name.toLowerCase().includes(lowerQuery)) {
         results.push(file);
       }
-    });
+    }
 
     return results;
   }
