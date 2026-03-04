@@ -1,0 +1,3 @@
+## 2024-05-24 - [Avoid .forEach in Recursive File Scans]
+**Learning:** Using `.forEach()` in recursive tree traversal methods (like `countFiles` and `getAllFiles` in `FolderBrowserService`) causes measurable callback closure overhead and extra allocations. This is particularly problematic in deep or large file tree scans typical of this markdown application's file system structure.
+**Action:** Always prefer `for...of` loops over `.forEach()` when performing recursive scans, high-frequency execution paths, or deep tree operations within this codebase to reduce memory overhead and improve raw execution speed.
