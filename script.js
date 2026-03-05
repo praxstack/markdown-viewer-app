@@ -75,12 +75,16 @@ function generateSlug(text, seen = headingSlugMap) {
     .replace(/^-+|-+$/g, '');
 
   // Fallback for empty result
-  if (!slug) slug = 'section';
+  if (!slug) {
+    slug = 'section';
+  }
 
   // Handle duplicates (header, header-1, header-2)
   const baseSlug = slug;
   const count = seen.get(baseSlug) || 0;
-  if (count > 0) slug = `${baseSlug}-${count}`;
+  if (count > 0) {
+    slug = `${baseSlug}-${count}`;
+  }
   seen.set(baseSlug, count + 1);
 
   return slug;
@@ -122,10 +126,14 @@ const AnchorNavigation = {
    */
   handleClick(event) {
     const link = event.target.closest('a[href^="#"]');
-    if (!link) return;
+    if (!link) {
+      return;
+    }
 
     // Ignore external links
-    if (link.hostname && link.hostname !== window.location.hostname) return;
+    if (link.hostname && link.hostname !== window.location.hostname) {
+      return;
+    }
 
     event.preventDefault();
 
@@ -166,7 +174,9 @@ const AnchorNavigation = {
     }
 
     const target = this.resolveTarget(hash);
-    if (!target) return;
+    if (!target) {
+      return;
+    }
 
     target.scrollIntoView({
       behavior: smooth ? 'smooth' : 'instant',
@@ -192,7 +202,9 @@ const AnchorNavigation = {
    * @returns {Element|null} Target element or null
    */
   resolveTarget(hash) {
-    if (!hash) return null;
+    if (!hash) {
+      return null;
+    }
 
     // Decode URI components safely
     let decodedHash;
@@ -204,21 +216,29 @@ const AnchorNavigation = {
 
     // Priority 1: Exact ID (SCOPED to container)
     let target = this.container.querySelector(`#${CSS.escape(decodedHash)}`);
-    if (target) return target;
+    if (target) {
+      return target;
+    }
 
     // Priority 2: Normalized ID with our custom replacements (C++ → cpp)
     const normalized = this.normalizeHash(decodedHash);
     target = this.container.querySelector(`#${CSS.escape(normalized)}`);
-    if (target) return target;
+    if (target) {
+      return target;
+    }
 
     // Priority 3: GitHub-style normalization (C++ → c, keeps double hyphens)
     const githubStyle = this.normalizeHashGitHub(decodedHash);
     target = this.container.querySelector(`#${CSS.escape(githubStyle)}`);
-    if (target) return target;
+    if (target) {
+      return target;
+    }
 
     // Priority 4: Try all headings for fuzzy match (last resort)
     const fuzzyTarget = this.fuzzyMatchHeading(decodedHash);
-    if (fuzzyTarget) return fuzzyTarget;
+    if (fuzzyTarget) {
+      return fuzzyTarget;
+    }
 
     console.warn(`[AnchorNav] Target not found: "${hash}"`);
     return null;
@@ -507,7 +527,9 @@ window.toggleSupportRegion = toggleSupportRegion;
  */
 function renderSupportWidget(region) {
   const container = document.getElementById('support-widget');
-  if (!container) return;
+  if (!container) {
+    return;
+  }
 
   const config =
     region === 'india'
@@ -854,7 +876,7 @@ function configureMarkedExtensions() {
         const text = token.tokens ? this.parser.parseInline(token.tokens) : token.text;
 
         // Defensive: only catch truly broken cases (null/undefined)
-        if (href == null) {
+        if (href === null || href === undefined) {
           return `<a>${text}</a>`;
         }
 
@@ -2317,19 +2339,30 @@ Wrap up your thoughts and include a call to action.
 
     // Recursively add directories
     function addDirectories(items, path = '', indent = 0) {
-      items.forEach(item => {
+      // ⚡ Bolt Optimization: Use DocumentFragment to batch DOM insertions
+      const fragment = document.createDocumentFragment();
+
+      // ⚡ Bolt Optimization: Use for...of instead of .forEach to avoid closure allocation
+      for (const item of items) {
         if (item.type === 'directory') {
           const fullPath = path ? `${path}/${item.name}` : item.name;
           const option = document.createElement('option');
           option.value = fullPath;
           option.textContent = `${'  '.repeat(indent)}📁 ${item.name}`;
-          newFileLocationSelect.appendChild(option);
+          fragment.appendChild(option);
 
           if (item.children) {
+            // Append children directly to the select element for simplicity,
+            // or we could return a fragment. Given the recursive nature,
+            // appending the current fragment then calling recursively is easiest.
+            newFileLocationSelect.appendChild(fragment);
             addDirectories(item.children, fullPath, indent + 1);
           }
         }
-      });
+      }
+
+      // Append any remaining items in the fragment
+      newFileLocationSelect.appendChild(fragment);
     }
 
     addDirectories(folderFiles);
@@ -2441,22 +2474,29 @@ Wrap up your thoughts and include a call to action.
       return;
     }
 
-    items.forEach(item => {
+    // ⚡ Bolt Optimization: Use DocumentFragment to batch DOM insertions
+    const fragment = document.createDocumentFragment();
+
+    // ⚡ Bolt Optimization: Use for...of instead of .forEach to avoid closure allocation
+    for (const item of items) {
       if (item.type === 'directory') {
         const folderDiv = createFolderElement(item, indent);
-        container.appendChild(folderDiv);
+        fragment.appendChild(folderDiv);
 
         if (item.expanded && item.children) {
           const childContainer = document.createElement('div');
           childContainer.className = 'tree-children';
           renderFileTree(item.children, childContainer, indent + 1);
-          container.appendChild(childContainer);
+          fragment.appendChild(childContainer);
         }
       } else if (item.type === 'file') {
         const fileDiv = createFileElement(item, indent);
-        container.appendChild(fileDiv);
+        fragment.appendChild(fileDiv);
       }
-    });
+    }
+
+    // Append the batched items to the container
+    container.appendChild(fragment);
   }
 
   // Create folder element
@@ -2592,7 +2632,7 @@ Wrap up your thoughts and include a call to action.
     }
 
     console.log(
-      `[App] Loaded from link: ${fileData.path}${fileData.anchor ? '#' + fileData.anchor : ''}`
+      `[App] Loaded from link: ${fileData.path}${fileData.anchor ? `#${fileData.anchor}` : ''}`
     );
   });
 
