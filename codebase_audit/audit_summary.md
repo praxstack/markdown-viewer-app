@@ -27,9 +27,10 @@ The `markdown-viewer-app` is a **Client-Side SPA** built with **Vanilla JavaScri
 4.  **[Detailed Roadmap](./phase5_recommendations.md)** - Strategic recommendations.
 
 ### 🔬 Deep Dive Reviews
-*   **[script.js Review](./deep_dive_reviews/script_js_review.md)** (Critical Issues)
-*   **[ThemeManager.js Review](./deep_dive_reviews/theme_manager_review.md)** (Performance Notes)
-*   **[MermaidService.js Review](./deep_dive_reviews/mermaid_service_review.md)** (Coupling Notes)
+
+- **[script.js Review](./deep_dive_reviews/script_js_review.md)** (Critical Issues)
+- **[ThemeManager.js Review](./deep_dive_reviews/theme_manager_review.md)** (Performance Notes)
+- **[MermaidService.js Review](./deep_dive_reviews/mermaid_service_review.md)** (Coupling Notes)
 
 ---
 
@@ -44,6 +45,7 @@ The `markdown-viewer-app` is a **Client-Side SPA** built with **Vanilla JavaScri
 ## 📝 Next Steps
 
 Ready to begin **Phase 1 of Remediation**:
+
 > Executing `npm install dompurify` and patching `script.js` to fix the XSS vulnerability.
 
 **Proceed?**

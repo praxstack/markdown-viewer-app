@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-**Overall Grade: A (95/100)** ⬆️ *Upgraded from B+ after implementing fixes*
+**Overall Grade: A (95/100)** ⬆️ _Upgraded from B+ after implementing fixes_
 
 The implementation is production-ready with comprehensive error handling, accessibility, and defensive programming patterns.
 
@@ -33,6 +33,7 @@ const refreshResult = await folderBrowserService.refreshFolder();
 **Problem:** If `refreshFolder()` is called while the file is still being written (edge case with slow filesystems), the new file might not appear in the tree.
 
 **Recommendation:** Add a small delay or use a retry mechanism:
+
 ```javascript
 // Wait a tick to ensure filesystem sync
 await new Promise(resolve => setTimeout(resolve, 100));
@@ -55,6 +56,7 @@ setTimeout(() => {
 **Problem:** If user triggers many toasts quickly, multiple timers run simultaneously. The toast removal relies on CSS class timing matching JS timing exactly.
 
 **Recommendation:** Use a toast queue or unique ID system:
+
 ```javascript
 function showToast(message, type = 'info') {
   const existingToast = document.querySelector('.toast-notification');
@@ -93,6 +95,7 @@ notes: `# Meeting Notes
 **Location:** `FolderBrowserService.js` - `createFile()` method
 
 **Current sanitization:**
+
 ```javascript
 sanitizeFilename(filename) {
   return filename
@@ -104,11 +107,13 @@ sanitizeFilename(filename) {
 ```
 
 **Missing validations:**
+
 - Maximum filename length (255 chars on most filesystems)
 - Reserved names on Windows (CON, PRN, AUX, NUL, COM1-9, LPT1-9)
 - Trailing spaces (problematic on some systems)
 
 **Recommendation:**
+
 ```javascript
 sanitizeFilename(filename) {
   const MAX_LENGTH = 200; // Safe limit
@@ -138,6 +143,7 @@ sanitizeFilename(filename) {
 **Problem:** User can spam the refresh button, triggering multiple filesystem scans simultaneously.
 
 **Recommendation:** Add debounce or disable button during operation:
+
 ```javascript
 refreshFolderBtn.addEventListener('click', async () => {
   if (refreshFolderBtn.disabled) return;
@@ -160,6 +166,7 @@ refreshFolderBtn.addEventListener('click', async () => {
 **Problem:** No visible focus indicator for keyboard navigation.
 
 **Recommendation:**
+
 ```css
 .browser-actions .btn-icon:focus {
   outline: 2px solid var(--h1-color);
@@ -178,16 +185,27 @@ refreshFolderBtn.addEventListener('click', async () => {
 **Location:** `index.html` - Create File Modal
 
 **Missing attributes:**
+
 - `role="dialog"`
 - `aria-modal="true"`
 - `aria-labelledby` pointing to heading
 
 **Recommendation:**
+
 ```html
-<div id="create-file-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="create-file-modal-title">
+<div
+  id="create-file-modal"
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="create-file-modal-title"
+>
   <div class="modal-content create-file-modal-content">
     <div class="modal-header">
       <h2 id="create-file-modal-title">📄 Create New Markdown File</h2>
+    </div>
+  </div>
+</div>
 ```
 
 ---
@@ -199,11 +217,13 @@ refreshFolderBtn.addEventListener('click', async () => {
 **Location:** Various places in `FolderBrowserService.js`
 
 **Examples:**
+
 - "No folder is currently open. Please open a folder first."
 - "No folder is currently open."
 - "Write permission denied. Cannot create file."
 
 **Recommendation:** Centralize error messages:
+
 ```javascript
 const ERROR_MESSAGES = {
   NO_FOLDER: 'No folder is currently open. Please open a folder first.',
@@ -221,6 +241,7 @@ const ERROR_MESSAGES = {
 **Current:** Button text changes to "Creating..."
 
 **Better UX:** Add spinner icon and disable form inputs:
+
 ```javascript
 confirmCreateFileBtn.disabled = true;
 confirmCreateFileBtn.innerHTML = '<span class="loading-spinner"></span> Creating...';
@@ -238,13 +259,14 @@ newFileTemplateSelect.disabled = true;
 **Problem:** Templates are defined once at page load. The `notes` template with `${new Date().toLocaleDateString()}` will always show the page load date, not the creation date.
 
 **Recommendation:** Make templates a function:
+
 ```javascript
 const getFileTemplates = () => ({
   notes: `# Meeting Notes
 
 **Date:** ${new Date().toLocaleDateString()}
 **Attendees:**
-...`
+...`,
 });
 ```
 
@@ -252,15 +274,15 @@ const getFileTemplates = () => ({
 
 ## 📊 Code Quality Metrics
 
-| Metric | Score | Notes |
-|--------|-------|-------|
-| **Functionality** | 95% | All features work as expected |
-| **Error Handling** | 85% | Good coverage, missing edge cases |
-| **Security** | 80% | Filename sanitization present, minor gaps |
-| **Accessibility** | 65% | Missing ARIA, focus states |
-| **Performance** | 90% | No obvious bottlenecks |
-| **Maintainability** | 90% | Clean code, good documentation |
-| **Test Coverage** | 0% | No tests added for new features |
+| Metric              | Score | Notes                                     |
+| ------------------- | ----- | ----------------------------------------- |
+| **Functionality**   | 95%   | All features work as expected             |
+| **Error Handling**  | 85%   | Good coverage, missing edge cases         |
+| **Security**        | 80%   | Filename sanitization present, minor gaps |
+| **Accessibility**   | 65%   | Missing ARIA, focus states                |
+| **Performance**     | 90%   | No obvious bottlenecks                    |
+| **Maintainability** | 90%   | Clean code, good documentation            |
+| **Test Coverage**   | 0%    | No tests added for new features           |
 
 ---
 
@@ -288,6 +310,7 @@ const getFileTemplates = () => ({
 7. ✅ **LOW:** Add filesystem sync delay before refresh (100ms)
 
 **Remaining (Out of Scope for This PR):**
+
 - Add unit tests for FolderBrowserService
 - Centralize error messages into constants
 
@@ -336,6 +359,7 @@ describe('FolderBrowserService', () => {
 The implementation is **production-ready**. All critical and medium-priority fixes have been applied:
 
 ### Applied Fixes:
+
 1. ✅ **Filename validation** - MAX_LENGTH 200, Windows reserved names (CON, PRN, etc.), trailing spaces
 2. ✅ **Debounce protection** - `isRefreshing` flag prevents spam clicks on refresh
 3. ✅ **Accessibility** - ARIA attributes on modal, focus states in CSS
@@ -344,15 +368,16 @@ The implementation is **production-ready**. All critical and medium-priority fix
 6. ✅ **Filesystem sync** - 100ms delay before refresh ensures file is visible
 
 ### Final Score Breakdown:
-| Metric | Score |
-|--------|-------|
-| Functionality | 95% |
-| Error Handling | 95% |
-| Security | 90% |
-| Accessibility | 85% |
-| Performance | 95% |
-| Maintainability | 95% |
-| Test Coverage | 0% (out of scope) |
+
+| Metric          | Score             |
+| --------------- | ----------------- |
+| Functionality   | 95%               |
+| Error Handling  | 95%               |
+| Security        | 90%               |
+| Accessibility   | 85%               |
+| Performance     | 95%               |
+| Maintainability | 95%               |
+| Test Coverage   | 0% (out of scope) |
 
 **Final Grade: A (95/100)**
 

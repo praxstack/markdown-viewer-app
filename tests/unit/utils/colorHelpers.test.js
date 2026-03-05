@@ -28,7 +28,7 @@ describe('colorHelpers', () => {
           return this._properties[name] || '';
         },
         length: 0,
-        *[Symbol.iterator] () {
+        *[Symbol.iterator]() {
           for (const key of Object.keys(this._properties)) {
             yield key;
           }

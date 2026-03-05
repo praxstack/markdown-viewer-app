@@ -22,27 +22,31 @@ This means: **zero changes to any of the 16 theme CSS files** (except 3 lines in
 
 ## What It Offers
 
-| Control | Target | Options |
-|---------|--------|---------|
-| Preview Body Font | `#markdown-preview` | 23 fonts across 4 categories |
-| Editor Font | `#markdown-editor` | 6 monospace fonts |
-| Code Block Font | `pre code` blocks | 6 monospace fonts (same list) |
-| Base Size | Preview body text | 12–24px slider |
+| Control           | Target              | Options                       |
+| ----------------- | ------------------- | ----------------------------- |
+| Preview Body Font | `#markdown-preview` | 23 fonts across 4 categories  |
+| Editor Font       | `#markdown-editor`  | 6 monospace fonts             |
+| Code Block Font   | `pre code` blocks   | 6 monospace fonts (same list) |
+| Base Size         | Preview body text   | 12–24px slider                |
 
 **NOT included (YAGNI):** UI font, per-heading fonts, line-height control.
 
 ## Font Catalog (23 fonts)
 
 ### Sans-Serif
+
 - System Default, Inter, IBM Plex Sans, DM Sans, Figtree, Noto Sans, Atkinson Hyperlegible
 
 ### Serif
+
 - Merriweather, Lora, Crimson Text, Source Serif 4, Literata
 
 ### Monospace
+
 - JetBrains Mono, Fira Code, Source Code Pro, IBM Plex Mono, Cascadia Code, Space Mono
 
 ### Quirky/Display
+
 - Outfit, Space Grotesk, Recursive, Comic Neue, Caveat
 
 ## UX: Popover Panel
@@ -85,13 +89,13 @@ This means: **zero changes to any of the 16 theme CSS files** (except 3 lines in
 
 ## Risks & Mitigations
 
-| Risk | Mitigation |
-|------|-----------|
+| Risk                          | Mitigation                                                      |
+| ----------------------------- | --------------------------------------------------------------- |
 | Nebula `!important` conflicts | Update 3 lines in nebula-elements.css to check picker var first |
-| HTML Export missing fonts | Inject Google Fonts @import into exported HTML |
-| PDF Export font not loaded | Await `document.fonts.ready` before PDF render |
-| Loading 23 Google Fonts | Lazy load: only load font on hover/click, not on page load |
-| Size slider vs zoom conflict | They're independent and multiplicative — document it |
+| HTML Export missing fonts     | Inject Google Fonts @import into exported HTML                  |
+| PDF Export font not loaded    | Await `document.fonts.ready` before PDF render                  |
+| Loading 23 Google Fonts       | Lazy load: only load font on hover/click, not on page load      |
+| Size slider vs zoom conflict  | They're independent and multiplicative — document it            |
 
 ## Implementation Order
 

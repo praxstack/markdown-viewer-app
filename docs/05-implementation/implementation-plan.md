@@ -57,21 +57,21 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true
+    node: true,
   },
   extends: 'eslint:recommended',
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   rules: {
     'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'prefer-const': 'error',
     'no-var': 'error',
-    'eqeqeq': ['error', 'always'],
-    'curly': ['error', 'all']
-  }
+    eqeqeq: ['error', 'always'],
+    curly: ['error', 'all'],
+  },
 };
 ```
 
@@ -102,14 +102,14 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html')
-      }
-    }
+        main: resolve(__dirname, 'index.html'),
+      },
+    },
   },
   server: {
     port: 3000,
-    open: true
-  }
+    open: true,
+  },
 });
 ```
 
@@ -126,9 +126,9 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html', 'lcov'],
-      exclude: ['node_modules/', 'tests/', 'dist/']
-    }
-  }
+      exclude: ['node_modules/', 'tests/', 'dist/'],
+    },
+  },
 });
 ```
 
@@ -198,7 +198,7 @@ const localStorageMock = {
   getItem: vi.fn(),
   setItem: vi.fn(),
   removeItem: vi.fn(),
-  clear: vi.fn()
+  clear: vi.fn(),
 };
 global.localStorage = localStorageMock;
 
@@ -218,55 +218,54 @@ beforeEach(() => {
 import { describe, it, expect, beforeEach } from 'vitest';
 
 describe('Baseline: All Current Features', () => {
-
   describe('Markdown Rendering', () => {
-    it('renders headings H1-H6', () => { });
-    it('renders bold and italic text', () => { });
-    it('renders code blocks', () => { });
-    it('renders lists (ordered/unordered)', () => { });
-    it('renders tables', () => { });
-    it('renders blockquotes', () => { });
-    it('renders links', () => { });
-    it('handles HTML entities in Mermaid', () => { });
+    it('renders headings H1-H6', () => {});
+    it('renders bold and italic text', () => {});
+    it('renders code blocks', () => {});
+    it('renders lists (ordered/unordered)', () => {});
+    it('renders tables', () => {});
+    it('renders blockquotes', () => {});
+    it('renders links', () => {});
+    it('handles HTML entities in Mermaid', () => {});
   });
 
   describe('Theme System', () => {
-    it('loads default-light theme', () => { });
-    it('loads default-dark theme', () => { });
-    it('loads all 12 built-in themes', () => { });
-    it('creates custom theme', () => { });
-    it('persists theme selection', () => { });
-    it('applies theme colors to elements', () => { });
+    it('loads default-light theme', () => {});
+    it('loads default-dark theme', () => {});
+    it('loads all 12 built-in themes', () => {});
+    it('creates custom theme', () => {});
+    it('persists theme selection', () => {});
+    it('applies theme colors to elements', () => {});
   });
 
   describe('View Modes', () => {
-    it('switches to editor-only mode', () => { });
-    it('switches to split-view mode', () => { });
-    it('switches to preview-only mode', () => { });
-    it('persists view mode', () => { });
+    it('switches to editor-only mode', () => {});
+    it('switches to split-view mode', () => {});
+    it('switches to preview-only mode', () => {});
+    it('persists view mode', () => {});
   });
 
   describe('Zoom Controls', () => {
-    it('zooms in (100% -> 110%)', () => { });
-    it('zooms out (100% -> 90%)', () => { });
-    it('resets zoom to 100%', () => { });
-    it('constrains zoom min 50%', () => { });
-    it('constrains zoom max 200%', () => { });
-    it('persists zoom level', () => { });
+    it('zooms in (100% -> 110%)', () => {});
+    it('zooms out (100% -> 90%)', () => {});
+    it('resets zoom to 100%', () => {});
+    it('constrains zoom min 50%', () => {});
+    it('constrains zoom max 200%', () => {});
+    it('persists zoom level', () => {});
   });
 
   describe('Export Functionality', () => {
-    it('exports HTML with theme', () => { });
-    it('exports PDF with theme', () => { });
-    it('PDF has 0.25" margins', () => { });
+    it('exports HTML with theme', () => {});
+    it('exports PDF with theme', () => {});
+    it('PDF has 0.25" margins', () => {});
   });
 
   describe('LocalStorage Persistence', () => {
-    it('saves markdown content', () => { });
-    it('saves selected theme', () => { });
-    it('saves custom theme colors', () => { });
-    it('saves view mode', () => { });
-    it('saves zoom level', () => { });
+    it('saves markdown content', () => {});
+    it('saves selected theme', () => {});
+    it('saves custom theme colors', () => {});
+    it('saves view mode', () => {});
+    it('saves zoom level', () => {});
   });
 });
 ```
@@ -275,14 +274,17 @@ describe('Baseline: All Current Features', () => {
 
 ```markdown
 // tests/README.md
+
 # Testing Guide
 
 ## Running Tests
+
 - `npm run test` - Run all tests
 - `npm run test:ui` - Open test UI
 - `npm run test:coverage` - Generate coverage report
 
 ## Test Structure
+
 - baseline/ - Tests documenting current behavior
 - unit/ - Tests for individual functions
 - integration/ - Tests for feature interactions
@@ -318,21 +320,21 @@ mkdir -p src/js/{config,utils}
 // src/js/config/constants.js
 export const APP_CONFIG = {
   NAME: 'Markdown Viewer Pro',
-  VERSION: '2.0.0'
+  VERSION: '2.0.0',
 };
 
 export const ZOOM = {
   MIN: 50,
   MAX: 200,
   DEFAULT: 100,
-  STEP: 10
+  STEP: 10,
 };
 
 export const VIEW_MODES = {
   EDITOR_ONLY: 'editor-only',
   SPLIT_VIEW: 'split-view',
   PREVIEW_ONLY: 'preview-only',
-  DEFAULT: 'split-view'
+  DEFAULT: 'split-view',
 };
 
 export const STORAGE_KEYS = {
@@ -340,7 +342,7 @@ export const STORAGE_KEYS = {
   SELECTED_THEME: 'selectedTheme',
   CUSTOM_THEME: 'customTheme',
   VIEW_MODE: 'viewMode',
-  PREVIEW_ZOOM: 'previewZoom'
+  PREVIEW_ZOOM: 'previewZoom',
 };
 
 export const PDF_CONFIG = {
@@ -349,7 +351,7 @@ export const PDF_CONFIG = {
   FORMAT: 'a4',
   ORIENTATION: 'portrait',
   SCALE: 2,
-  QUALITY: 0.98
+  QUALITY: 0.98,
 };
 
 export const THEMES = {
@@ -365,7 +367,7 @@ export const THEMES = {
   SUNSET_DARK: 'sunset-dark',
   OBSIDIAN_LIGHT: 'obsidian-light',
   OBSIDIAN_DARK: 'obsidian-dark',
-  CUSTOM: 'custom'
+  CUSTOM: 'custom',
 };
 
 export const DEFAULT_MARKDOWN = `# Welcome to Markdown Viewer Pro! 🚀
@@ -421,9 +423,7 @@ export function downloadFile(url, filename) {
  * @returns {string} Color value
  */
 export function getCssVariable(varName) {
-  return getComputedStyle(document.documentElement)
-    .getPropertyValue(varName)
-    .trim();
+  return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
 }
 
 /**
@@ -522,7 +522,7 @@ describe('Color Helpers', () => {
       getPropertyValue: vi.fn(name => {
         if (name === '--bg-primary') return '#0d1117';
         return '';
-      })
+      }),
     }));
   });
 
@@ -600,7 +600,7 @@ export class MermaidService {
         nodeBorder: h1Color,
         clusterBorder: h3Color,
         // ... all theme variables
-      }
+      },
     });
 
     this.initialized = true;
@@ -677,7 +677,7 @@ describe('MermaidService', () => {
     service = new MermaidService();
     global.mermaid = {
       initialize: vi.fn(),
-      render: vi.fn().mockResolvedValue({ svg: '<svg></svg>' })
+      render: vi.fn().mockResolvedValue({ svg: '<svg></svg>' }),
     };
   });
 
@@ -712,7 +712,7 @@ import { MermaidService } from './src/js/services/MermaidService.js';
 import { PrismService } from './src/js/services/PrismService.js';
 
 const FEATURE_FLAGS = {
-  USE_SERVICE_LAYER: false // Start with OFF
+  USE_SERVICE_LAYER: false, // Start with OFF
 };
 
 const mermaidService = new MermaidService();
@@ -922,7 +922,7 @@ export class ThemeManager {
     const style = getComputedStyle(document.documentElement);
 
     // Get all theme variables
-    ['--bg-primary', '--bg-secondary', '--text-primary', /* etc */].forEach(varName => {
+    ['--bg-primary', '--bg-secondary', '--text-primary' /* etc */].forEach(varName => {
       colors[varName] = style.getPropertyValue(varName).trim();
     });
 
@@ -963,7 +963,7 @@ describe('ThemeManager', () => {
       get: vi.fn(),
       set: vi.fn(),
       getJSON: vi.fn(),
-      setJSON: vi.fn()
+      setJSON: vi.fn(),
     };
     themeManager = new ThemeManager(mockStorage);
   });
@@ -996,7 +996,7 @@ describe('ThemeManager', () => {
 ```javascript
 // script.js
 const FEATURE_FLAGS = {
-  USE_CORE_MODULES: false // Start OFF
+  USE_CORE_MODULES: false, // Start OFF
 };
 
 const storageManager = new StorageManager();
@@ -1046,3 +1046,4 @@ export class ZoomController {
     this.storage = storageManager;
     this.currentZoom = ZOOM.DEFAULT;
   }
+```

@@ -16,21 +16,26 @@
 ---
 
 # H1 - Main Header
+
 ## H2 - Secondary Header
+
 ### H3 - Tertiary Header
+
 #### H4 - Fourth Level
+
 ##### H5 - Fifth Level
+
 ###### H6 - Sixth Level
 
 ---
 
 ## Text Formatting
 
-**Bold text** and __also bold__
+**Bold text** and **also bold**
 
-*Italic text* and _also italic_
+_Italic text_ and _also italic_
 
-***Bold and italic*** and ___also bold italic___
+**_Bold and italic_** and **_also bold italic_**
 
 ~~Strikethrough text~~
 
@@ -79,8 +84,8 @@ HTML subscript: H<sub>2</sub>O and superscript: x<sup>2</sup>
 * Alternative bullet
 * Another item
 
-+ Plus sign bullet
-+ Another item
+- Plus sign bullet
+- Another item
 
 ### Ordered Lists
 
@@ -126,7 +131,7 @@ Term 2
 
 [Basic link](https://example.com)
 
-[Link with title](https://example.com "Hover title text")
+[Link with title](https://example.com 'Hover title text')
 
 <https://autolink-url.com>
 
@@ -136,18 +141,18 @@ Term 2
 
 [Another reference][ref2]
 
-[ref1]: https://example.com "Reference 1"
-[ref2]: https://example.org "Reference 2"
+[ref1]: https://example.com 'Reference 1'
+[ref2]: https://example.org 'Reference 2'
 
 ### Images
 
-![Alt text for image](https://via.placeholder.com/300x150 "Image title")
+![Alt text for image](https://via.placeholder.com/300x150 'Image title')
 
 [![Clickable image](https://via.placeholder.com/200x100)](https://example.com)
 
 ![Reference image][img1]
 
-[img1]: https://via.placeholder.com/250x125 "Reference image"
+[img1]: https://via.placeholder.com/250x125 'Reference image'
 
 ### Image with sizing (HTML)
 
@@ -165,51 +170,49 @@ Use `console.log()` for debugging. The `<div>` element is a container. Run `npm 
 
 ```javascript
 // JavaScript Example
-const greeting = "Hello, World!";
+const greeting = 'Hello, World!';
 const numbers = [1, 2, 3, 4, 5];
 
 const doubled = numbers.map(n => n * 2);
 
 async function fetchData(url) {
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error:', error);
-    }
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+  }
 }
 
 class Person {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
 
-    greet() {
-        return `Hello, I'm ${this.name}`;
-    }
+  greet() {
+    return `Hello, I'm ${this.name}`;
+  }
 }
 ```
 
 ```typescript
 // TypeScript Example
 interface User {
-    id: number;
-    name: string;
-    email: string;
-    isActive?: boolean;
+  id: number;
+  name: string;
+  email: string;
+  isActive?: boolean;
 }
 
 type Status = 'pending' | 'approved' | 'rejected';
 
 function processUser<T extends User>(user: T): void {
-    console.log(`Processing ${user.name}`);
+  console.log(`Processing ${user.name}`);
 }
 
-const users: User[] = [
-    { id: 1, name: 'Alice', email: 'alice@example.com' }
-];
+const users: User[] = [{ id: 1, name: 'Alice', email: 'alice@example.com' }];
 ```
 
 ### Python
@@ -558,35 +561,38 @@ FROM employees;
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sample Page</title>
     <style>
-        .container { max-width: 1200px; margin: 0 auto; }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
     </header>
     <main class="container">
-        <article>
-            <h1>Welcome</h1>
-            <p>This is a sample paragraph.</p>
-        </article>
+      <article>
+        <h1>Welcome</h1>
+        <p>This is a sample paragraph.</p>
+      </article>
     </main>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Page loaded');
-        });
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log('Page loaded');
+      });
     </script>
-</body>
+  </body>
 </html>
 ```
 
@@ -595,42 +601,46 @@ FROM employees;
 ```css
 /* CSS Example */
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2ecc71;
-    --spacing: 1rem;
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --spacing: 1rem;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--spacing);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing);
 }
 
 .card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: calc(var(--spacing) / 2);
-    }
+  .container {
+    padding: calc(var(--spacing) / 2);
+  }
 }
 
 /* Animation */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .fade-in {
-    animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out;
 }
 ```
 
@@ -638,35 +648,35 @@ FROM employees;
 // SCSS Example
 $primary: #3498db;
 $breakpoints: (
-    'sm': 576px,
-    'md': 768px,
-    'lg': 992px
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
 );
 
 @mixin respond-to($breakpoint) {
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
-        @content;
-    }
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
 }
 
 .component {
-    padding: 1rem;
+  padding: 1rem;
 
-    &__title {
-        font-size: 1.5rem;
-        color: $primary;
-    }
+  &__title {
+    font-size: 1.5rem;
+    color: $primary;
+  }
 
-    &__content {
-        @include respond-to('md') {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-        }
+  &__content {
+    @include respond-to('md') {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
     }
+  }
 
-    &--highlighted {
-        background: lighten($primary, 40%);
-    }
+  &--highlighted {
+    background: lighten($primary, 40%);
+  }
 }
 ```
 
@@ -674,26 +684,26 @@ $breakpoints: (
 
 ```json
 {
-    "name": "markdown-test",
-    "version": "1.0.0",
-    "description": "A comprehensive markdown test",
-    "dependencies": {
-        "react": "^18.2.0",
-        "typescript": "^5.0.0"
+  "name": "markdown-test",
+  "version": "1.0.0",
+  "description": "A comprehensive markdown test",
+  "dependencies": {
+    "react": "^18.2.0",
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "build": "tsc && webpack"
+  },
+  "config": {
+    "database": {
+      "host": "localhost",
+      "port": 5432,
+      "name": "testdb"
     },
-    "scripts": {
-        "start": "node index.js",
-        "build": "tsc && webpack"
-    },
-    "config": {
-        "database": {
-            "host": "localhost",
-            "port": 5432,
-            "name": "testdb"
-        },
-        "features": ["auth", "api", "notifications"],
-        "enabled": true
-    }
+    "features": ["auth", "api", "notifications"],
+    "enabled": true
+  }
 }
 ```
 
@@ -709,7 +719,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - NODE_ENV=production
       - DATABASE_URL=postgres://user:pass@db:5432/app
@@ -875,6 +885,7 @@ It preserves spacing and formatting.
 **Vectors & arrow notation:** $\vec{a}, \overrightarrow{AB}, \overleftarrow{CD}, \widehat{ABC}$
 
 **Over/under braces with annotations:**
+
 - $\overbrace{1+2+ \dots +n}^{\text{n terms}}$
 - $\underbrace{a_1 + a_2 + \dots + a_n}_{\text{sum}}$
 
@@ -898,7 +909,7 @@ $$
 $$
 
 \[
-\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^{n}k = \frac{1}{2}
+\lim*{n\to\infty}\frac{1}{n}\sum*{k=1}^{n}k = \frac{1}{2}
 \]
 
 #### 2.2 Large operators with limits
@@ -924,10 +935,10 @@ $$
 \begin{align}
 f(x) &= ax^{2}+bx+c \label{eq:quad}\\
 f'(x) &= 2ax+b \\
-\int_{0}^{1}x^{n}\,dx &= \frac{1}{n+1}\tag{*}
+\int\_{0}^{1}x^{n}\,dx &= \frac{1}{n+1}\tag{\*}
 \end{align}
 
-#### 2.4 Multi-line environments (unnumbered) – align*
+#### 2.4 Multi-line environments (unnumbered) – align\*
 
 \begin{align*}
 \cos^{2}\theta + \sin^{2}\theta &= 1 \\
@@ -941,17 +952,17 @@ e^{i\pi}+1 &= 0
 \Gamma\!\left(\tfrac{1}{2}\right)=\sqrt{\pi}
 \end{gather}
 
-#### 2.6 gather* (centered, no numbers)
+#### 2.6 gather\* (centered, no numbers)
 
 \begin{gather*}
 \sin\bigl(\tfrac{\pi}{2}\bigr)=1\\
-\log_{10} 1000 = 3
+\log\_{10} 1000 = 3
 \end{gather*}
 
 #### 2.7 multline (long equation broken across lines)
 
 \begin{multline}
-\sum_{k=1}^{n}\frac{1}{k}
+\sum\_{k=1}^{n}\frac{1}{k}
 = 1+\frac12+\frac13+\dots+\frac1n \\
 \approx \ln n + \gamma + \frac{1}{2n} - \frac{1}{12n^{2}}+\cdots
 \end{multline}
@@ -1093,27 +1104,27 @@ $$
 
 ### 4️⃣ Advanced Symbolic Constructs
 
-| Symbol | LaTeX Code | Rendered |
-|--------|------------|----------|
-| **Implication** | `$A \implies B$` | $A \implies B$ |
-| **Equivalence** | `$A \iff B$` | $A \iff B$ |
-| **Logical operators** | `$p \land q,\; p \lor q,\; \neg p$` | $p \land q,\; p \lor q,\; \neg p$ |
-| **Set builder** | `$\{x\in\mathbb{R}\mid x>0\}$` | $\{x\in\mathbb{R}\mid x>0\}$ |
-| **Function arrow** | `$f\colon X\to Y$` | $f\colon X\to Y$ |
-| **Partial derivative** | `$\frac{\partial f}{\partial x}$` | $\frac{\partial f}{\partial x}$ |
-| **Nabla / gradient** | `$\nabla f$` | $\nabla f$ |
-| **Laplacian** | `$\Delta u$, `$\nabla^2 u$` | $\Delta u$, $\nabla^2 u$ |
-| **Infinity** | `$\infty$` | $\infty$ |
-| **Ellipsis** | `$\dots,\; \cdots,\; \vdots,\; \ddots$` | $\dots,\; \cdots,\; \vdots,\; \ddots$ |
-| **Relations** | `$x\sim y,\; x\approx y,\; x\equiv y$` | $x\sim y,\; x\approx y,\; x\equiv y$ |
-| **Arrows with text** | `$\xrightarrow{\text{limit}}$` | $\xrightarrow{\text{limit}}$ |
-| **Double-arrow** | `$\xleftrightarrow{AB}$` | $\xleftrightarrow{AB}$ |
-| **Hook arrows** | `$\xhookrightarrow{f}$` | $\xhookrightarrow{f}$ |
+| Symbol                 | LaTeX Code                                        | Rendered                                      |
+| ---------------------- | ------------------------------------------------- | --------------------------------------------- |
+| **Implication**        | `$A \implies B$`                                  | $A \implies B$                                |
+| **Equivalence**        | `$A \iff B$`                                      | $A \iff B$                                    |
+| **Logical operators**  | `$p \land q,\; p \lor q,\; \neg p$`               | $p \land q,\; p \lor q,\; \neg p$             |
+| **Set builder**        | `$\{x\in\mathbb{R}\mid x>0\}$`                    | $\{x\in\mathbb{R}\mid x>0\}$                  |
+| **Function arrow**     | `$f\colon X\to Y$`                                | $f\colon X\to Y$                              |
+| **Partial derivative** | `$\frac{\partial f}{\partial x}$`                 | $\frac{\partial f}{\partial x}$               |
+| **Nabla / gradient**   | `$\nabla f$`                                      | $\nabla f$                                    |
+| **Laplacian**          | `$\Delta u$, `$\nabla^2 u$`                       | $\Delta u$, $\nabla^2 u$                      |
+| **Infinity**           | `$\infty$`                                        | $\infty$                                      |
+| **Ellipsis**           | `$\dots,\; \cdots,\; \vdots,\; \ddots$`           | $\dots,\; \cdots,\; \vdots,\; \ddots$         |
+| **Relations**          | `$x\sim y,\; x\approx y,\; x\equiv y$`            | $x\sim y,\; x\approx y,\; x\equiv y$          |
+| **Arrows with text**   | `$\xrightarrow{\text{limit}}$`                    | $\xrightarrow{\text{limit}}$                  |
+| **Double-arrow**       | `$\xleftrightarrow{AB}$`                          | $\xleftrightarrow{AB}$                        |
+| **Hook arrows**        | `$\xhookrightarrow{f}$`                           | $\xhookrightarrow{f}$                         |
 | **Overset / Underset** | `$\overset{!}{=}$`, `$\underset{a}{\rightarrow}$` | $\overset{!}{=}$, $\underset{a}{\rightarrow}$ |
-| **Stackrel** | `$\stackrel{\text{def}}{=}$` | $\stackrel{\text{def}}{=}$ |
-| **Tensor indices** | `$T^{\mu\nu}_{\rho\sigma}$` | $T^{\mu\nu}_{\rho\sigma}$ |
-| **Commutator** | `$[A, B]$` | $[A, B]$ |
-| **Anticommutator** | `$\{A, B\}$` | $\{A, B\}$ |
+| **Stackrel**           | `$\stackrel{\text{def}}{=}$`                      | $\stackrel{\text{def}}{=}$                    |
+| **Tensor indices**     | `$T^{\mu\nu}_{\rho\sigma}$`                       | $T^{\mu\nu}_{\rho\sigma}$                     |
+| **Commutator**         | `$[A, B]$`                                        | $[A, B]$                                      |
+| **Anticommutator**     | `$\{A, B\}$`                                      | $\{A, B\}$                                    |
 
 ---
 
@@ -1134,17 +1145,17 @@ $$
 
 ### 6️⃣ "Hacky" Math – Edge Cases That Often Break Renderers
 
-| Description | LaTeX | Notes |
-|-------------|-------|-------|
-| **Empty fraction** | $\frac{}{x}$ | Missing numerator |
-| **Phantom spacing** | $a\phantom{bcd}e$ | Invisible spacing |
-| **Smash (suppress height)** | $\smash{\frac{a}{b}}c$ | Suppresses vertical extent |
-| **Boxed with displaystyle** | $\boxed{\displaystyle\sum_{i=1}^{n}i}$ | Large operator inside box |
-| **operatorname with limits** | $\operatorname*{argmax}_{x}$ | Custom operator with limits |
-| **Complex nested delimiters** | $\left\langle\frac{\displaystyle\sum_{i=1}^{n}i}{\sqrt[3]{x^{2}+y^{2}}}\right\rangle$ | Deeply nested sizing |
-| **Text with math and spaces** | $\text{if }x>0\text{ then }y=1$ | Mixed text/math |
-| **Whole-block color** | See below | Color entire equation |
-| **Custom tag** | See below | `\tag{}` with label |
+| Description                   | LaTeX                                                                                 | Notes                       |
+| ----------------------------- | ------------------------------------------------------------------------------------- | --------------------------- |
+| **Empty fraction**            | $\frac{}{x}$                                                                          | Missing numerator           |
+| **Phantom spacing**           | $a\phantom{bcd}e$                                                                     | Invisible spacing           |
+| **Smash (suppress height)**   | $\smash{\frac{a}{b}}c$                                                                | Suppresses vertical extent  |
+| **Boxed with displaystyle**   | $\boxed{\displaystyle\sum_{i=1}^{n}i}$                                                | Large operator inside box   |
+| **operatorname with limits**  | $\operatorname*{argmax}_{x}$                                                          | Custom operator with limits |
+| **Complex nested delimiters** | $\left\langle\frac{\displaystyle\sum_{i=1}^{n}i}{\sqrt[3]{x^{2}+y^{2}}}\right\rangle$ | Deeply nested sizing        |
+| **Text with math and spaces** | $\text{if }x>0\text{ then }y=1$                                                       | Mixed text/math             |
+| **Whole-block color**         | See below                                                                             | Color entire equation       |
+| **Custom tag**                | See below                                                                             | `\tag{}` with label         |
 
 **Whole-block color test:**
 
@@ -1225,13 +1236,13 @@ $$
 
 ### 🔟 Math Inside Tables
 
-| Formula (inline) | Rendered Result |
-|------------------|-----------------|
-| `$a^2 + b^2 = c^2$` | $a^2 + b^2 = c^2$ |
-| `$\displaystyle\int_0^1 x\,dx$` | $\displaystyle\int_0^1 x\,dx$ |
-| `$\begin{cases}x>0\\x\le0\end{cases}$` | $\begin{cases}x>0\\x\le0\end{cases}$ |
+| Formula (inline)                                                            | Rendered Result                                                           |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `$a^2 + b^2 = c^2$`                                                         | $a^2 + b^2 = c^2$                                                         |
+| `$\displaystyle\int_0^1 x\,dx$`                                             | $\displaystyle\int_0^1 x\,dx$                                             |
+| `$\begin{cases}x>0\\x\le0\end{cases}$`                                      | $\begin{cases}x>0\\x\le0\end{cases}$                                      |
 | `$\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}=0$` | $\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}=0$ |
-| `$\bigl(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\bigr)$` | $\bigl(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\bigr)$ |
+| `$\bigl(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\bigr)$`                | $\bigl(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\bigr)$                |
 
 ---
 
@@ -1307,7 +1318,7 @@ Probability: $P(A|B) = \frac{P(B|A)P(A)}{P(B)}$, $\mathbb{E}[X] = \sum_x x \cdot
 ### Basic Table
 
 | Header 1 | Header 2 | Header 3 |
-|----------|----------|----------|
+| -------- | -------- | -------- |
 | Cell 1   | Cell 2   | Cell 3   |
 | Cell 4   | Cell 5   | Cell 6   |
 | Cell 7   | Cell 8   | Cell 9   |
@@ -1315,31 +1326,31 @@ Probability: $P(A|B) = \frac{P(B|A)P(A)}{P(B)}$, $\mathbb{E}[X] = \sum_x x \cdot
 ### Aligned Table
 
 | Left Aligned | Center Aligned | Right Aligned |
-|:-------------|:--------------:|--------------:|
-| Left         | Center         | Right         |
-| Data         | Data           | Data          |
-| More         | More           | More          |
+| :----------- | :------------: | ------------: |
+| Left         |     Center     |         Right |
+| Data         |      Data      |          Data |
+| More         |      More      |          More |
 
 ### Complex Table
 
-| Feature | Basic Plan | Pro Plan | Enterprise |
-|:--------|:----------:|:--------:|:----------:|
-| Users | 1 | 10 | Unlimited |
-| Storage | 5 GB | 100 GB | 1 TB |
-| Support | Email | Priority | 24/7 Phone |
-| Price | Free | $9.99/mo | Custom |
-| API Access | ❌ | ✅ | ✅ |
-| Analytics | Basic | Advanced | Custom |
+| Feature    | Basic Plan | Pro Plan | Enterprise |
+| :--------- | :--------: | :------: | :--------: |
+| Users      |     1      |    10    | Unlimited  |
+| Storage    |    5 GB    |  100 GB  |    1 TB    |
+| Support    |   Email    | Priority | 24/7 Phone |
+| Price      |    Free    | $9.99/mo |   Custom   |
+| API Access |     ❌     |    ✅    |     ✅     |
+| Analytics  |   Basic    | Advanced |   Custom   |
 
 ### Table with Code and Formatting
 
-| Language | Hello World | File Extension |
-|----------|-------------|----------------|
-| Python | `print("Hello")` | `.py` |
-| JavaScript | `console.log("Hello")` | `.js` |
-| Java | `System.out.println("Hello")` | `.java` |
-| C++ | `std::cout << "Hello"` | `.cpp` |
-| **Rust** | `println!("Hello")` | `.rs` |
+| Language   | Hello World                   | File Extension |
+| ---------- | ----------------------------- | -------------- |
+| Python     | `print("Hello")`              | `.py`          |
+| JavaScript | `console.log("Hello")`        | `.js`          |
+| Java       | `System.out.println("Hello")` | `.java`        |
+| C++        | `std::cout << "Hello"`        | `.cpp`         |
+| **Rust**   | `println!("Hello")`           | `.rs`          |
 
 ---
 
@@ -1359,7 +1370,7 @@ Probability: $P(A|B) = \frac{P(B|A)P(A)}{P(B)}$, $\mathbb{E}[X] = \sum_x x \cdot
 
 > ### Blockquote with formatting
 >
-> This blockquote contains **bold**, *italic*, and `code`.
+> This blockquote contains **bold**, _italic_, and `code`.
 >
 > - It can have lists
 > - Multiple items
@@ -1820,11 +1831,11 @@ Three hyphens:
 
 Three asterisks:
 
-***
+---
 
 Three underscores:
 
-___
+---
 
 ### Footnotes
 
@@ -1848,8 +1859,8 @@ Here's one with a longer identifier.[^bignote]
 
 The HTML specification is maintained by the W3C.
 
-*[HTML]: Hyper Text Markup Language
-*[W3C]: World Wide Web Consortium
+_[HTML]: Hyper Text Markup Language
+_[W3C]: World Wide Web Consortium
 
 ### Keyboard Keys (HTML)
 
@@ -1883,7 +1894,7 @@ This content is visible by default but can be collapsed.
 
 ### Comments (Not Rendered)
 
-[//]: # (This is a comment and won't be rendered)
+[//]: # "This is a comment and won't be rendered"
 
 [comment]: <> (Another comment style)
 
@@ -1995,4 +2006,4 @@ This document covers all major markdown features including:
 
 ---
 
-*Document generated for comprehensive markdown rendering testing purposes.*
+_Document generated for comprehensive markdown rendering testing purposes._

@@ -20,24 +20,27 @@ The consolidated plan (v2.1) has successfully resolved the critical architectura
 While the core functionality is sound, a "Strict" review identifies minor gaps in **UX Stability** and **Business Observability** that should be addressed during implementation.
 
 ### 2.1 Cumulative Layout Shift (CLS) Risk
-*   **Issue:** The "Smart Router" relies on an asynchronous `fetch` with a 300ms race condition.
-*   **Risk:** If the footer renders *without* the button, and then the button "pops in" 200ms later, it causes a layout shift. This hurts SEO (Core Web Vitals) and visual polish.
-*   **Requirement:** The footer implementation **MUST** reserve fixed vertical space (e.g., `min-height: 60px`) for the support widget *before* the JS runs.
-    *   *Loading State:* Show a generic "☕ Support" grey ghost button immediately.
-    *   *Hydration:* Swap it for the colorful "🇮🇳 UPI" or "🌏 PayPal" button once the promise resolves.
+
+- **Issue:** The "Smart Router" relies on an asynchronous `fetch` with a 300ms race condition.
+- **Risk:** If the footer renders _without_ the button, and then the button "pops in" 200ms later, it causes a layout shift. This hurts SEO (Core Web Vitals) and visual polish.
+- **Requirement:** The footer implementation **MUST** reserve fixed vertical space (e.g., `min-height: 60px`) for the support widget _before_ the JS runs.
+  - _Loading State:_ Show a generic "☕ Support" grey ghost button immediately.
+  - _Hydration:_ Swap it for the colorful "🇮🇳 UPI" or "🌏 PayPal" button once the promise resolves.
 
 ### 2.2 Blind spots in Success Metrics
-*   **Issue:** The stated *Success Metrics* include "At least 3 valid donations".
-*   **Risk:** With direct links to Ko-fi/Razorpay, you cannot distinguish traffic sources (README vs App Footer vs Direct Search). You will see money, but not *attribution*.
-*   **Requirement:** Use UTM parameters or `ref` tags on all generated links.
-    *   **Bad:** `razorpay.me/@markdownviewer`
-    *   **Good:** `razorpay.me/@markdownviewer?notes[source]=webapp_footer`
-    *   **Good:** `ko-fi.com/markdownviewerpro?ref=readme_badge`
+
+- **Issue:** The stated _Success Metrics_ include "At least 3 valid donations".
+- **Risk:** With direct links to Ko-fi/Razorpay, you cannot distinguish traffic sources (README vs App Footer vs Direct Search). You will see money, but not _attribution_.
+- **Requirement:** Use UTM parameters or `ref` tags on all generated links.
+  - **Bad:** `razorpay.me/@markdownviewer`
+  - **Good:** `razorpay.me/@markdownviewer?notes[source]=webapp_footer`
+  - **Good:** `ko-fi.com/markdownviewerpro?ref=readme_badge`
 
 ### 2.3 Security Best Practice (`noopener`)
-*   **Issue:** External links to payment processors open in new tabs (`target="_blank"`).
-*   **Risk:** Reverse Tabnapping (theoretical risk on older browsers, but enterprise compliance usually flags it).
-*   **Requirement:** All external payment links **MUST** include `rel="noopener noreferrer"`.
+
+- **Issue:** External links to payment processors open in new tabs (`target="_blank"`).
+- **Risk:** Reverse Tabnapping (theoretical risk on older browsers, but enterprise compliance usually flags it).
+- **Requirement:** All external payment links **MUST** include `rel="noopener noreferrer"`.
 
 ---
 
@@ -46,6 +49,7 @@ While the core functionality is sound, a "Strict" review identifies minor gaps i
 The proposed JS snippet is robust. I am validating the `Promise.race` pattern as **Enterprise-Grade**.
 
 **Refined Snippet (Optimization for Reliability):**
+
 ```javascript
 // RECOMMENDED IMPLEMENTATION PATTERN
 const TIMEOUT_MS = 300;
@@ -81,11 +85,11 @@ async function getDonationConfig() {
 
 ## 4. Final Approvals
 
-| Category | Status | Notes |
-|----------|--------|-------|
-| **Functional** | ✅ Approved | Requirements are clear and testable. |
-| **Technical** | ✅ Approved | Fail-safe pattern mitigates API risk. |
-| **Legal** | ✅ Approved | "Two-Pocket" strategy satisfies FEMA/IRS separation. |
-| **UX** | ✅ Approved | CLS mitigation (Skeleton Loader) added as requirement. |
+| Category       | Status      | Notes                                                  |
+| -------------- | ----------- | ------------------------------------------------------ |
+| **Functional** | ✅ Approved | Requirements are clear and testable.                   |
+| **Technical**  | ✅ Approved | Fail-safe pattern mitigates API risk.                  |
+| **Legal**      | ✅ Approved | "Two-Pocket" strategy satisfies FEMA/IRS separation.   |
+| **UX**         | ✅ Approved | CLS mitigation (Skeleton Loader) added as requirement. |
 
 **Next Step:** Proceed to Phase 1 (Account Creation) as defined in the Roadmap.

@@ -210,25 +210,25 @@ Technical writers, developers, documentation specialists, and content creators f
 
 ### Before Markdown Viewer Pro
 
-| Problem | User Impact | Business Cost |
-|---------|------------|---------------|
-| Need separate editor and preview tools | Context switching friction | Lost productivity |
-| Markdown renders differently across platforms | Inconsistent output | Rework and frustration |
-| Complex setup processes | Time waste, barrier to entry | Adoption friction |
-| Generic, unattractive rendering | Unprofessional output | Brand damage |
-| No theme customization | Can't match style guides | Manual styling overhead |
-| Complicated export processes | Sharing friction | Communication delays |
+| Problem                                       | User Impact                  | Business Cost           |
+| --------------------------------------------- | ---------------------------- | ----------------------- |
+| Need separate editor and preview tools        | Context switching friction   | Lost productivity       |
+| Markdown renders differently across platforms | Inconsistent output          | Rework and frustration  |
+| Complex setup processes                       | Time waste, barrier to entry | Adoption friction       |
+| Generic, unattractive rendering               | Unprofessional output        | Brand damage            |
+| No theme customization                        | Can't match style guides     | Manual styling overhead |
+| Complicated export processes                  | Sharing friction             | Communication delays    |
 
 ### After Markdown Viewer Pro
 
-| Solution | User Benefit | Business Value |
-|----------|--------------|----------------|
-| Unified editor + preview | Instant feedback loop | Faster document creation |
-| Consistent rendering engine | Predictable output | Quality assurance |
-| Zero-setup deployment | Immediate productivity | No onboarding cost |
-| 10 professional themes | Presentation-ready output | Professional appearance |
-| Visual theme customizer | Brand alignment without code | Consistent branding |
-| One-click HTML export | Easy sharing | Efficient collaboration |
+| Solution                    | User Benefit                 | Business Value           |
+| --------------------------- | ---------------------------- | ------------------------ |
+| Unified editor + preview    | Instant feedback loop        | Faster document creation |
+| Consistent rendering engine | Predictable output           | Quality assurance        |
+| Zero-setup deployment       | Immediate productivity       | No onboarding cost       |
+| 10 professional themes      | Presentation-ready output    | Professional appearance  |
+| Visual theme customizer     | Brand alignment without code | Consistent branding      |
+| One-click HTML export       | Easy sharing                 | Efficient collaboration  |
 
 ## Success Metrics & KPIs
 

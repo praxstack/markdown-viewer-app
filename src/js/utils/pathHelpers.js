@@ -53,7 +53,9 @@ export function resolveRelativePath(basePath, relativePath) {
  * // Returns: 'folder/file.md'
  */
 export function normalizePath(path) {
-  if (!path) {return '';}
+  if (!path) {
+    return '';
+  }
 
   return path
     .replace(/\\/g, '/') // Convert backslashes to forward slashes
@@ -67,7 +69,9 @@ export function normalizePath(path) {
  * @returns {boolean} True if external URL
  */
 export function isExternalUrl(path) {
-  if (!path) {return false;}
+  if (!path) {
+    return false;
+  }
   return /^https?:\/\//.test(path) || /^\/\//.test(path);
 }
 
@@ -77,7 +81,9 @@ export function isExternalUrl(path) {
  * @returns {boolean} True if markdown file
  */
 export function isMarkdownFile(path) {
-  if (!path) {return false;}
+  if (!path) {
+    return false;
+  }
   return /\.md$/i.test(path);
 }
 
@@ -87,7 +93,9 @@ export function isMarkdownFile(path) {
  * @returns {boolean} True if anchor link
  */
 export function isAnchorLink(path) {
-  if (!path) {return false;}
+  if (!path) {
+    return false;
+  }
   return path.startsWith('#');
 }
 
@@ -131,13 +139,21 @@ export function isWithinRoot(path, rootPath) {
   const normalizedRoot = normalizePath(rootPath);
 
   // Empty path or trying to escape root
-  if (!normalizedPath) {return false;}
-  if (normalizedPath.startsWith('..')) {return false;}
-  if (normalizedPath.includes('../')) {return false;}
+  if (!normalizedPath) {
+    return false;
+  }
+  if (normalizedPath.startsWith('..')) {
+    return false;
+  }
+  if (normalizedPath.includes('../')) {
+    return false;
+  }
 
   // Security: Detect path traversal attempts that resolve outside root
   // e.g., 'docs/../secret' normalizes to 'secret' which is outside 'docs'
-  if (normalizedPath.includes('../')) {return false;}
+  if (normalizedPath.includes('../')) {
+    return false;
+  }
 
   // Check if path starts with root
   return normalizedPath === normalizedRoot || normalizedPath.startsWith(`${normalizedRoot}/`);

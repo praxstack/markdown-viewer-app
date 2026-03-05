@@ -112,7 +112,7 @@ export class ZoomController {
    */
   setupKeyboardShortcuts(document) {
     // Ctrl/Cmd + Plus/Minus/0
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
       if ((e.ctrlKey || e.metaKey) && e.target.tagName !== 'TEXTAREA') {
         if (e.key === '=' || e.key === '+') {
           e.preventDefault();
@@ -128,7 +128,7 @@ export class ZoomController {
     });
 
     // Mouse wheel zoom
-    this.preview.addEventListener('wheel', (e) => {
+    this.preview.addEventListener('wheel', e => {
       if (e.ctrlKey || e.metaKey) {
         e.preventDefault();
         if (e.deltaY < 0) {
@@ -209,7 +209,7 @@ export class ViewModeController {
     this.buttons.forEach(btn => btn.classList.remove('active'));
 
     // Apply mode
-    switch(mode) {
+    switch (mode) {
       case VIEW_MODES.EDITOR_ONLY:
         this.editor.style.display = 'flex';
         this.preview.style.display = 'none';
@@ -315,20 +315,17 @@ export class ExportController {
         scale: PDF_CONFIG.SCALE,
         useCORS: true,
         letterRendering: true,
-        backgroundColor: getCssVariable('--bg-primary')
+        backgroundColor: getCssVariable('--bg-primary'),
       },
       jsPDF: {
         unit: 'in',
         format: PDF_CONFIG.FORMAT,
-        orientation: PDF_CONFIG.ORIENTATION
+        orientation: PDF_CONFIG.ORIENTATION,
       },
-      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
     };
 
-    return html2pdf()
-      .set(options)
-      .from(container)
-      .save();
+    return html2pdf().set(options).from(container).save();
   }
 
   /**
@@ -339,7 +336,8 @@ export class ExportController {
    */
   createPDFContainer(content) {
     const container = document.createElement('div');
-    container.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    container.style.fontFamily =
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     container.style.maxWidth = '800px';
     container.style.margin = '0 auto';
     container.style.padding = '40px 20px';
@@ -426,13 +424,13 @@ export class ExportController {
 // tests/unit/features/ExportController.test.js
 describe('ExportController', () => {
   describe('exportHTML', () => {
-    it('should generate HTML with theme', async () => { });
-    it('should handle custom theme', async () => { });
+    it('should generate HTML with theme', async () => {});
+    it('should handle custom theme', async () => {});
   });
 
   describe('exportPDF', () => {
-    it('should configure PDF with correct margins', async () => { });
-    it('should throw error if html2pdf not loaded', async () => { });
+    it('should configure PDF with correct margins', async () => {});
+    it('should throw error if html2pdf not loaded', async () => {});
   });
 });
 ```
@@ -524,12 +522,16 @@ const FEATURE_FLAGS = {
   USE_ZOOM_CONTROLLER: false,
   USE_VIEW_MODE_CONTROLLER: false,
   USE_EXPORT_CONTROLLER: false,
-  USE_EDITOR_CONTROLLER: false
+  USE_EDITOR_CONTROLLER: false,
 };
 
 // Instantiate controllers
 const zoomController = new ZoomController(preview, zoomDisplay, storageManager);
-const viewModeController = new ViewModeController(editorContainer, previewContainer, storageManager);
+const viewModeController = new ViewModeController(
+  editorContainer,
+  previewContainer,
+  storageManager
+);
 const exportController = new ExportController(preview, themeManager, storageManager);
 const editorController = new MarkdownEditorController(editor, storageManager);
 
@@ -573,12 +575,12 @@ export class PerformanceMonitor {
   constructor() {
     this.metrics = new Map();
     this.thresholds = {
-      'markdown-render': 50,      // ms
-      'theme-switch': 100,         // ms
-      'pdf-export': 3000,          // ms
-      'html-export': 500,          // ms
-      'mermaid-render': 200,       // ms
-      'zoom-change': 10            // ms
+      'markdown-render': 50, // ms
+      'theme-switch': 100, // ms
+      'pdf-export': 3000, // ms
+      'html-export': 500, // ms
+      'mermaid-render': 200, // ms
+      'zoom-change': 10, // ms
     };
   }
 
@@ -593,7 +595,7 @@ export class PerformanceMonitor {
       name,
       startTime: performance.now(),
       endTime: null,
-      duration: null
+      duration: null,
     });
     return id;
   }
@@ -618,7 +620,7 @@ export class PerformanceMonitor {
     if (threshold && metric.duration > threshold) {
       console.warn(
         `⚠️ Performance: ${metric.name} took ${metric.duration.toFixed(2)}ms ` +
-        `(threshold: ${threshold}ms)`
+          `(threshold: ${threshold}ms)`
       );
     }
 
@@ -675,7 +677,7 @@ export class PerformanceMonitor {
           total: 0,
           avg: 0,
           min: Infinity,
-          max: 0
+          max: 0,
         };
       }
 
@@ -894,7 +896,7 @@ export class ErrorTracker {
       context,
       metadata,
       userAgent: navigator.userAgent,
-      url: window.location.href
+      url: window.location.href,
     };
 
     this.errors.push(errorEntry);
@@ -946,20 +948,16 @@ export class ErrorTracker {
 window.errorTracker = new ErrorTracker();
 
 // Catch unhandled errors
-window.addEventListener('error', (event) => {
-  window.errorTracker.trackError(
-    new Error(event.message),
-    'Unhandled Error',
-    { filename: event.filename, lineno: event.lineno }
-  );
+window.addEventListener('error', event => {
+  window.errorTracker.trackError(new Error(event.message), 'Unhandled Error', {
+    filename: event.filename,
+    lineno: event.lineno,
+  });
 });
 
 // Catch unhandled promise rejections
-window.addEventListener('unhandledrejection', (event) => {
-  window.errorTracker.trackError(
-    new Error(event.reason),
-    'Unhandled Promise Rejection'
-  );
+window.addEventListener('unhandledrejection', event => {
+  window.errorTracker.trackError(new Error(event.reason), 'Unhandled Promise Rejection');
 });
 ```
 
@@ -1052,3 +1050,4 @@ export class StorageManager {
    */
   migrate(fromVersion, toVersion) {
     console.log(`[Migration] Migrating from V${fromVersion}
+```

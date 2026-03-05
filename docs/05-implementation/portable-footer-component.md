@@ -90,13 +90,28 @@ Copy the entire block below and paste it into any HTML file (e.g., `footer.html`
     pointer-events: none;
   }
 
-  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
 
-  .support-button--india { background: linear-gradient(135deg, #FF9933 0%, #FF6B00 100%); }
-  .support-button--india:hover { background: linear-gradient(135deg, #FFB366 0%, #FF8533 100%); }
+  .support-button--india {
+    background: linear-gradient(135deg, #ff9933 0%, #ff6b00 100%);
+  }
+  .support-button--india:hover {
+    background: linear-gradient(135deg, #ffb366 0%, #ff8533 100%);
+  }
 
-  .support-button--global { background: linear-gradient(135deg, #29ABE0 0%, #1E88E5 100%); }
-  .support-button--global:hover { background: linear-gradient(135deg, #4FC3F7 0%, #42A5F5 100%); }
+  .support-button--global {
+    background: linear-gradient(135deg, #29abe0 0%, #1e88e5 100%);
+  }
+  .support-button--global:hover {
+    background: linear-gradient(135deg, #4fc3f7 0%, #42a5f5 100%);
+  }
 
   .support-toggle {
     background: none;
@@ -108,20 +123,29 @@ Copy the entire block below and paste it into any HTML file (e.g., `footer.html`
     opacity: 0.7;
     padding: 0;
   }
-  .support-toggle:hover { opacity: 1; color: var(--footer-link); }
+  .support-toggle:hover {
+    opacity: 1;
+    color: var(--footer-link);
+  }
 
   /* Modal Styling */
   .modal-overlay {
     display: none;
     position: fixed;
     z-index: 9999;
-    left: 0; top: 0; width: 100%; height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  .modal-overlay.active { display: block; opacity: 1; }
+  .modal-overlay.active {
+    display: block;
+    opacity: 1;
+  }
 
   .modal-box {
     background-color: #fff;
@@ -137,11 +161,16 @@ Copy the entire block below and paste it into any HTML file (e.g., `footer.html`
     color: #333;
     position: relative;
   }
-  .modal-overlay.active .modal-box { transform: translateY(0); }
+  .modal-overlay.active .modal-box {
+    transform: translateY(0);
+  }
 
   /* Dark mode support for modal if system preference */
   @media (prefers-color-scheme: dark) {
-    .modal-box { background-color: #1e1e1e; color: #fff; }
+    .modal-box {
+      background-color: #1e1e1e;
+      color: #fff;
+    }
   }
 
   .modal-close {
@@ -155,7 +184,9 @@ Copy the entire block below and paste it into any HTML file (e.g., `footer.html`
     color: inherit;
     opacity: 0.7;
   }
-  .modal-close:hover { opacity: 1; }
+  .modal-close:hover {
+    opacity: 1;
+  }
 
   .support-options {
     display: grid;
@@ -169,20 +200,37 @@ Copy the entire block below and paste it into any HTML file (e.g., `footer.html`
     flex-direction: column;
     align-items: center;
     padding: 16px;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-decoration: none;
     color: inherit;
     transition: transform 0.2s;
   }
-  .support-card:hover { transform: translateY(-2px); background-color: rgba(0,0,0,0.02); }
-  .support-card-icon { font-size: 24px; margin-bottom: 8px; }
-  .support-card-title { font-weight: 600; font-size: 14px; }
-  .support-card-desc { font-size: 11px; opacity: 0.7; }
+  .support-card:hover {
+    transform: translateY(-2px);
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+  .support-card-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .support-card-title {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .support-card-desc {
+    font-size: 11px;
+    opacity: 0.7;
+  }
 
   @media (max-width: 768px) {
-    .footer-content { flex-direction: column; gap: 6px; }
-    .footer-separator { display: none; }
+    .footer-content {
+      flex-direction: column;
+      gap: 6px;
+    }
+    .footer-separator {
+      display: none;
+    }
   }
 </style>
 
@@ -191,15 +239,22 @@ Copy the entire block below and paste it into any HTML file (e.g., `footer.html`
   <div class="footer-content">
     <span>Made with ❤️ by Prax Lannister</span>
     <span class="footer-separator">|</span>
-    <span>Follow me on
+    <span
+      >Follow me on
       <a href="https://github.com/PrakharMNNIT" target="_blank" rel="noopener noreferrer">GitHub</a>
       &amp;
-      <a href="https://x.com/ByteByByteSrSDE" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+      <a href="https://x.com/ByteByByteSrSDE" target="_blank" rel="noopener noreferrer"
+        >X (Twitter)</a
+      >
     </span>
     <span class="footer-separator">|</span>
     <div class="support-widget-container" id="support-widget">
       <!-- Initial Loading State -->
-      <a href="https://ko-fi.com/praxlannister?ref=webapp_footer" target="_blank" class="support-button support-button--loading">
+      <a
+        href="https://ko-fi.com/praxlannister?ref=webapp_footer"
+        target="_blank"
+        class="support-button support-button--loading"
+      >
         ☕ Support
       </a>
     </div>
@@ -224,7 +279,11 @@ Copy the entire block below and paste it into any HTML file (e.g., `footer.html`
         <span class="support-card-title">Ko-fi</span>
         <span class="support-card-desc">PayPal</span>
       </a>
-      <a href="https://razorpay.me/@prakharshekharparthasarthi" target="_blank" class="support-card">
+      <a
+        href="https://razorpay.me/@prakharshekharparthasarthi"
+        target="_blank"
+        class="support-card"
+      >
         <span class="support-card-icon">🇮🇳</span>
         <span class="support-card-title">Razorpay</span>
         <span class="support-card-desc">UPI/India</span>
@@ -240,79 +299,85 @@ Copy the entire block below and paste it into any HTML file (e.g., `footer.html`
 </div>
 
 <script>
-(function() {
-  // Configuration
-  const CONFIG = {
-    keys: {
-      kofi: 'https://ko-fi.com/praxlannister',
-      razorpay: 'https://razorpay.me/@prakharshekharparthasarthi',
-      github: 'https://github.com/sponsors/PrakharMNNIT'
-    },
-    storageKey: 'support_modal_shown',
-    regionCacheKey: 'support_region_cache'
-  };
-
-  // Logic
-  async function init() {
-    initModal();
-    const region = await getRegion();
-    renderWidget(region);
-  }
-
-  function initModal() {
-    const modal = document.getElementById('support-modal-overlay');
-    const closeBtn = document.getElementById('support-modal-close');
-    const check = document.getElementById('support-dont-show-again');
-
-    // Check storage
-    if (localStorage.getItem(CONFIG.storageKey) === 'true') return;
-
-    // Show after delay
-    setTimeout(() => modal.classList.add('active'), 5000);
-
-    const close = () => {
-      modal.classList.remove('active');
-      if (check.checked) localStorage.setItem(CONFIG.storageKey, 'true');
+  (function () {
+    // Configuration
+    const CONFIG = {
+      keys: {
+        kofi: 'https://ko-fi.com/praxlannister',
+        razorpay: 'https://razorpay.me/@prakharshekharparthasarthi',
+        github: 'https://github.com/sponsors/PrakharMNNIT',
+      },
+      storageKey: 'support_modal_shown',
+      regionCacheKey: 'support_region_cache',
     };
 
-    closeBtn.onclick = close;
-    modal.onclick = (e) => { if (e.target === modal) close(); };
-    document.onkeydown = (e) => { if (e.key === 'Escape') close(); };
-  }
-
-  async function getRegion() {
-    const cached = sessionStorage.getItem(CONFIG.regionCacheKey);
-    if (cached) return cached;
-
-    try {
-      // 300ms timeout race for geo-ip
-      const race = new Promise(resolve => setTimeout(resolve, 300, { country_code: 'Global' }));
-      const fetchReq = fetch('https://ipapi.co/json/').then(res => res.json()).catch(() => ({ country_code: 'Global' }));
-
-      const data = await Promise.race([fetchReq, race]);
-      // Note: 'data' might be undefined if timeout wins with no value, but here race returns obj
-      const region = (data && data.country_code === 'IN') ? 'india' : 'global';
-
-      sessionStorage.setItem(CONFIG.regionCacheKey, region);
-      return region;
-    } catch {
-      return 'global';
+    // Logic
+    async function init() {
+      initModal();
+      const region = await getRegion();
+      renderWidget(region);
     }
-  }
 
-  window.toggleSupportRegion = function() {
-    const current = sessionStorage.getItem(CONFIG.regionCacheKey) || 'global';
-    const next = current === 'india' ? 'global' : 'india';
-    sessionStorage.setItem(CONFIG.regionCacheKey, next);
-    renderWidget(next);
-  };
+    function initModal() {
+      const modal = document.getElementById('support-modal-overlay');
+      const closeBtn = document.getElementById('support-modal-close');
+      const check = document.getElementById('support-dont-show-again');
 
-  function renderWidget(region) {
-    const container = document.getElementById('support-widget');
-    if (!container) return;
+      // Check storage
+      if (localStorage.getItem(CONFIG.storageKey) === 'true') return;
 
-    const isIndia = region === 'india';
-    container.innerHTML = `
+      // Show after delay
+      setTimeout(() => modal.classList.add('active'), 5000);
+
+      const close = () => {
+        modal.classList.remove('active');
+        if (check.checked) localStorage.setItem(CONFIG.storageKey, 'true');
+      };
+
+      closeBtn.onclick = close;
+      modal.onclick = e => {
+        if (e.target === modal) close();
+      };
+      document.onkeydown = e => {
+        if (e.key === 'Escape') close();
+      };
+    }
+
+    async function getRegion() {
+      const cached = sessionStorage.getItem(CONFIG.regionCacheKey);
+      if (cached) return cached;
+
+      try {
+        // 300ms timeout race for geo-ip
+        const race = new Promise(resolve => setTimeout(resolve, 300, { country_code: 'Global' }));
+        const fetchReq = fetch('https://ipapi.co/json/')
+          .then(res => res.json())
+          .catch(() => ({ country_code: 'Global' }));
+
+        const data = await Promise.race([fetchReq, race]);
+        // Note: 'data' might be undefined if timeout wins with no value, but here race returns obj
+        const region = data && data.country_code === 'IN' ? 'india' : 'global';
+
+        sessionStorage.setItem(CONFIG.regionCacheKey, region);
+        return region;
+      } catch {
+        return 'global';
+      }
+    }
+
+    window.toggleSupportRegion = function () {
+      const current = sessionStorage.getItem(CONFIG.regionCacheKey) || 'global';
+      const next = current === 'india' ? 'global' : 'india';
+      sessionStorage.setItem(CONFIG.regionCacheKey, next);
+      renderWidget(next);
+    };
+
+    function renderWidget(region) {
+      const container = document.getElementById('support-widget');
+      if (!container) return;
+
+      const isIndia = region === 'india';
+      container.innerHTML = `
       <a href="${isIndia ? CONFIG.keys.razorpay : CONFIG.keys.kofi}"
          target="_blank"
          class="support-button ${isIndia ? 'support-button--india' : 'support-button--global'}">
@@ -322,12 +387,12 @@ Copy the entire block below and paste it into any HTML file (e.g., `footer.html`
         ${isIndia ? 'Not in India?' : 'In India? Use UPI'}
       </button>
     `;
-  }
+    }
 
-  // Run
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
-})();
+    // Run
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+  })();
 </script>
 <!-- ==================== END FOOTER COMPONENT ==================== -->
 ```
@@ -335,16 +400,16 @@ Copy the entire block below and paste it into any HTML file (e.g., `footer.html`
 ## How to Configure
 
 1.  **API Keys/Links**:
-    *   Update the `CONFIG` object in the script tag to change your donation links.
-    *   `kofi`: Ko-fi profile URL.
-    *   `razorpay`: Razorpay payment page URL.
-    *   `github`: GitHub Sponsors URL.
+    - Update the `CONFIG` object in the script tag to change your donation links.
+    - `kofi`: Ko-fi profile URL.
+    - `razorpay`: Razorpay payment page URL.
+    - `github`: GitHub Sponsors URL.
 
 2.  **Geo-Location**:
-    *   The code uses `https://ipapi.co/json/` (free tier) to detect if the user is in India.
-    *   No API key is required for basic usage.
-    *   If you have a paid plan, update the fetch URL to `https://ipapi.co/json/?key=YOUR_KEY`.
+    - The code uses `https://ipapi.co/json/` (free tier) to detect if the user is in India.
+    - No API key is required for basic usage.
+    - If you have a paid plan, update the fetch URL to `https://ipapi.co/json/?key=YOUR_KEY`.
 
 3.  **Styling**:
-    *   The CSS uses variables (like `var(--footer-bg)`) but includes default values.
-    *   It will automatically adapt to your app's theme if you define these variables, or look clean even if you don't.
+    - The CSS uses variables (like `var(--footer-bg)`) but includes default values.
+    - It will automatically adapt to your app's theme if you define these variables, or look clean even if you don't.

@@ -1,6 +1,7 @@
 # 🎯 Coding Interview & Competitive Programming Constraints Guide
 
 ### 📝 2025-12-19
+
 **Category**: `interview prep` | **Level**: `Essential` | **Time**: `15 min read`
 
 > **Master the numbers** that every competitive programmer and interviewee should know by heart!
@@ -26,13 +27,13 @@
 
 ### The Golden Rules
 
-| Assumption | Typical Value | Reasoning |
-|------------|---------------|-----------|
-| **Time Limit** | 1-2 seconds | ~10⁸ simple operations/second |
-| **Memory Limit** | 256 MB | Standard competitive programming |
-| **Max Input Size (n)** | 10⁵ to 10⁶ | Fits in memory, allows O(n log n) |
-| **Max Integer Value** | 10⁹ | Fits in `int` |
-| **Large Integer Value** | 10¹⁸ | Requires `long long` |
+| Assumption              | Typical Value | Reasoning                         |
+| ----------------------- | ------------- | --------------------------------- |
+| **Time Limit**          | 1-2 seconds   | ~10⁸ simple operations/second     |
+| **Memory Limit**        | 256 MB        | Standard competitive programming  |
+| **Max Input Size (n)**  | 10⁵ to 10⁶    | Fits in memory, allows O(n log n) |
+| **Max Integer Value**   | 10⁹           | Fits in `int`                     |
+| **Large Integer Value** | 10¹⁸          | Requires `long long`              |
 
 ### What to Ask in Interviews
 
@@ -49,12 +50,12 @@
 
 ### Standard Integer Ranges
 
-| Type | Bytes | Range | Max (~) | Use When |
-|------|-------|-------|---------|----------|
-| `int` | 4 | -2³¹ to 2³¹-1 | ±2.1×10⁹ | Default choice |
-| `unsigned int` | 4 | 0 to 2³²-1 | 4.3×10⁹ | Non-negative only |
-| `long long` | 8 | -2⁶³ to 2⁶³-1 | ±9.2×10¹⁸ | Large values |
-| `unsigned long long` | 8 | 0 to 2⁶⁴-1 | 1.8×10¹⁹ | Very large non-negative |
+| Type                 | Bytes | Range         | Max (~)   | Use When                |
+| -------------------- | ----- | ------------- | --------- | ----------------------- |
+| `int`                | 4     | -2³¹ to 2³¹-1 | ±2.1×10⁹  | Default choice          |
+| `unsigned int`       | 4     | 0 to 2³²-1    | 4.3×10⁹   | Non-negative only       |
+| `long long`          | 8     | -2⁶³ to 2⁶³-1 | ±9.2×10¹⁸ | Large values            |
+| `unsigned long long` | 8     | 0 to 2⁶⁴-1    | 1.8×10¹⁹  | Very large non-negative |
 
 ### Critical Constants (MEMORIZE!)
 
@@ -73,13 +74,13 @@ LLONG_MAX ≈ 9 × 10¹⁸   (9 quintillion)
 
 ### When to Use Which Type
 
-| Problem Constraint | Type to Use | Example |
-|-------------------|-------------|---------|
-| n ≤ 10⁵, values ≤ 10⁹ | `int` | Most problems |
-| Values > 2×10⁹ | `long long` | Large sums, products |
-| Sum of n elements, n ≤ 10⁵ | `long long` | 10⁵ × 10⁹ = 10¹⁴ |
-| Product of elements | `long long` or modulo | Overflow danger! |
-| n × n where n ≤ 10⁵ | `long long` | 10¹⁰ > INT_MAX |
+| Problem Constraint         | Type to Use           | Example              |
+| -------------------------- | --------------------- | -------------------- |
+| n ≤ 10⁵, values ≤ 10⁹      | `int`                 | Most problems        |
+| Values > 2×10⁹             | `long long`           | Large sums, products |
+| Sum of n elements, n ≤ 10⁵ | `long long`           | 10⁵ × 10⁹ = 10¹⁴     |
+| Product of elements        | `long long` or modulo | Overflow danger!     |
+| n × n where n ≤ 10⁵        | `long long`           | 10¹⁰ > INT_MAX       |
 
 ### ⚠️ Overflow Danger Zones
 
@@ -130,23 +131,24 @@ const int MOD = 1e9 + 7;  // 1,000,000,007 (prime)
 ### Maximum Array Sizes
 
 | Memory | Max Elements (`int`) | Max Elements (`long long`) |
-|--------|---------------------|---------------------------|
-| 256 MB | ~64 million | ~32 million |
-| 512 MB | ~128 million | ~64 million |
-| 1 GB | ~256 million | ~128 million |
+| ------ | -------------------- | -------------------------- |
+| 256 MB | ~64 million          | ~32 million                |
+| 512 MB | ~128 million         | ~64 million                |
+| 1 GB   | ~256 million         | ~128 million               |
 
 **Formula:** Max elements = Memory / sizeof(type)
+
 - 256 MB = 256 × 10⁶ bytes
 - int array: 256 × 10⁶ / 4 = 64 × 10⁶
 
 ### Typical Constraints by Problem Type
 
 | Problem Type | Typical n | Expected Complexity |
-|--------------|-----------|-------------------|
-| Easy | ≤ 10³ | O(n²) acceptable |
-| Medium | ≤ 10⁵ | O(n log n) expected |
-| Hard | ≤ 10⁶ | O(n) or O(n log n) |
-| Very Hard | ≤ 10⁷ | O(n) only |
+| ------------ | --------- | ------------------- |
+| Easy         | ≤ 10³     | O(n²) acceptable    |
+| Medium       | ≤ 10⁵     | O(n log n) expected |
+| Hard         | ≤ 10⁶     | O(n) or O(n log n)  |
+| Very Hard    | ≤ 10⁷     | O(n) only           |
 
 ### 2D Array Limits
 
@@ -165,15 +167,15 @@ vector<vector<int>> grid(n, vector<int>(m));
 
 ### Container Memory Usage
 
-| Container | Memory per Element | Notes |
-|-----------|-------------------|-------|
-| `vector<int>` | 4 bytes | Most efficient |
-| `deque<int>` | 4 bytes + overhead | Block allocation |
-| `list<int>` | 4 + 16 bytes | Node pointers |
-| `set<int>` | 4 + 32 bytes | Red-black tree |
-| `unordered_set<int>` | 4 + ~8 bytes | Hash table |
-| `map<int,int>` | 8 + 32 bytes | Red-black tree |
-| `unordered_map<int,int>` | 8 + ~16 bytes | Hash table |
+| Container                | Memory per Element | Notes            |
+| ------------------------ | ------------------ | ---------------- |
+| `vector<int>`            | 4 bytes            | Most efficient   |
+| `deque<int>`             | 4 bytes + overhead | Block allocation |
+| `list<int>`              | 4 + 16 bytes       | Node pointers    |
+| `set<int>`               | 4 + 32 bytes       | Red-black tree   |
+| `unordered_set<int>`     | 4 + ~8 bytes       | Hash table       |
+| `map<int,int>`           | 8 + 32 bytes       | Red-black tree   |
+| `unordered_map<int,int>` | 8 + ~16 bytes      | Hash table       |
 
 ---
 
@@ -181,12 +183,12 @@ vector<vector<int>> grid(n, vector<int>(m));
 
 ### String Length Limits
 
-| Constraint | Typical Value | Common Problems |
-|------------|---------------|-----------------|
-| Short strings | ≤ 100 | Brute force OK |
-| Medium strings | ≤ 10⁵ | O(n) required |
-| Long strings | ≤ 10⁶ | O(n) only |
-| Multiple strings | Total length ≤ 10⁶ | Sum constraint |
+| Constraint       | Typical Value      | Common Problems |
+| ---------------- | ------------------ | --------------- |
+| Short strings    | ≤ 100              | Brute force OK  |
+| Medium strings   | ≤ 10⁵              | O(n) required   |
+| Long strings     | ≤ 10⁶              | O(n) only       |
+| Multiple strings | Total length ≤ 10⁶ | Sum constraint  |
 
 ### Character Set Assumptions
 
@@ -227,23 +229,23 @@ size_t h = hasher(s);
 
 ### Operations per Second
 
-| Operation Type | Operations/Second |
-|---------------|-------------------|
-| Simple arithmetic | ~10⁹ |
-| Array access | ~10⁸ - 10⁹ |
-| Vector operations | ~10⁸ |
-| Set/Map operations | ~10⁷ |
-| String operations | ~10⁷ |
-| I/O (cin/cout) | ~10⁶ (without fast I/O) |
-| I/O (fast I/O) | ~10⁷ |
+| Operation Type     | Operations/Second       |
+| ------------------ | ----------------------- |
+| Simple arithmetic  | ~10⁹                    |
+| Array access       | ~10⁸ - 10⁹              |
+| Vector operations  | ~10⁸                    |
+| Set/Map operations | ~10⁷                    |
+| String operations  | ~10⁷                    |
+| I/O (cin/cout)     | ~10⁶ (without fast I/O) |
+| I/O (fast I/O)     | ~10⁷                    |
 
 ### Maximum n for Time Limits
 
-| Time Limit | O(n) | O(n log n) | O(n²) | O(n³) | O(2ⁿ) |
-|------------|------|------------|-------|-------|-------|
-| 1 second | 10⁸ | 10⁶-10⁷ | 10⁴ | 500 | 25 |
-| 2 seconds | 2×10⁸ | 2×10⁷ | 1.4×10⁴ | 600 | 26 |
-| 5 seconds | 5×10⁸ | 5×10⁷ | 2×10⁴ | 800 | 28 |
+| Time Limit | O(n)  | O(n log n) | O(n²)   | O(n³) | O(2ⁿ) |
+| ---------- | ----- | ---------- | ------- | ----- | ----- |
+| 1 second   | 10⁸   | 10⁶-10⁷    | 10⁴     | 500   | 25    |
+| 2 seconds  | 2×10⁸ | 2×10⁷      | 1.4×10⁴ | 600   | 26    |
+| 5 seconds  | 5×10⁸ | 5×10⁷      | 2×10⁴   | 800   | 28    |
 
 ### Quick Complexity Check
 
@@ -260,18 +262,18 @@ n ≤ 10⁸    → O(n) only
 
 ### Reverse: Given Complexity, Max n
 
-| Complexity | Max n (1 sec) |
-|------------|---------------|
-| O(n!) | n ≤ 10 |
-| O(2ⁿ) | n ≤ 20-25 |
-| O(n³) | n ≤ 500 |
-| O(n² log n) | n ≤ 1000 |
-| O(n²) | n ≤ 5000-10000 |
-| O(n√n) | n ≤ 10⁵ |
-| O(n log n) | n ≤ 10⁶-10⁷ |
-| O(n) | n ≤ 10⁸ |
-| O(log n) | n ≤ 10¹⁸ |
-| O(1) | n = anything |
+| Complexity  | Max n (1 sec)  |
+| ----------- | -------------- |
+| O(n!)       | n ≤ 10         |
+| O(2ⁿ)       | n ≤ 20-25      |
+| O(n³)       | n ≤ 500        |
+| O(n² log n) | n ≤ 1000       |
+| O(n²)       | n ≤ 5000-10000 |
+| O(n√n)      | n ≤ 10⁵        |
+| O(n log n)  | n ≤ 10⁶-10⁷    |
+| O(n)        | n ≤ 10⁸        |
+| O(log n)    | n ≤ 10¹⁸       |
+| O(1)        | n = anything   |
 
 ---
 
@@ -297,14 +299,14 @@ n ≤ 10⁸    → O(n) only
 
 ### Data Structure Space
 
-| Structure | Space | Example |
-|-----------|-------|---------|
-| Array of n ints | 4n bytes | n = 10⁶ → 4 MB |
-| n × n int matrix | 4n² bytes | n = 5000 → 100 MB |
-| Adjacency list | O(V + E) | |
-| Adjacency matrix | O(V²) | |
-| Binary tree (n nodes) | ~32n bytes | Node + 2 pointers |
-| Graph (V vertices, E edges) | V + E | Adjacency list |
+| Structure                   | Space      | Example           |
+| --------------------------- | ---------- | ----------------- |
+| Array of n ints             | 4n bytes   | n = 10⁶ → 4 MB    |
+| n × n int matrix            | 4n² bytes  | n = 5000 → 100 MB |
+| Adjacency list              | O(V + E)   |                   |
+| Adjacency matrix            | O(V²)      |                   |
+| Binary tree (n nodes)       | ~32n bytes | Node + 2 pointers |
+| Graph (V vertices, E edges) | V + E      | Adjacency list    |
 
 ---
 
@@ -546,16 +548,16 @@ Space: O(1) to O(n)
 
 ### Numbers to Memorize
 
-| Value | Meaning | Use Case |
-|-------|---------|----------|
-| 10⁹ | ~INT_MAX / 2 | Safe int limit |
-| 2 × 10⁹ | ~INT_MAX | Max positive int |
-| 10¹⁸ | ~LLONG_MAX / 9 | Safe long long |
-| 10⁹ + 7 | Common modulo | Modular arithmetic |
-| 10⁵ | Typical n limit | O(n log n) problems |
-| 10⁴ | O(n²) threshold | When O(n²) is OK |
-| 20-25 | 2ⁿ threshold | Bitmask/subset problems |
-| 10 | n! threshold | Permutation problems |
+| Value   | Meaning         | Use Case                |
+| ------- | --------------- | ----------------------- |
+| 10⁹     | ~INT_MAX / 2    | Safe int limit          |
+| 2 × 10⁹ | ~INT_MAX        | Max positive int        |
+| 10¹⁸    | ~LLONG_MAX / 9  | Safe long long          |
+| 10⁹ + 7 | Common modulo   | Modular arithmetic      |
+| 10⁵     | Typical n limit | O(n log n) problems     |
+| 10⁴     | O(n²) threshold | When O(n²) is OK        |
+| 20-25   | 2ⁿ threshold    | Bitmask/subset problems |
+| 10      | n! threshold    | Permutation problems    |
 
 ### Quick Type Selection
 
@@ -618,4 +620,4 @@ const long long INF = LLONG_MAX / 2;
 
 ---
 
-*Last Updated: December 19, 2025*
+_Last Updated: December 19, 2025_

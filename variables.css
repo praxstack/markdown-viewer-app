@@ -11,13 +11,13 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
   /* ==================== TYPOGRAPHY SCALE ==================== */
-  --text-xs: 0.75rem;    /* 12px */
-  --text-sm: 0.875rem;   /* 14px */
-  --text-base: 1rem;     /* 16px */
-  --text-lg: 1.125rem;   /* 18px */
-  --text-xl: 1.25rem;    /* 20px */
-  --text-2xl: 1.5rem;    /* 24px */
-  --text-3xl: 1.875rem;  /* 30px */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
 
   --leading-tight: 1.25;
   --leading-normal: 1.5;
@@ -122,7 +122,7 @@
 }
 
 /* ==================== NEBULA LIGHT ==================== */
-[data-theme="nebula-light"] {
+[data-theme='nebula-light'] {
   /* Core Backgrounds */
   --bg-universe: #f0f4f8;
   --bg-element: #ffffff;

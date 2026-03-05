@@ -28,7 +28,9 @@ describe('ERROR_MESSAGES', () => {
 
     it('defines PERMISSION_DENIED message', () => {
       expect(ERROR_MESSAGES.PERMISSION_DENIED).toBeDefined();
-      expect(ERROR_MESSAGES.PERMISSION_DENIED).toBe('Permission denied. Please re-open the folder.');
+      expect(ERROR_MESSAGES.PERMISSION_DENIED).toBe(
+        'Permission denied. Please re-open the folder.',
+      );
     });
 
     it('defines PERMISSION_DENIED_WRITE message', () => {
@@ -244,7 +246,7 @@ describe('getErrorMessage()', () => {
 
   describe('Type handling', () => {
     it('correctly identifies function type', () => {
-      const fn = (x) => `Value: ${x}`;
+      const fn = x => `Value: ${x}`;
       const result = getErrorMessage(fn, 42);
       expect(result).toBe('Value: 42');
     });

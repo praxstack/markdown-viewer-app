@@ -191,12 +191,12 @@ npm run dev
 
 ### Keyboard Shortcuts
 
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl/Cmd + +` | Zoom in |
-| `Ctrl/Cmd + -` | Zoom out |
-| `Ctrl/Cmd + 0` | Reset zoom |
-| `Escape` | Exit Zen Mode |
+| Shortcut       | Action        |
+| -------------- | ------------- |
+| `Ctrl/Cmd + +` | Zoom in       |
+| `Ctrl/Cmd + -` | Zoom out      |
+| `Ctrl/Cmd + 0` | Reset zoom    |
+| `Escape`       | Exit Zen Mode |
 
 ---
 
@@ -354,15 +354,15 @@ npm test -- --watch
 
 ### Available Themes
 
-| Theme        | Light | Dark | Best For                              |
-| ------------ | ----- | ---- | ------------------------------------- |
-| **Default**  | ✅    | ✅   | Professional documents, general use   |
-| **Ocean**    | ✅    | ✅   | Technical content, calming atmosphere |
-| **Neon**     | ✅    | ✅   | Creative work, presentations          |
-| **Forest**   | ✅    | ✅   | Environmental content, natural topics |
-| **Sunset**   | ✅    | ✅   | Warm content, personal writing        |
-| **Obsidian** | ✅    | ✅   | Clean minimal design, focus mode      |
-| **Nebula** (NEW) | ✅    | ✅   | Cosmic themes, sci-fi content     |
+| Theme            | Light | Dark | Best For                              |
+| ---------------- | ----- | ---- | ------------------------------------- |
+| **Default**      | ✅    | ✅   | Professional documents, general use   |
+| **Ocean**        | ✅    | ✅   | Technical content, calming atmosphere |
+| **Neon**         | ✅    | ✅   | Creative work, presentations          |
+| **Forest**       | ✅    | ✅   | Environmental content, natural topics |
+| **Sunset**       | ✅    | ✅   | Warm content, personal writing        |
+| **Obsidian**     | ✅    | ✅   | Clean minimal design, focus mode      |
+| **Nebula** (NEW) | ✅    | ✅   | Cosmic themes, sci-fi content         |
 
 ### Creating Custom Themes
 
@@ -402,13 +402,13 @@ npm test -- --watch
 
 ## 📱 Browser Compatibility
 
-| Browser | Version | Status |
-|---------|---------|--------|
-| Chrome | 86+ | ✅ Full support |
-| Firefox | 90+ | ✅ Full support (no folder browser) |
-| Safari | 14+ | ✅ Full support (enterprise CSS fix) |
-| Edge | 86+ | ✅ Full support |
-| Safari iOS | 14+ | ✅ Mobile optimized |
+| Browser    | Version | Status                               |
+| ---------- | ------- | ------------------------------------ |
+| Chrome     | 86+     | ✅ Full support                      |
+| Firefox    | 90+     | ✅ Full support (no folder browser)  |
+| Safari     | 14+     | ✅ Full support (enterprise CSS fix) |
+| Edge       | 86+     | ✅ Full support                      |
+| Safari iOS | 14+     | ✅ Mobile optimized                  |
 
 **Note**: Folder Browser feature requires File System Access API (Chrome/Edge 86+)
 
@@ -517,7 +517,7 @@ const blob = await pdfService.generatePDF(previewElement, {
   pageSize: 'A4',
   orientation: 'portrait',
   margins: [10, 10, 10, 10],
-  fontSize: 12
+  fontSize: 12,
 });
 
 // Preview PDF in iframe
@@ -553,6 +553,7 @@ pdfService.downloadPDF();
 **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`
 
 **Emojis**:
+
 - ✨ `feat` - New feature
 - 🐛 `fix` - Bug fix
 - 📝 `docs` - Documentation
@@ -696,12 +697,12 @@ If you find Markdown Viewer Pro useful, consider supporting its development:
 
 ### Support Tiers
 
-| Tier | Amount (USD) | Amount (INR) | Perks |
-|------|--------------|--------------|-------|
-| ☕ Coffee | $1 | ₹50 | My gratitude! |
-| 🍕 Pizza | $5 | ₹250 | Name in SUPPORTERS.md |
-| 🎉 Patron | $20 | ₹1000 | Name in README |
-| 💎 Champion | $50+ | ₹2500+ | Logo in README |
+| Tier        | Amount (USD) | Amount (INR) | Perks                 |
+| ----------- | ------------ | ------------ | --------------------- |
+| ☕ Coffee   | $1           | ₹50          | My gratitude!         |
+| 🍕 Pizza    | $5           | ₹250         | Name in SUPPORTERS.md |
+| 🎉 Patron   | $20          | ₹1000        | Name in README        |
+| 💎 Champion | $50+         | ₹2500+       | Logo in README        |
 
 Your support helps maintain and improve this project. Every contribution is appreciated! 🙏
 

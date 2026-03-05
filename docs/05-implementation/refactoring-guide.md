@@ -77,11 +77,11 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   root: './',
   build: {
-    outDir: 'dist'
+    outDir: 'dist',
   },
   server: {
-    port: 3000
-  }
+    port: 3000,
+  },
 });
 ```
 
@@ -96,9 +96,9 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       reporter: ['text', 'html'],
-      exclude: ['node_modules/', 'tests/', 'dist/']
-    }
-  }
+      exclude: ['node_modules/', 'tests/', 'dist/'],
+    },
+  },
 });
 ```
 
@@ -110,12 +110,12 @@ module.exports = {
   extends: 'eslint:recommended',
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   rules: {
     'no-console': ['warn', { allow: ['warn', 'error'] }],
-    'prefer-const': 'error'
-  }
+    'prefer-const': 'error',
+  },
 };
 ```
 
@@ -235,7 +235,7 @@ export const ZOOM = {
   MIN: 50,
   MAX: 200,
   DEFAULT: 100,
-  STEP: 10
+  STEP: 10,
 };
 
 export const STORAGE_KEYS = {
@@ -243,13 +243,13 @@ export const STORAGE_KEYS = {
   SELECTED_THEME: 'selectedTheme',
   CUSTOM_THEME: 'customTheme',
   VIEW_MODE: 'viewMode',
-  PREVIEW_ZOOM: 'previewZoom'
+  PREVIEW_ZOOM: 'previewZoom',
 };
 
 export const VIEW_MODES = {
   EDITOR_ONLY: 'editor-only',
   SPLIT_VIEW: 'split-view',
-  PREVIEW_ONLY: 'preview-only'
+  PREVIEW_ONLY: 'preview-only',
 };
 ```
 
@@ -307,9 +307,7 @@ export function decodeHtmlEntities(text) {
 ```javascript
 // src/js/utils/colorHelpers.js
 export function getCssVariable(varName) {
-  return getComputedStyle(document.documentElement)
-    .getPropertyValue(varName)
-    .trim();
+  return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
 }
 
 export function setCssVariable(varName, value) {

@@ -8,13 +8,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html', 'lcov'],
-      exclude: [
-        'node_modules/',
-        'tests/',
-        'dist/',
-        'memory-bank/',
-        '*.config.js',
-      ],
+      exclude: ['node_modules/', 'tests/', 'dist/', 'memory-bank/', '*.config.js'],
       thresholds: {
         lines: 85,
         functions: 85,

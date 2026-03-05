@@ -142,10 +142,10 @@ Add PDF export functionality alongside existing HTML export, allowing users to d
 
 ```javascript
 function exportPDF() {
-    // 1. Clone preview element
-    // 2. Apply PDF-specific styling
-    // 3. Configure html2pdf options
-    // 4. Generate and download PDF
+  // 1. Clone preview element
+  // 2. Apply PDF-specific styling
+  // 3. Configure html2pdf options
+  // 4. Generate and download PDF
 }
 ```
 
@@ -180,11 +180,11 @@ function exportPDF() {
 ```html
 <!-- Replace single button with dropdown -->
 <div class="export-dropdown">
-    <button class="btn" id="export-btn">💾 Export ▼</button>
-    <div class="export-menu">
-        <button id="export-html-btn">📄 Export as HTML</button>
-        <button id="export-pdf-btn">📕 Export as PDF</button>
-    </div>
+  <button class="btn" id="export-btn">💾 Export ▼</button>
+  <div class="export-menu">
+    <button id="export-html-btn">📄 Export as HTML</button>
+    <button id="export-pdf-btn">📕 Export as PDF</button>
+  </div>
 </div>
 ```
 
@@ -193,29 +193,29 @@ function exportPDF() {
 ```javascript
 // Export to PDF function
 function exportPDF() {
-    // Clone the preview content
-    const element = document.getElementById('markdown-preview').cloneNode(true);
+  // Clone the preview content
+  const element = document.getElementById('markdown-preview').cloneNode(true);
 
-    // PDF options
-    const opt = {
-        margin: [0.5, 0.5, 0.5, 0.5],
-        filename: 'markdown-export.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-            scale: 2,
-            useCORS: true,
-            letterRendering: true
-        },
-        jsPDF: {
-            unit: 'in',
-            format: 'a4',
-            orientation: 'portrait'
-        },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-    };
+  // PDF options
+  const opt = {
+    margin: [0.5, 0.5, 0.5, 0.5],
+    filename: 'markdown-export.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      letterRendering: true,
+    },
+    jsPDF: {
+      unit: 'in',
+      format: 'a4',
+      orientation: 'portrait',
+    },
+    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+  };
 
-    // Generate PDF
-    html2pdf().set(opt).from(element).save();
+  // Generate PDF
+  html2pdf().set(opt).from(element).save();
 }
 
 // Update event listeners
@@ -228,61 +228,62 @@ document.getElementById('export-pdf-btn').addEventListener('click', exportPDF);
 ```css
 /* Export dropdown menu */
 .export-dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .export-menu {
-    display: none;
-    position: absolute;
-    background-color: var(--bg-primary);
-    min-width: 180px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border-radius: 6px;
-    z-index: 1;
-    top: 100%;
-    right: 0;
-    margin-top: 4px;
+  display: none;
+  position: absolute;
+  background-color: var(--bg-primary);
+  min-width: 180px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  z-index: 1;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
 }
 
 .export-dropdown:hover .export-menu {
-    display: block;
+  display: block;
 }
 
 .export-menu button {
-    width: 100%;
-    padding: 10px 16px;
-    text-align: left;
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: var(--text-primary);
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--text-primary);
 }
 
 .export-menu button:hover {
-    background-color: var(--bg-tertiary);
+  background-color: var(--bg-tertiary);
 }
 
 /* PDF-specific styles */
 @media print {
-    body {
-        background: white;
-        color: black;
-    }
+  body {
+    background: white;
+    color: black;
+  }
 
-    .toolbar,
-    .editor-container,
-    .app-footer {
-        display: none !important;
-    }
+  .toolbar,
+  .editor-container,
+  .app-footer {
+    display: none !important;
+  }
 
-    #markdown-preview {
-        page-break-inside: avoid;
-    }
+  #markdown-preview {
+    page-break-inside: avoid;
+  }
 
-    pre, blockquote {
-        page-break-inside: avoid;
-    }
+  pre,
+  blockquote {
+    page-break-inside: avoid;
+  }
 }
 ```
 
@@ -395,11 +396,11 @@ After implementation, test:
 
 ## 📦 Bundle Size Impact
 
-| Library | Size (minified) | Gzipped |
-|---------|----------------|---------|
-| Current app | ~50KB | ~15KB |
-| + html2pdf.js | ~450KB | ~150KB |
-| **Total** | **~500KB** | **~165KB** |
+| Library       | Size (minified) | Gzipped    |
+| ------------- | --------------- | ---------- |
+| Current app   | ~50KB           | ~15KB      |
+| + html2pdf.js | ~450KB          | ~150KB     |
+| **Total**     | **~500KB**      | **~165KB** |
 
 **Impact:** ~11x increase in bundle size, but acceptable for the functionality provided.
 

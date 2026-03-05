@@ -101,7 +101,7 @@ Markdown Viewer Pro is built using **vanilla web technologies** with carefully s
 **API Usage**:
 
 ```javascript
-marked.parse(markdownText);  // Returns HTML string
+marked.parse(markdownText); // Returns HTML string
 ```
 
 **Why Marked.js**:
@@ -143,7 +143,7 @@ marked.parse(markdownText);  // Returns HTML string
 **API Usage**:
 
 ```javascript
-Prism.highlightElement(codeBlock);  // Highlights single element
+Prism.highlightElement(codeBlock); // Highlights single element
 ```
 
 **Why Prism.js**:
@@ -184,18 +184,17 @@ Prism.highlightElement(codeBlock);  // Highlights single element
 
 ```javascript
 mermaid.initialize({
-    startOnLoad: false,  // Manual rendering
-    theme: 'default'     // Theme selection
+  startOnLoad: false, // Manual rendering
+  theme: 'default', // Theme selection
 });
 ```
 
 **API Usage**:
 
 ```javascript
-mermaid.render(elementId, diagramCode)
-    .then(result => {
-        element.innerHTML = result.svg;
-    });
+mermaid.render(elementId, diagramCode).then(result => {
+  element.innerHTML = result.svg;
+});
 ```
 
 **Why Mermaid.js**:
@@ -326,14 +325,14 @@ mermaid.render(elementId, diagramCode)
 
 **Test Matrix**:
 
-| Feature | Chrome | Firefox | Safari | Edge |
-|---------|--------|---------|--------|------|
-| Markdown rendering | ✅ | ✅ | ✅ | ✅ |
-| Theme switching | ✅ | ✅ | ✅ | ✅ |
-| Color customizer | ✅ | ✅ | ✅ | ✅ |
-| HTML export | ✅ | ✅ | ✅ | ✅ |
-| localStorage | ✅ | ✅ | ✅ | ✅ |
-| Mermaid diagrams | ✅ | ✅ | ✅ | ✅ |
+| Feature            | Chrome | Firefox | Safari | Edge |
+| ------------------ | ------ | ------- | ------ | ---- |
+| Markdown rendering | ✅     | ✅      | ✅     | ✅   |
+| Theme switching    | ✅     | ✅      | ✅     | ✅   |
+| Color customizer   | ✅     | ✅      | ✅     | ✅   |
+| HTML export        | ✅     | ✅      | ✅     | ✅   |
+| localStorage       | ✅     | ✅      | ✅     | ✅   |
+| Mermaid diagrams   | ✅     | ✅      | ✅     | ✅   |
 
 ### Future Testing Strategy (If Implemented)
 
@@ -345,22 +344,22 @@ mermaid.render(elementId, diagramCode)
 
 **Example Test Structure**:
 
-```javascript
+````javascript
 // renderMarkdown.test.js
 describe('renderMarkdown', () => {
-    it('should convert markdown to HTML', () => {
-        const input = '# Hello';
-        const output = renderMarkdown(input);
-        expect(output).toContain('<h1>Hello</h1>');
-    });
+  it('should convert markdown to HTML', () => {
+    const input = '# Hello';
+    const output = renderMarkdown(input);
+    expect(output).toContain('<h1>Hello</h1>');
+  });
 
-    it('should handle code blocks', () => {
-        const input = '```js\nconst x = 5;\n```';
-        const output = renderMarkdown(input);
-        expect(output).toContain('<pre>');
-    });
+  it('should handle code blocks', () => {
+    const input = '```js\nconst x = 5;\n```';
+    const output = renderMarkdown(input);
+    expect(output).toContain('<pre>');
+  });
 });
-```
+````
 
 **E2E Testing Framework Options**:
 
@@ -387,7 +386,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   deploy:
@@ -572,11 +571,13 @@ jobs:
 **Content Security Policy** (Recommended):
 
 ```html
-<meta http-equiv="Content-Security-Policy"
-      content="default-src 'self';
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self';
                script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
                style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';
-               img-src 'self' data: https:;">
+               img-src 'self' data: https:;"
+/>
 ```
 
 ### Dependency Security
@@ -714,23 +715,23 @@ jobs:
 
 ### Minimum Supported Versions
 
-| Browser | Minimum Version | Current Version Tested |
-|---------|----------------|----------------------|
-| Chrome | 51 (ES6 support) | 119 |
-| Firefox | 54 (ES6 support) | 119 |
-| Safari | 10 (ES6 support) | 17 |
-| Edge | 15 (ES6 support) | 119 |
+| Browser | Minimum Version  | Current Version Tested |
+| ------- | ---------------- | ---------------------- |
+| Chrome  | 51 (ES6 support) | 119                    |
+| Firefox | 54 (ES6 support) | 119                    |
+| Safari  | 10 (ES6 support) | 17                     |
+| Edge    | 15 (ES6 support) | 119                    |
 
 ### Feature Support
 
-| Feature | Chrome | Firefox | Safari | Edge | Notes |
-|---------|--------|---------|--------|------|-------|
-| CSS Variables | ✅ | ✅ | ✅ | ✅ | Core requirement |
-| ES6 Syntax | ✅ | ✅ | ✅ | ✅ | Core requirement |
-| localStorage | ✅ | ✅ | ✅ | ✅ | Core requirement |
-| Fetch API | ✅ | ✅ | ✅ | ✅ | For export |
-| Flexbox | ✅ | ✅ | ✅ | ✅ | Layout |
-| Grid | ✅ | ✅ | ✅ | ✅ | Color picker layout |
+| Feature       | Chrome | Firefox | Safari | Edge | Notes               |
+| ------------- | ------ | ------- | ------ | ---- | ------------------- |
+| CSS Variables | ✅     | ✅      | ✅     | ✅   | Core requirement    |
+| ES6 Syntax    | ✅     | ✅      | ✅     | ✅   | Core requirement    |
+| localStorage  | ✅     | ✅      | ✅     | ✅   | Core requirement    |
+| Fetch API     | ✅     | ✅      | ✅     | ✅   | For export          |
+| Flexbox       | ✅     | ✅      | ✅     | ✅   | Layout              |
+| Grid          | ✅     | ✅      | ✅     | ✅   | Color picker layout |
 
 ### Unsupported Browsers
 

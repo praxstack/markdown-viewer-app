@@ -43,7 +43,7 @@ describe('LinkNavigationService', () => {
     });
 
     it('should handle null preview container gracefully', () => {
-      const consoleError = vi.spyOn(console, 'error').mockImplementation(() => { });
+      const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
       service.initialize(null);
       expect(consoleError).toHaveBeenCalledWith('[LinkNav] Preview container not found');
       consoleError.mockRestore();
@@ -54,7 +54,7 @@ describe('LinkNavigationService', () => {
     it('should clear cache before building', async () => {
       service.fileHandleCache.set('old-file.md', {});
       const mockDirHandle = {
-        async *values () { },
+        async *values() {},
       };
 
       await service.buildFileCache(mockDirHandle);
@@ -68,7 +68,7 @@ describe('LinkNavigationService', () => {
 
     it('should cache markdown files only', async () => {
       const mockDirHandle = {
-        async *values () {
+        async *values() {
           yield { kind: 'file', name: 'test.md' };
           yield { kind: 'file', name: 'test.txt' };
           yield { kind: 'file', name: 'README.MD' };
@@ -84,13 +84,13 @@ describe('LinkNavigationService', () => {
 
     it('should recursively cache files in subdirectories', async () => {
       const mockSubDir = {
-        async *values () {
+        async *values() {
           yield { kind: 'file', name: 'nested.md' };
         },
       };
 
       const mockDirHandle = {
-        async *values () {
+        async *values() {
           yield { kind: 'file', name: 'root.md' };
           yield { kind: 'directory', name: 'subfolder', ...mockSubDir };
         },
@@ -340,7 +340,7 @@ describe('LinkNavigationService', () => {
     });
 
     it('should handle very long file paths', async () => {
-      const longPath = `${'a/'.repeat(100) }file.md`;
+      const longPath = `${'a/'.repeat(100)}file.md`;
       service.setCurrentFile(longPath);
       expect(service.currentFilePath).toBe(longPath);
     });

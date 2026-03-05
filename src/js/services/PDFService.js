@@ -45,7 +45,9 @@ export class PDFService {
     }
 
     // Handle rgba/rgb
-    const rgbaMatch = color.match(/rgba?\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*[\d.]+)?\s*\)/i);
+    const rgbaMatch = color.match(
+      /rgba?\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*[\d.]+)?\s*\)/i,
+    );
     if (rgbaMatch) {
       const r = parseInt(rgbaMatch[1], 10);
       const g = parseInt(rgbaMatch[2], 10);
@@ -287,7 +289,13 @@ export class PDFService {
       }
 
       // Prepare content with isolated styles and margins as padding
-      const container = this.prepareContent(contentElement, mergedConfig, mergedConfig.themeName, mergedConfig.customTheme, margins);
+      const container = this.prepareContent(
+        contentElement,
+        mergedConfig,
+        mergedConfig.themeName,
+        mergedConfig.customTheme,
+        margins,
+      );
 
       // Build html2pdf config
       const pdfConfig = this.buildHtml2PdfConfig(mergedConfig);

@@ -8,12 +8,12 @@
 
 ## Current Warnings (4)
 
-| # | File | Function | Issue | Severity |
-|---|------|----------|-------|----------|
-| 1 | `script.js:92` | `configureMarkedExtensions()` | 247 lines (max: 100) | Medium |
-| 2 | `script.js:370` | `setupEditor()` | 1148 lines (max: 100) | High |
-| 3 | `FolderBrowserService.js:429` | `createFile()` | Complexity 17 (max: 15) | Low |
-| 4 | `MermaidService.js:139` | `initialize()` | 144 lines (max: 100) | Low |
+| #   | File                          | Function                      | Issue                   | Severity |
+| --- | ----------------------------- | ----------------------------- | ----------------------- | -------- |
+| 1   | `script.js:92`                | `configureMarkedExtensions()` | 247 lines (max: 100)    | Medium   |
+| 2   | `script.js:370`               | `setupEditor()`               | 1148 lines (max: 100)   | High     |
+| 3   | `FolderBrowserService.js:429` | `createFile()`                | Complexity 17 (max: 15) | Low      |
+| 4   | `MermaidService.js:139`       | `initialize()`                | 144 lines (max: 100)    | Low      |
 
 ---
 
@@ -31,6 +31,7 @@
 ### Phase 1: Extract Marked Extensions
 
 Create `src/js/config/markedExtensions.js`:
+
 - `admonitionExtension`
 - `mathBlockExtension`
 - `mathEnvironmentExtension`
@@ -41,6 +42,7 @@ Create `src/js/config/markedExtensions.js`:
 ### Phase 2: Modularize setupEditor()
 
 Create `src/js/features/` directory:
+
 - `EditorManager.js` (~150 lines)
 - `ViewModeManager.js` (~100 lines)
 - `ZoomManager.js` (~80 lines)
@@ -55,6 +57,7 @@ Create `src/js/features/` directory:
 ### Phase 3: Reduce createFile() Complexity
 
 Extract helper methods:
+
 - `_validateCreateFileInput()`
 - `_ensureWritePermission()`
 - `_checkFileExists()`
@@ -63,6 +66,7 @@ Extract helper methods:
 ### Phase 4: Simplify MermaidService.initialize()
 
 Split into:
+
 - `_waitForNebulaCSS()`
 - `_extractThemeColors()`
 - `_configureMermaid()`
@@ -81,19 +85,20 @@ Split into:
 
 ## Estimated Effort
 
-| Phase | Time | Priority |
-|-------|------|----------|
-| Phase 1 | 2-3 hours | Medium |
-| Phase 2 | 4-6 hours | High |
-| Phase 3 | 1 hour | Low |
-| Phase 4 | 1 hour | Low |
-| **Total** | **8-11 hours** | |
+| Phase     | Time           | Priority |
+| --------- | -------------- | -------- |
+| Phase 1   | 2-3 hours      | Medium   |
+| Phase 2   | 4-6 hours      | High     |
+| Phase 3   | 1 hour         | Low      |
+| Phase 4   | 1 hour         | Low      |
+| **Total** | **8-11 hours** |          |
 
 ---
 
 ## Decision Log
 
 **2025-12-16:** Decision to defer refactoring. Current state:
+
 - 0 ESLint errors
 - 4 ESLint warnings (legacy code)
 - 95.3% test coverage
@@ -101,6 +106,7 @@ Split into:
 - All functionality working
 
 Refactoring deferred due to:
+
 - High risk of breaking changes for a complex UI
 - Code works correctly as-is
 - Better to wait for a dedicated refactoring sprint

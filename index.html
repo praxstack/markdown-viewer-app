@@ -47,7 +47,22 @@
               <line x1="9" y1="3" x2="9" y2="21"></line>
             </svg>
           </button>
-          <h1><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Markdown Viewer Pro</h1>
+          <h1>
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+            </svg>
+            Markdown Viewer Pro
+          </h1>
         </div>
         <div class="toolbar-controls">
           <!-- Folder Browser Toggle - Always visible -->
@@ -57,7 +72,21 @@
             title="Open Folder"
             aria-label="Open Folder to Browse Markdown Files"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Open Folder
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+              />
+            </svg>
+            Open Folder
           </button>
 
           <!-- View Mode Buttons -->
@@ -170,95 +199,242 @@
 
           <!-- Custom Theme Selector Component -->
           <div class="theme-picker" id="theme-picker" role="listbox" aria-label="Select theme">
-            <button class="theme-picker__trigger" id="theme-picker-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <button
+              class="theme-picker__trigger"
+              id="theme-picker-trigger"
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
               <span class="theme-picker__swatch" id="theme-picker-swatch"></span>
               <span class="theme-picker__label" id="theme-picker-label">Default Light</span>
-              <svg class="theme-picker__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              <svg
+                class="theme-picker__chevron"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </button>
             <div class="theme-picker__dropdown" id="theme-picker-dropdown">
               <div class="theme-picker__group">
                 <div class="theme-picker__group-label">Premium</div>
-                <button class="theme-picker__option" data-value="nebula-dark" data-mode="dark" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #0f1123, #050508)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="nebula-dark"
+                  data-mode="dark"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #0f1123, #050508)"
+                  ></span>
                   <span class="theme-picker__opt-name">Nebula Dark</span>
                   <span class="theme-picker__opt-badge">Pro</span>
                 </button>
-                <button class="theme-picker__option" data-value="nebula-light" data-mode="light" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #f0f4f8, #ffffff)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="nebula-light"
+                  data-mode="light"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #f0f4f8, #ffffff)"
+                  ></span>
                   <span class="theme-picker__opt-name">Nebula Light</span>
                   <span class="theme-picker__opt-badge">Pro</span>
                 </button>
               </div>
               <div class="theme-picker__group">
                 <div class="theme-picker__group-label">Default</div>
-                <button class="theme-picker__option" data-value="default-light" data-mode="light" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #ffffff, #f0f0f3)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="default-light"
+                  data-mode="light"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #ffffff, #f0f0f3)"
+                  ></span>
                   <span class="theme-picker__opt-name">Default Light</span>
                 </button>
-                <button class="theme-picker__option" data-value="default-dark" data-mode="dark" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #1e1e2e, #0d1117)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="default-dark"
+                  data-mode="dark"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #1e1e2e, #0d1117)"
+                  ></span>
                   <span class="theme-picker__opt-name">Default Dark</span>
                 </button>
               </div>
               <div class="theme-picker__group">
                 <div class="theme-picker__group-label">Ocean</div>
-                <button class="theme-picker__option" data-value="ocean-light" data-mode="light" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #e8f4f8, #d0ebff)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="ocean-light"
+                  data-mode="light"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #e8f4f8, #d0ebff)"
+                  ></span>
                   <span class="theme-picker__opt-name">Ocean Light</span>
                 </button>
-                <button class="theme-picker__option" data-value="ocean-dark" data-mode="dark" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #0c1929, #1a2744)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="ocean-dark"
+                  data-mode="dark"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #0c1929, #1a2744)"
+                  ></span>
                   <span class="theme-picker__opt-name">Ocean Dark</span>
                 </button>
               </div>
               <div class="theme-picker__group">
                 <div class="theme-picker__group-label">Neon</div>
-                <button class="theme-picker__option" data-value="neon-light" data-mode="light" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #fef9ff, #f0e6ff)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="neon-light"
+                  data-mode="light"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #fef9ff, #f0e6ff)"
+                  ></span>
                   <span class="theme-picker__opt-name">Neon Light</span>
                 </button>
-                <button class="theme-picker__option" data-value="neon-dark" data-mode="dark" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #0a0014, #1a0030)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="neon-dark"
+                  data-mode="dark"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #0a0014, #1a0030)"
+                  ></span>
                   <span class="theme-picker__opt-name">Neon Dark</span>
                 </button>
               </div>
               <div class="theme-picker__group">
                 <div class="theme-picker__group-label">Forest</div>
-                <button class="theme-picker__option" data-value="forest-light" data-mode="light" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #f0f7f0, #e0efe0)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="forest-light"
+                  data-mode="light"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #f0f7f0, #e0efe0)"
+                  ></span>
                   <span class="theme-picker__opt-name">Forest Light</span>
                 </button>
-                <button class="theme-picker__option" data-value="forest-dark" data-mode="dark" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #0b1a0b, #1a2e1a)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="forest-dark"
+                  data-mode="dark"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #0b1a0b, #1a2e1a)"
+                  ></span>
                   <span class="theme-picker__opt-name">Forest Dark</span>
                 </button>
               </div>
               <div class="theme-picker__group">
                 <div class="theme-picker__group-label">Sunset</div>
-                <button class="theme-picker__option" data-value="sunset-light" data-mode="light" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #fff5f0, #ffe8d6)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="sunset-light"
+                  data-mode="light"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #fff5f0, #ffe8d6)"
+                  ></span>
                   <span class="theme-picker__opt-name">Sunset Light</span>
                 </button>
-                <button class="theme-picker__option" data-value="sunset-dark" data-mode="dark" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #1a0c05, #2d1810)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="sunset-dark"
+                  data-mode="dark"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #1a0c05, #2d1810)"
+                  ></span>
                   <span class="theme-picker__opt-name">Sunset Dark</span>
                 </button>
               </div>
               <div class="theme-picker__group">
                 <div class="theme-picker__group-label">Obsidian</div>
-                <button class="theme-picker__option" data-value="obsidian-light" data-mode="light" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #f5f5f5, #e8e8e8)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="obsidian-light"
+                  data-mode="light"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #f5f5f5, #e8e8e8)"
+                  ></span>
                   <span class="theme-picker__opt-name">Obsidian Light</span>
                 </button>
-                <button class="theme-picker__option" data-value="obsidian-dark" data-mode="dark" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: linear-gradient(135deg, #1a1a2e, #16162a)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="obsidian-dark"
+                  data-mode="dark"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="background: linear-gradient(135deg, #1a1a2e, #16162a)"
+                  ></span>
                   <span class="theme-picker__opt-name">Obsidian Dark</span>
                 </button>
               </div>
               <div class="theme-picker__group">
                 <div class="theme-picker__group-label">Custom</div>
-                <button class="theme-picker__option" data-value="custom" data-mode="custom" role="option">
-                  <span class="theme-picker__opt-swatch" style="background: conic-gradient(#ef4444, #f59e0b, #22c55e, #3b82f6, #8b5cf6, #ef4444)"></span>
+                <button
+                  class="theme-picker__option"
+                  data-value="custom"
+                  data-mode="custom"
+                  role="option"
+                >
+                  <span
+                    class="theme-picker__opt-swatch"
+                    style="
+                      background: conic-gradient(
+                        #ef4444,
+                        #f59e0b,
+                        #22c55e,
+                        #3b82f6,
+                        #8b5cf6,
+                        #ef4444
+                      );
+                    "
+                  ></span>
                   <span class="theme-picker__opt-name">Custom Theme</span>
                 </button>
               </div>
@@ -266,46 +442,159 @@
           </div>
           <!-- Font Picker -->
           <div class="font-picker" id="font-picker">
-            <button class="font-picker__trigger" id="font-picker-trigger" type="button" aria-label="Font settings" title="Font Settings">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+            <button
+              class="font-picker__trigger"
+              id="font-picker-trigger"
+              type="button"
+              aria-label="Font settings"
+              title="Font Settings"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 7V4h16v3" />
+                <path d="M9 20h6" />
+                <path d="M12 4v16" />
+              </svg>
               Aa
             </button>
             <div class="font-picker__panel" id="font-picker-panel"></div>
           </div>
-          <button class="btn" id="customize-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M17.5 10.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5"/><circle cx="6.5" cy="13.5" r="2.5"/><path d="M3 6v1a2 2 0 0 0 2 2h1"/><path d="M21 18v-1a2 2 0 0 0-2-2h-1"/></svg> Customize</button>
+          <button class="btn" id="customize-btn">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="13.5" cy="6.5" r="2.5" />
+              <path d="M17.5 10.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5" />
+              <circle cx="6.5" cy="13.5" r="2.5" />
+              <path d="M3 6v1a2 2 0 0 0 2 2h1" />
+              <path d="M21 18v-1a2 2 0 0 0-2-2h-1" />
+            </svg>
+            Customize
+          </button>
           <!-- Export Dropdown -->
           <div class="export-dropdown" id="export-dropdown">
-            <button class="btn" id="export-trigger" type="button" aria-haspopup="true" aria-expanded="false">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <button
+              class="btn"
+              id="export-trigger"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
               Export
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </button>
             <div class="export-dropdown__panel" id="export-panel">
               <button class="export-dropdown__option" id="export-studio-pdf-btn" type="button">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                <div><div class="export-dropdown__opt-title">Export as PDF</div><div class="export-dropdown__opt-desc">Opens Export Studio with print options</div></div>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg>
+                <div>
+                  <div class="export-dropdown__opt-title">Export as PDF</div>
+                  <div class="export-dropdown__opt-desc">
+                    Opens Export Studio with print options
+                  </div>
+                </div>
               </button>
               <button class="export-dropdown__option" id="export-studio-html-btn" type="button">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
-                <div><div class="export-dropdown__opt-title">Export as HTML</div><div class="export-dropdown__opt-desc">Downloads standalone HTML file</div></div>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                  <polyline points="13 2 13 9 20 9" />
+                </svg>
+                <div>
+                  <div class="export-dropdown__opt-title">Export as HTML</div>
+                  <div class="export-dropdown__opt-desc">Downloads standalone HTML file</div>
+                </div>
               </button>
               <button class="export-dropdown__option" id="export-copy-btn" type="button">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                <div><div class="export-dropdown__opt-title">Copy HTML</div><div class="export-dropdown__opt-desc">Copy rendered content to clipboard</div></div>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+                <div>
+                  <div class="export-dropdown__opt-title">Copy HTML</div>
+                  <div class="export-dropdown__opt-desc">Copy rendered content to clipboard</div>
+                </div>
               </button>
             </div>
           </div>
           <button
-                 class="btn-icon"
-                 id="zen-mode-btn"
-                 title="Enter Zen Mode"
-                 aria-label="Enter Distraction Free Mode"
-                 style="margin-left: 8px;"
-               >
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                   <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-                 </svg>
-               </button>
+            class="btn-icon"
+            id="zen-mode-btn"
+            title="Enter Zen Mode"
+            aria-label="Enter Distraction Free Mode"
+            style="margin-left: 8px"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+            </svg>
+          </button>
         </div>
       </header>
 
@@ -323,7 +612,16 @@
           title="Expand Sidebar"
           aria-label="Expand File Browser Sidebar"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
         </button>
@@ -335,7 +633,21 @@
 
           <div class="browser-header">
             <div class="browser-title">
-              <span class="folder-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>
+              <span class="folder-icon"
+                ><svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+                  /></svg
+              ></span>
               <span id="current-folder-name">No Folder Open</span>
             </div>
             <div class="browser-actions">
@@ -345,10 +657,19 @@
                 title="Refresh Folder"
                 aria-label="Refresh Folder Structure"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
                   <path d="M23 4v6h-6"></path>
                   <path d="M1 20v-6h6"></path>
-                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                  <path
+                    d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
+                  ></path>
                 </svg>
               </button>
               <button
@@ -357,7 +678,14 @@
                 title="Create New File"
                 aria-label="Create New Markdown File"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                   <polyline points="14 2 14 8 20 8"></polyline>
                   <line x1="12" y1="18" x2="12" y2="12"></line>
@@ -370,7 +698,16 @@
                 title="Hide Sidebar"
                 aria-label="Toggle Sidebar"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
                   <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
               </button>
@@ -392,8 +729,34 @@
 
         <!-- Mobile Tabs (Visible only on < 768px) -->
         <div class="mobile-tabs">
-          <button class="mobile-tab-btn active" data-tab="editor"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Editor</button>
-          <button class="mobile-tab-btn" data-tab="preview"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Preview</button>
+          <button class="mobile-tab-btn active" data-tab="editor">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+            </svg>
+            Editor
+          </button>
+          <button class="mobile-tab-btn" data-tab="preview">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            Preview
+          </button>
         </div>
 
         <!-- Editor -->
@@ -471,43 +834,219 @@
 
     <!-- Footer -->
     <footer class="app-footer" role="contentinfo">
-      <div class="footer-inner" style="flex-wrap:wrap;gap:6px 12px;justify-content:center">
-        <div class="footer-row footer-row--top" style="gap:6px">
+      <div class="footer-inner" style="flex-wrap: wrap; gap: 6px 12px; justify-content: center">
+        <div class="footer-row footer-row--top" style="gap: 6px">
           <span class="footer-made">
             Made with
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="#ef4444" stroke="none" class="footer-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="#ef4444"
+              stroke="none"
+              class="footer-heart"
+            >
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              />
+            </svg>
             by
-            <a href="https://prax-portfolio-one.vercel.app/" target="_blank" rel="noopener noreferrer" class="footer-author">Prax Lannister</a>
+            <a
+              href="https://prax-portfolio-one.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-author"
+              >Prax Lannister</a
+            >
           </span>
           <span class="footer-sep">|</span>
           <span class="footer-social">
             Follow me on
-            <a href="https://github.com/PrakharMNNIT" target="_blank" rel="noopener noreferrer" class="footer-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            <a
+              href="https://github.com/PrakharMNNIT"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
               GitHub
             </a>
             &amp;
-            <a href="https://x.com/ByteByByteSrSDE" target="_blank" rel="noopener noreferrer" class="footer-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <a
+              href="https://x.com/ByteByByteSrSDE"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
               X (Twitter)
             </a>
           </span>
         </div>
 
-        <div style="display:inline-flex;align-items:center;gap:6px">
-          <a href="https://ko-fi.com/praxlannister" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:4px;padding:4px 12px;background:#FF5E5B;color:#fff;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">Ko-fi</a>
-          <a href="https://github.com/sponsors/PrakharMNNIT" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:4px;padding:4px 12px;background:#db61a2;color:#fff;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">Sponsors</a>
-          <div style="position:relative;display:inline-block" id="upi-popover-wrap">
-            <a href="https://razorpay.me/@praxlannister007" target="_blank" rel="noopener noreferrer" id="upi-popover-btn" style="display:inline-flex;align-items:center;gap:4px;padding:4px 12px;background:#FF9933;color:#fff;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:none;text-decoration:none">UPI</a>
-            <div id="upi-popover" style="display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:520px;background:var(--bg-primary,#fff);border:1px solid var(--border-color,#e2e8f0);border-radius:12px;box-shadow:0 12px 36px rgba(0,0,0,0.2);z-index:100;padding:16px;text-align:center">
-              <p style="font-weight:700;font-size:13px;color:var(--text-primary);margin:0 0 2px">Scan &amp; Pay via UPI</p>
-              <p style="font-size:10px;color:var(--text-secondary);margin:0 0 12px;opacity:0.7">GPay, PhonePe, Paytm, BHIM</p>
-              <img src="assets/QrCode.jpeg" alt="UPI QR Code" style="width:460px;height:460px;border-radius:8px;margin:0 auto 12px;display:block;object-fit:contain" />
-              <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;background:var(--bg-secondary,#f1f5f9);padding:6px 10px;border-radius:8px;border:1px solid var(--border-color,#e2e8f0)">
-                <code style="font-size:11px;font-weight:600;color:var(--text-primary)">praxlannister@upi</code>
-                <button type="button" id="upi-pop-copy" style="font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;border:1px solid var(--border-color);background:var(--bg-primary,#fff);color:var(--text-secondary);cursor:pointer">Copy</button>
+        <div style="display: inline-flex; align-items: center; gap: 6px">
+          <a
+            href="https://ko-fi.com/praxlannister"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="
+              display: inline-flex;
+              align-items: center;
+              gap: 4px;
+              padding: 4px 12px;
+              background: #ff5e5b;
+              color: #fff;
+              border-radius: 20px;
+              font-size: 11px;
+              font-weight: 600;
+              text-decoration: none;
+            "
+            >Ko-fi</a
+          >
+          <a
+            href="https://github.com/sponsors/PrakharMNNIT"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="
+              display: inline-flex;
+              align-items: center;
+              gap: 4px;
+              padding: 4px 12px;
+              background: #db61a2;
+              color: #fff;
+              border-radius: 20px;
+              font-size: 11px;
+              font-weight: 600;
+              text-decoration: none;
+            "
+            >Sponsors</a
+          >
+          <div style="position: relative; display: inline-block" id="upi-popover-wrap">
+            <a
+              href="https://razorpay.me/@praxlannister007"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="upi-popover-btn"
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                padding: 4px 12px;
+                background: #ff9933;
+                color: #fff;
+                border-radius: 20px;
+                font-size: 11px;
+                font-weight: 600;
+                cursor: pointer;
+                border: none;
+                text-decoration: none;
+              "
+              >UPI</a
+            >
+            <div
+              id="upi-popover"
+              style="
+                display: none;
+                position: absolute;
+                bottom: calc(100% + 8px);
+                left: 50%;
+                transform: translateX(-50%);
+                width: 520px;
+                background: var(--bg-primary, #fff);
+                border: 1px solid var(--border-color, #e2e8f0);
+                border-radius: 12px;
+                box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+                z-index: 100;
+                padding: 16px;
+                text-align: center;
+              "
+            >
+              <p
+                style="
+                  font-weight: 700;
+                  font-size: 13px;
+                  color: var(--text-primary);
+                  margin: 0 0 2px;
+                "
+              >
+                Scan &amp; Pay via UPI
+              </p>
+              <p
+                style="
+                  font-size: 10px;
+                  color: var(--text-secondary);
+                  margin: 0 0 12px;
+                  opacity: 0.7;
+                "
+              >
+                GPay, PhonePe, Paytm, BHIM
+              </p>
+              <img
+                src="assets/QrCode.jpeg"
+                alt="UPI QR Code"
+                style="
+                  width: 460px;
+                  height: 460px;
+                  border-radius: 8px;
+                  margin: 0 auto 12px;
+                  display: block;
+                  object-fit: contain;
+                "
+              />
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  gap: 6px;
+                  background: var(--bg-secondary, #f1f5f9);
+                  padding: 6px 10px;
+                  border-radius: 8px;
+                  border: 1px solid var(--border-color, #e2e8f0);
+                "
+              >
+                <code style="font-size: 11px; font-weight: 600; color: var(--text-primary)"
+                  >praxlannister@upi</code
+                >
+                <button
+                  type="button"
+                  id="upi-pop-copy"
+                  style="
+                    font-size: 10px;
+                    font-weight: 600;
+                    padding: 3px 8px;
+                    border-radius: 4px;
+                    border: 1px solid var(--border-color);
+                    background: var(--bg-primary, #fff);
+                    color: var(--text-secondary);
+                    cursor: pointer;
+                  "
+                >
+                  Copy
+                </button>
               </div>
-              <a href="https://razorpay.me/@praxlannister007" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:10px;font-size:10px;color:var(--h1-color,#FF9933);text-decoration:none;font-weight:500">Or pay via Razorpay →</a>
+              <a
+                href="https://razorpay.me/@praxlannister007"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="
+                  display: inline-block;
+                  margin-top: 10px;
+                  font-size: 10px;
+                  color: var(--h1-color, #ff9933);
+                  text-decoration: none;
+                  font-weight: 500;
+                "
+                >Or pay via Razorpay →</a
+              >
             </div>
           </div>
         </div>
@@ -517,8 +1056,15 @@
           <div class="footer-upi-card">
             <p class="footer-upi-title">Support via UPI</p>
             <p class="footer-upi-subtitle">Scan using any UPI app</p>
-            <div class="footer-upi-qr-placeholder" style="width:200px;height:200px;border:none;background:transparent">
-              <img src="assets/QrCode.jpeg" alt="Scan to pay via UPI" style="width:100%;height:100%;object-fit:contain;border-radius:12px" />
+            <div
+              class="footer-upi-qr-placeholder"
+              style="width: 200px; height: 200px; border: none; background: transparent"
+            >
+              <img
+                src="assets/QrCode.jpeg"
+                alt="Scan to pay via UPI"
+                style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px"
+              />
             </div>
             <div class="footer-upi-id">
               <code>praxlannister@upi</code>
@@ -596,16 +1142,51 @@
 
         <!-- Modal Actions -->
         <div class="modal-actions">
-          <button class="btn" id="pdf-preview-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Update Preview</button>
-          <button class="btn" id="pdf-download-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF</button>
+          <button class="btn" id="pdf-preview-btn">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            Update Preview
+          </button>
+          <button class="btn" id="pdf-download-btn">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download PDF
+          </button>
         </div>
       </div>
     </div>
 
     <!-- Create File Modal -->
-    <div id="create-file-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="create-file-modal-title">
+    <div
+      id="create-file-modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="create-file-modal-title"
+    >
       <div class="modal-content create-file-modal-content">
-        <span class="close-btn" id="close-create-file-modal" role="button" aria-label="Close dialog">&times;</span>
+        <span class="close-btn" id="close-create-file-modal" role="button" aria-label="Close dialog"
+          >&times;</span
+        >
         <h2 id="create-file-modal-title">Create New Markdown File</h2>
 
         <div class="create-file-form">
@@ -618,7 +1199,9 @@
               autocomplete="off"
               spellcheck="false"
             />
-            <small class="form-hint">The .md extension will be added automatically if not provided</small>
+            <small class="form-hint"
+              >The .md extension will be added automatically if not provided</small
+            >
           </div>
 
           <div class="form-group">
@@ -877,27 +1460,83 @@
     </div>
 
     <!-- Support Modal (One-time popup with all 3 options) -->
-    <div id="support-modal" class="modal support-modal" role="dialog" aria-modal="true" aria-labelledby="support-modal-title">
+    <div
+      id="support-modal"
+      class="modal support-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="support-modal-title"
+    >
       <div class="modal-content support-modal-content">
         <button class="close-btn" id="close-support-modal" aria-label="Close">&times;</button>
         <h2 id="support-modal-title">Support Markdown Viewer Pro</h2>
-        <p class="support-modal-desc">If you find this tool useful, consider supporting its development:</p>
+        <p class="support-modal-desc">
+          If you find this tool useful, consider supporting its development:
+        </p>
 
         <div class="support-options">
-          <a href="https://github.com/sponsors/PrakharMNNIT?ref=webapp_modal" target="_blank" rel="noopener noreferrer" class="support-option support-option--github">
-            <span class="support-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+          <a
+            href="https://github.com/sponsors/PrakharMNNIT?ref=webapp_modal"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="support-option support-option--github"
+          >
+            <span class="support-option-icon"
+              ><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                /></svg
+            ></span>
             <span class="support-option-title">GitHub Sponsors</span>
             <span class="support-option-desc">0% fee • For developers</span>
           </a>
 
-          <a href="https://ko-fi.com/praxlannister?ref=webapp_modal" target="_blank" rel="noopener noreferrer" class="support-option support-option--kofi">
-            <span class="support-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
+          <a
+            href="https://ko-fi.com/praxlannister?ref=webapp_modal"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="support-option support-option--kofi"
+          >
+            <span class="support-option-icon"
+              ><svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                <line x1="6" y1="1" x2="6" y2="4" />
+                <line x1="10" y1="1" x2="10" y2="4" />
+                <line x1="14" y1="1" x2="14" y2="4" /></svg
+            ></span>
             <span class="support-option-title">Ko-fi</span>
             <span class="support-option-desc">PayPal • Global</span>
           </a>
 
-          <a href="https://razorpay.me/@prakharshekharparthasarthi?notes[source]=webapp_modal" target="_blank" rel="noopener noreferrer" class="support-option support-option--razorpay">
-            <span class="support-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          <a
+            href="https://razorpay.me/@prakharshekharparthasarthi?notes[source]=webapp_modal"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="support-option support-option--razorpay"
+          >
+            <span class="support-option-icon"
+              ><svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                /></svg
+            ></span>
             <span class="support-option-title">Razorpay</span>
             <span class="support-option-desc">UPI/Cards • India</span>
           </a>
@@ -914,418 +1553,764 @@
 
     <!-- Theme Picker Controller (syncs custom picker ↔ hidden native select) -->
     <script>
-    (function initThemePicker() {
-      const trigger = document.getElementById('theme-picker-trigger');
-      const dropdown = document.getElementById('theme-picker-dropdown');
-      const label = document.getElementById('theme-picker-label');
-      const swatch = document.getElementById('theme-picker-swatch');
-      const nativeSelect = document.getElementById('theme-selector');
-      const options = dropdown.querySelectorAll('.theme-picker__option');
-      let isOpen = false;
+      (function initThemePicker() {
+        const trigger = document.getElementById('theme-picker-trigger');
+        const dropdown = document.getElementById('theme-picker-dropdown');
+        const label = document.getElementById('theme-picker-label');
+        const swatch = document.getElementById('theme-picker-swatch');
+        const nativeSelect = document.getElementById('theme-selector');
+        const options = dropdown.querySelectorAll('.theme-picker__option');
+        let isOpen = false;
 
-      function open() {
-        isOpen = true;
-        dropdown.classList.add('open');
-        trigger.setAttribute('aria-expanded', 'true');
-      }
-
-      function close() {
-        isOpen = false;
-        dropdown.classList.remove('open');
-        trigger.setAttribute('aria-expanded', 'false');
-      }
-
-      function selectTheme(value) {
-        // Update native select (triggers script.js change handler)
-        nativeSelect.value = value;
-        nativeSelect.dispatchEvent(new Event('change'));
-
-        // Update custom picker UI
-        const opt = dropdown.querySelector(`[data-value="${value}"]`);
-        if (opt) {
-          options.forEach(o => o.classList.remove('selected'));
-          opt.classList.add('selected');
-          label.textContent = opt.querySelector('.theme-picker__opt-name').textContent;
-          const optSwatch = opt.querySelector('.theme-picker__opt-swatch');
-          if (optSwatch) swatch.style.background = optSwatch.style.background;
+        function open() {
+          isOpen = true;
+          dropdown.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
         }
-        close();
-      }
 
-      // Sync picker to current native select value on load
-      function syncFromNative() {
-        const val = nativeSelect.value;
-        const opt = dropdown.querySelector(`[data-value="${val}"]`);
-        if (opt) {
-          options.forEach(o => o.classList.remove('selected'));
-          opt.classList.add('selected');
-          label.textContent = opt.querySelector('.theme-picker__opt-name').textContent;
-          const optSwatch = opt.querySelector('.theme-picker__opt-swatch');
-          if (optSwatch) swatch.style.background = optSwatch.style.background;
+        function close() {
+          isOpen = false;
+          dropdown.classList.remove('open');
+          trigger.setAttribute('aria-expanded', 'false');
         }
-      }
 
-      // Toggle dropdown
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        isOpen ? close() : open();
-      });
+        function selectTheme(value) {
+          // Update native select (triggers script.js change handler)
+          nativeSelect.value = value;
+          nativeSelect.dispatchEvent(new Event('change'));
 
-      // Option click
-      options.forEach(opt => {
-        opt.addEventListener('click', (e) => {
+          // Update custom picker UI
+          const opt = dropdown.querySelector(`[data-value="${value}"]`);
+          if (opt) {
+            options.forEach(o => o.classList.remove('selected'));
+            opt.classList.add('selected');
+            label.textContent = opt.querySelector('.theme-picker__opt-name').textContent;
+            const optSwatch = opt.querySelector('.theme-picker__opt-swatch');
+            if (optSwatch) swatch.style.background = optSwatch.style.background;
+          }
+          close();
+        }
+
+        // Sync picker to current native select value on load
+        function syncFromNative() {
+          const val = nativeSelect.value;
+          const opt = dropdown.querySelector(`[data-value="${val}"]`);
+          if (opt) {
+            options.forEach(o => o.classList.remove('selected'));
+            opt.classList.add('selected');
+            label.textContent = opt.querySelector('.theme-picker__opt-name').textContent;
+            const optSwatch = opt.querySelector('.theme-picker__opt-swatch');
+            if (optSwatch) swatch.style.background = optSwatch.style.background;
+          }
+        }
+
+        // Toggle dropdown
+        trigger.addEventListener('click', e => {
           e.stopPropagation();
-          selectTheme(opt.dataset.value);
+          isOpen ? close() : open();
         });
-      });
 
-      // Close on outside click
-      document.addEventListener('click', (e) => {
-        if (isOpen && !e.target.closest('.theme-picker')) close();
-      });
+        // Option click
+        options.forEach(opt => {
+          opt.addEventListener('click', e => {
+            e.stopPropagation();
+            selectTheme(opt.dataset.value);
+          });
+        });
 
-      // Close on Escape
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isOpen) close();
-      });
+        // Close on outside click
+        document.addEventListener('click', e => {
+          if (isOpen && !e.target.closest('.theme-picker')) close();
+        });
 
-      // Keyboard nav inside dropdown
-      dropdown.addEventListener('keydown', (e) => {
-        const focused = document.activeElement;
-        const items = [...options];
-        const idx = items.indexOf(focused);
-        if (e.key === 'ArrowDown') { e.preventDefault(); items[(idx + 1) % items.length]?.focus(); }
-        if (e.key === 'ArrowUp') { e.preventDefault(); items[(idx - 1 + items.length) % items.length]?.focus(); }
-        if (e.key === 'Enter' && focused.dataset?.value) { selectTheme(focused.dataset.value); }
-      });
+        // Close on Escape
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && isOpen) close();
+        });
 
-      // Watch native select for programmatic changes from script.js
-      const observer = new MutationObserver(syncFromNative);
-      observer.observe(nativeSelect, { attributes: true, childList: true, subtree: true });
+        // Keyboard nav inside dropdown
+        dropdown.addEventListener('keydown', e => {
+          const focused = document.activeElement;
+          const items = [...options];
+          const idx = items.indexOf(focused);
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            items[(idx + 1) % items.length]?.focus();
+          }
+          if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            items[(idx - 1 + items.length) % items.length]?.focus();
+          }
+          if (e.key === 'Enter' && focused.dataset?.value) {
+            selectTheme(focused.dataset.value);
+          }
+        });
 
-      // Also poll to catch .value assignments (MutationObserver doesn't catch those)
-      let lastVal = nativeSelect.value;
-      setInterval(() => {
-        if (nativeSelect.value !== lastVal) { lastVal = nativeSelect.value; syncFromNative(); }
-      }, 300);
+        // Watch native select for programmatic changes from script.js
+        const observer = new MutationObserver(syncFromNative);
+        observer.observe(nativeSelect, { attributes: true, childList: true, subtree: true });
 
-      // Initial sync
-      syncFromNative();
-    })();
+        // Also poll to catch .value assignments (MutationObserver doesn't catch those)
+        let lastVal = nativeSelect.value;
+        setInterval(() => {
+          if (nativeSelect.value !== lastVal) {
+            lastVal = nativeSelect.value;
+            syncFromNative();
+          }
+        }, 300);
 
-    
+        // Initial sync
+        syncFromNative();
+      })();
 
+      // Custom Code Copy Button — SVG icon, injected into all pre blocks
+      (function initCodeCopyButtons() {
+        const COPY_SVG =
+          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+        const CHECK_SVG =
+          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+        let injecting = false;
 
-    // Custom Code Copy Button — SVG icon, injected into all pre blocks
-    (function initCodeCopyButtons() {
-      const COPY_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
-      const CHECK_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
-      let injecting = false;
+        function showToast(msg) {
+          let t = document.getElementById('copy-toast');
+          if (!t) {
+            t = document.createElement('div');
+            t.id = 'copy-toast';
+            t.style.cssText =
+              'position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);padding:10px 24px;border-radius:8px;font-size:13px;font-weight:600;z-index:10000;opacity:0;transition:all 0.3s;pointer-events:none;background:#10b981;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.2)';
+            document.body.appendChild(t);
+          }
+          t.textContent = msg;
+          t.style.opacity = '1';
+          t.style.transform = 'translateX(-50%) translateY(0)';
+          setTimeout(() => {
+            t.style.opacity = '0';
+            t.style.transform = 'translateX(-50%) translateY(20px)';
+          }, 2000);
+        }
 
-      function showToast(msg) {
-        let t = document.getElementById('copy-toast');
-        if (!t) { t = document.createElement('div'); t.id = 'copy-toast'; t.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);padding:10px 24px;border-radius:8px;font-size:13px;font-weight:600;z-index:10000;opacity:0;transition:all 0.3s;pointer-events:none;background:#10b981;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.2)'; document.body.appendChild(t); }
-        t.textContent = msg;
-        t.style.opacity = '1'; t.style.transform = 'translateX(-50%) translateY(0)';
-        setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(20px)'; }, 2000);
-      }
+        function injectButtons() {
+          if (injecting) return;
+          injecting = true;
+          const preview = document.getElementById('markdown-preview');
+          if (!preview) {
+            injecting = false;
+            return;
+          }
+          preview.querySelectorAll('pre').forEach(pre => {
+            if (pre.querySelector('.code-copy-btn')) return;
+            const btn = document.createElement('button');
+            btn.className = 'code-copy-btn';
+            btn.type = 'button';
+            btn.setAttribute('aria-label', 'Copy code');
+            btn.setAttribute('title', 'Copy code');
+            btn.innerHTML = COPY_SVG;
+            btn.onclick = function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+              const code = pre.querySelector('code');
+              const text = code ? code.textContent : pre.textContent;
+              navigator.clipboard
+                .writeText(text)
+                .then(function () {
+                  btn.innerHTML = CHECK_SVG;
+                  btn.classList.add('copied');
+                  showToast('Code copied to clipboard!');
+                  setTimeout(function () {
+                    btn.innerHTML = COPY_SVG;
+                    btn.classList.remove('copied');
+                  }, 2000);
+                })
+                .catch(function () {
+                  // Fallback for non-HTTPS
+                  const ta = document.createElement('textarea');
+                  ta.value = text;
+                  ta.style.position = 'fixed';
+                  ta.style.left = '-9999px';
+                  document.body.appendChild(ta);
+                  ta.select();
+                  document.execCommand('copy');
+                  document.body.removeChild(ta);
+                  btn.innerHTML = CHECK_SVG;
+                  btn.classList.add('copied');
+                  showToast('Code copied to clipboard!');
+                  setTimeout(function () {
+                    btn.innerHTML = COPY_SVG;
+                    btn.classList.remove('copied');
+                  }, 2000);
+                });
+            };
+            pre.appendChild(btn);
+          });
+          injecting = false;
+        }
 
-      function injectButtons() {
-        if (injecting) return;
-        injecting = true;
-        const preview = document.getElementById('markdown-preview');
-        if (!preview) { injecting = false; return; }
-        preview.querySelectorAll('pre').forEach(pre => {
-          if (pre.querySelector('.code-copy-btn')) return;
-          const btn = document.createElement('button');
-          btn.className = 'code-copy-btn';
-          btn.type = 'button';
-          btn.setAttribute('aria-label', 'Copy code');
-          btn.setAttribute('title', 'Copy code');
-          btn.innerHTML = COPY_SVG;
-          btn.onclick = function(e) {
-            e.preventDefault(); e.stopPropagation();
-            const code = pre.querySelector('code');
-            const text = code ? code.textContent : pre.textContent;
-            navigator.clipboard.writeText(text).then(function() {
-              btn.innerHTML = CHECK_SVG;
-              btn.classList.add('copied');
-              showToast('Code copied to clipboard!');
-              setTimeout(function() { btn.innerHTML = COPY_SVG; btn.classList.remove('copied'); }, 2000);
-            }).catch(function() {
-              // Fallback for non-HTTPS
-              const ta = document.createElement('textarea');
-              ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px';
-              document.body.appendChild(ta); ta.select(); document.execCommand('copy');
-              document.body.removeChild(ta);
-              btn.innerHTML = CHECK_SVG; btn.classList.add('copied');
-              showToast('Code copied to clipboard!');
-              setTimeout(function() { btn.innerHTML = COPY_SVG; btn.classList.remove('copied'); }, 2000);
-            });
+        // Debounced observer — avoid infinite loops
+        let timer = null;
+        const observer = new MutationObserver(function () {
+          clearTimeout(timer);
+          timer = setTimeout(injectButtons, 200);
+        });
+        const target = document.getElementById('markdown-preview');
+        if (target) observer.observe(target, { childList: true, subtree: false });
+        // Initial + delayed
+        setTimeout(injectButtons, 500);
+        setTimeout(injectButtons, 2000);
+      })();
+
+      // Export Dropdown + Export Studio Controller
+      (function initExportStudio() {
+        const trigger = document.getElementById('export-trigger');
+        const panel = document.getElementById('export-panel');
+        const pdfBtn = document.getElementById('export-studio-pdf-btn');
+        const htmlBtn = document.getElementById('export-studio-html-btn');
+        const copyBtn = document.getElementById('export-copy-btn');
+        let isOpen = false;
+
+        // Dropdown toggle
+        trigger.addEventListener('click', e => {
+          e.stopPropagation();
+          isOpen = !isOpen;
+          panel.classList.toggle('open', isOpen);
+          trigger.setAttribute('aria-expanded', isOpen);
+        });
+        document.addEventListener('click', e => {
+          if (isOpen && !e.target.closest('.export-dropdown')) {
+            panel.classList.remove('open');
+            isOpen = false;
+            trigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && isOpen) {
+            panel.classList.remove('open');
+            isOpen = false;
+          }
+        });
+
+        // Resolve all CSS vars to computed values
+        function resolveStyles() {
+          const cs = getComputedStyle(document.documentElement);
+          const vars = [
+            '--bg-primary',
+            '--bg-secondary',
+            '--bg-tertiary',
+            '--text-primary',
+            '--text-secondary',
+            '--h1-color',
+            '--h2-color',
+            '--h3-color',
+            '--h4-color',
+            '--h5-color',
+            '--h6-color',
+            '--link-color',
+            '--bold-color',
+            '--italic-color',
+            '--code-bg',
+            '--code-text',
+            '--code-block-bg',
+            '--code-border',
+            '--border-color',
+            '--blockquote-border',
+            '--blockquote-bg',
+            '--table-header-bg',
+            '--table-border',
+            '--syntax-keyword',
+            '--syntax-string',
+            '--syntax-number',
+            '--syntax-function',
+            '--syntax-comment',
+            '--syntax-variable',
+            '--syntax-punctuation',
+            '--syntax-property',
+            '--font-picker-preview',
+            '--font-picker-size',
+            '--font-picker-code',
+          ];
+          let css = ':root{';
+          vars.forEach(v => {
+            const val = cs.getPropertyValue(v).trim();
+            if (val) css += v + ':' + val + ';';
+          });
+          css += '}';
+          return css;
+        }
+
+        // Get Google Fonts URL for font picker fonts
+        function getFontImports() {
+          const settings = JSON.parse(localStorage.getItem('fontSettings') || '{}');
+          const urls = [];
+          if (settings.previewBody && settings.previewBody !== 'System Default')
+            urls.push(settings.previewBody.replace(/ /g, '+'));
+          if (settings.editor) urls.push(settings.editor.replace(/ /g, '+'));
+          if (settings.codeBlock) urls.push(settings.codeBlock.replace(/ /g, '+'));
+          if (urls.length === 0) return '';
+          return (
+            '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=' +
+            urls.join('&family=') +
+            '&display=swap">'
+          );
+        }
+
+        // Build self-contained HTML
+        function buildExportHTML() {
+          let content = document.getElementById('markdown-preview').innerHTML;
+          content = content.replace(/<div class="toolbar">[\s\S]*?<\/div><\/div><\/div>/g, '');
+          const resolvedCSS = resolveStyles();
+          const fontImports = getFontImports();
+          const katexCSS = document.querySelector('link[href*="katex"]');
+          const katexLink = katexCSS ? '<link rel="stylesheet" href="' + katexCSS.href + '">' : '';
+          // Get all Prism token styles from the current page
+          let tokenCSS = '';
+          try {
+            for (const sheet of document.styleSheets) {
+              try {
+                for (const rule of sheet.cssRules) {
+                  if (rule.selectorText && rule.selectorText.includes('.token')) {
+                    tokenCSS += rule.cssText + ' ';
+                  }
+                }
+              } catch (e) {}
+            }
+          } catch (e) {}
+
+          // Get admonition styles
+          let admonCSS = '';
+          try {
+            for (const sheet of document.styleSheets) {
+              try {
+                for (const rule of sheet.cssRules) {
+                  if (
+                    rule.selectorText &&
+                    (rule.selectorText.includes('.admonition') ||
+                      rule.selectorText.includes('.mermaid'))
+                  ) {
+                    admonCSS += rule.cssText + ' ';
+                  }
+                }
+              } catch (e) {}
+            }
+          } catch (e) {}
+
+          return (
+            '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Markdown Export</title>' +
+            fontImports +
+            katexLink +
+            '<style>' +
+            resolvedCSS +
+            ' body{font-family:var(--font-picker-preview,sans-serif);font-size:var(--font-picker-size,16px);color:var(--text-primary);background:var(--bg-primary);max-width:800px;margin:0 auto;padding:40px 20px;line-height:1.7} h1{color:var(--h1-color);font-size:2.5em;border-bottom:2px solid var(--h1-color);padding-bottom:0.3em} h2{color:var(--h2-color);font-size:2em} h3{color:var(--h3-color);font-size:1.5em} h4{color:var(--h4-color)} h5{color:var(--h5-color)} h6{color:var(--h6-color)} a{color:var(--link-color)} strong{color:var(--bold-color);font-weight:700} em{color:var(--italic-color)} code{background:var(--code-bg);color:var(--code-text);padding:2px 6px;border-radius:4px;font-family:var(--font-picker-code,monospace);font-size:0.9em} pre{background:var(--code-block-bg);border:1px solid var(--code-border);border-radius:8px;padding:16px;overflow-x:auto;font-family:var(--font-picker-code,monospace);color:var(--syntax-variable,inherit)} pre code{background:transparent;padding:0;color:inherit} blockquote{border-left:4px solid var(--blockquote-border);background:var(--blockquote-bg);padding:12px 20px;margin:1.5em 0;font-style:italic} table{border-collapse:collapse;width:100%;margin:1.5em 0} th{background:var(--table-header-bg);padding:12px;border:1px solid var(--table-border);font-weight:600;text-align:left} td{padding:10px 12px;border:1px solid var(--table-border)} tr:nth-child(even){background:var(--bg-secondary)} img{max-width:100%;height:auto;border-radius:8px} hr{border:none;border-top:2px solid var(--border-color);margin:2em 0} ul,ol{padding-left:2em;margin:1em 0} li{margin:0.5em 0} ' +
+            tokenCSS +
+            ' ' +
+            admonCSS +
+            ' @media print{@page{size:A4;margin:2cm} pre{break-inside:avoid} .no-print{display:none!important}}</style></head><body>' +
+            content +
+            '<div style="margin-top:60px;padding:24px 0;border-top:2px solid var(--border-color,rgba(0,0,0,0.08));text-align:center;font-family:var(--font-picker-preview,system-ui,sans-serif)"><p style="font-size:11px;color:var(--text-secondary,#888);margin:0 0 6px;letter-spacing:0.02em">Exported from <strong style="color:var(--h1-color,#7aa2f7);font-weight:600">Markdown Viewer Pro</strong></p><p style="font-size:10px;color:var(--text-secondary,#999);margin:0 0 12px;opacity:0.7">Made with ♥ by <a href="https://prax-portfolio-one.vercel.app/" style="color:var(--h1-color,#7aa2f7);text-decoration:none;font-weight:500" target="_blank">Prax Lannister</a> · <a href="https://github.com/PrakharMNNIT" style="color:var(--text-secondary,#999);text-decoration:none" target="_blank">GitHub</a> · <a href="https://x.com/ByteByByteSrSDE" style="color:var(--text-secondary,#999);text-decoration:none" target="_blank">X (Twitter)</a></p><div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:8px"><a href="https://ko-fi.com/praxlannister" style="display:inline-flex;align-items:center;gap:4px;padding:5px 14px;background:#FF5E5B;color:#fff;border-radius:20px;font-size:10px;font-weight:600;text-decoration:none" target="_blank">☕ Ko-fi</a><a href="https://github.com/sponsors/PrakharMNNIT" style="display:inline-flex;align-items:center;gap:4px;padding:5px 14px;background:#db61a2;color:#fff;border-radius:20px;font-size:10px;font-weight:600;text-decoration:none" target="_blank">♥ GitHub Sponsors</a><a href="https://razorpay.me/@praxlannister007" style="display:inline-flex;align-items:center;gap:4px;padding:5px 14px;background:#FF9933;color:#fff;border-radius:20px;font-size:10px;font-weight:600;text-decoration:none" target="_blank">🇮🇳 UPI / Razorpay</a></div></div></body></html>'
+          );
+        }
+
+        // PDF Export: open Export Studio window
+        pdfBtn.addEventListener('click', () => {
+          panel.classList.remove('open');
+          isOpen = false;
+          const html = buildExportHTML();
+          const w = window.open('', '_blank');
+          if (!w) {
+            alert('Popup blocked — please allow popups for this site');
+            return;
+          }
+          w.document.write(html);
+          w.document.close();
+          // Add print toolbar (hidden in print)
+          const toolbar = w.document.createElement('div');
+          toolbar.className = 'no-print';
+          toolbar.style.cssText =
+            'position:fixed;top:0;left:0;right:0;padding:12px 20px;background:#1a1b26;color:#c0caf5;display:flex;align-items:center;gap:12px;z-index:9999;font-family:system-ui;font-size:13px;box-shadow:0 4px 12px rgba(0,0,0,0.3)';
+          toolbar.innerHTML =
+            '<strong style="margin-right:auto">Export Studio</strong><select id="es-size" style="padding:6px 10px;border-radius:6px;border:1px solid #333;background:#24283b;color:#c0caf5"><option value="A4">A4</option><option value="Letter">Letter</option><option value="Legal">Legal</option></select><select id="es-orient" style="padding:6px 10px;border-radius:6px;border:1px solid #333;background:#24283b;color:#c0caf5"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select><select id="es-margin" style="padding:6px 10px;border-radius:6px;border:1px solid #333;background:#24283b;color:#c0caf5"><option value="2cm">Normal</option><option value="1cm">Narrow</option><option value="3cm">Wide</option></select><button id="es-print" style="padding:8px 20px;border-radius:8px;border:none;background:#7aa2f7;color:#fff;font-weight:600;cursor:pointer">Save as PDF</button>';
+          w.document.body.insertBefore(toolbar, w.document.body.firstChild);
+          w.document.body.style.paddingTop = '60px';
+          // Wire controls
+          const updatePage = () => {
+            const size = w.document.getElementById('es-size').value;
+            const orient = w.document.getElementById('es-orient').value;
+            const margin = w.document.getElementById('es-margin').value;
+            let style = w.document.getElementById('es-page-style');
+            if (!style) {
+              style = w.document.createElement('style');
+              style.id = 'es-page-style';
+              w.document.head.appendChild(style);
+            }
+            style.textContent = '@page{size:' + size + ' ' + orient + ';margin:' + margin + '}';
           };
-          pre.appendChild(btn);
+          setTimeout(() => {
+            w.document.getElementById('es-size').addEventListener('change', updatePage);
+            w.document.getElementById('es-orient').addEventListener('change', updatePage);
+            w.document.getElementById('es-margin').addEventListener('change', updatePage);
+            w.document.getElementById('es-print').addEventListener('click', () => w.print());
+            updatePage();
+          }, 100);
         });
-        injecting = false;
-      }
 
-      // Debounced observer — avoid infinite loops
-      let timer = null;
-      const observer = new MutationObserver(function() {
-        clearTimeout(timer);
-        timer = setTimeout(injectButtons, 200);
-      });
-      const target = document.getElementById('markdown-preview');
-      if (target) observer.observe(target, { childList: true, subtree: false });
-      // Initial + delayed
-      setTimeout(injectButtons, 500);
-      setTimeout(injectButtons, 2000);
-    })();
+        // HTML Export: download file
+        htmlBtn.addEventListener('click', () => {
+          panel.classList.remove('open');
+          isOpen = false;
+          const html = buildExportHTML();
+          const blob = new Blob([html], { type: 'text/html' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'markdown-export.html';
+          a.click();
+          URL.revokeObjectURL(url);
+        });
 
-    // Export Dropdown + Export Studio Controller
-    (function initExportStudio() {
-      const trigger = document.getElementById('export-trigger');
-      const panel = document.getElementById('export-panel');
-      const pdfBtn = document.getElementById('export-studio-pdf-btn');
-      const htmlBtn = document.getElementById('export-studio-html-btn');
-      const copyBtn = document.getElementById('export-copy-btn');
-      let isOpen = false;
+        // Copy HTML
+        copyBtn.addEventListener('click', () => {
+          panel.classList.remove('open');
+          isOpen = false;
+          const content = document.getElementById('markdown-preview').innerHTML;
+          navigator.clipboard.writeText(content).then(() => {
+            copyBtn.querySelector('.export-dropdown__opt-title').textContent = 'Copied!';
+            setTimeout(() => {
+              copyBtn.querySelector('.export-dropdown__opt-title').textContent = 'Copy HTML';
+            }, 2000);
+          });
+        });
+      })();
 
-      // Dropdown toggle
-      trigger.addEventListener('click', e => {
-        e.stopPropagation();
-        isOpen = !isOpen;
-        panel.classList.toggle('open', isOpen);
-        trigger.setAttribute('aria-expanded', isOpen);
-      });
-      document.addEventListener('click', e => { if (isOpen && !e.target.closest('.export-dropdown')) { panel.classList.remove('open'); isOpen = false; trigger.setAttribute('aria-expanded','false'); }});
-      document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen) { panel.classList.remove('open'); isOpen = false; }});
-
-      // Resolve all CSS vars to computed values
-      function resolveStyles() {
-        const cs = getComputedStyle(document.documentElement);
-        const vars = ['--bg-primary','--bg-secondary','--bg-tertiary','--text-primary','--text-secondary','--h1-color','--h2-color','--h3-color','--h4-color','--h5-color','--h6-color','--link-color','--bold-color','--italic-color','--code-bg','--code-text','--code-block-bg','--code-border','--border-color','--blockquote-border','--blockquote-bg','--table-header-bg','--table-border','--syntax-keyword','--syntax-string','--syntax-number','--syntax-function','--syntax-comment','--syntax-variable','--syntax-punctuation','--syntax-property','--font-picker-preview','--font-picker-size','--font-picker-code'];
-        let css = ':root{';
-        vars.forEach(v => { const val = cs.getPropertyValue(v).trim(); if (val) css += v+':'+val+';'; });
-        css += '}';
-        return css;
-      }
-
-      // Get Google Fonts URL for font picker fonts
-      function getFontImports() {
-        const settings = JSON.parse(localStorage.getItem('fontSettings') || '{}');
-        const urls = [];
-        if (settings.previewBody && settings.previewBody !== 'System Default') urls.push(settings.previewBody.replace(/ /g,'+'));
-        if (settings.editor) urls.push(settings.editor.replace(/ /g,'+'));
-        if (settings.codeBlock) urls.push(settings.codeBlock.replace(/ /g,'+'));
-        if (urls.length === 0) return '';
-        return '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=' + urls.join('&family=') + '&display=swap">';
-      }
-
-      // Build self-contained HTML
-      function buildExportHTML() {
-        let content = document.getElementById('markdown-preview').innerHTML; content = content.replace(/<div class="toolbar">[\s\S]*?<\/div><\/div><\/div>/g, '');
-        const resolvedCSS = resolveStyles();
-        const fontImports = getFontImports();
-        const katexCSS = document.querySelector('link[href*="katex"]');
-        const katexLink = katexCSS ? '<link rel="stylesheet" href="' + katexCSS.href + '">' : '';
-        // Get all Prism token styles from the current page
-        let tokenCSS = '';
-        try {
-          for (const sheet of document.styleSheets) {
-            try {
-              for (const rule of sheet.cssRules) {
-                if (rule.selectorText && rule.selectorText.includes('.token')) {
-                  tokenCSS += rule.cssText + ' ';
-                }
-              }
-            } catch(e) {}
-          }
-        } catch(e) {}
-
-        // Get admonition styles
-        let admonCSS = '';
-        try {
-          for (const sheet of document.styleSheets) {
-            try {
-              for (const rule of sheet.cssRules) {
-                if (rule.selectorText && (rule.selectorText.includes('.admonition') || rule.selectorText.includes('.mermaid'))) {
-                  admonCSS += rule.cssText + ' ';
-                }
-              }
-            } catch(e) {}
-          }
-        } catch(e) {}
-
-        return '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Markdown Export</title>' + fontImports + katexLink + '<style>' + resolvedCSS + ' body{font-family:var(--font-picker-preview,sans-serif);font-size:var(--font-picker-size,16px);color:var(--text-primary);background:var(--bg-primary);max-width:800px;margin:0 auto;padding:40px 20px;line-height:1.7} h1{color:var(--h1-color);font-size:2.5em;border-bottom:2px solid var(--h1-color);padding-bottom:0.3em} h2{color:var(--h2-color);font-size:2em} h3{color:var(--h3-color);font-size:1.5em} h4{color:var(--h4-color)} h5{color:var(--h5-color)} h6{color:var(--h6-color)} a{color:var(--link-color)} strong{color:var(--bold-color);font-weight:700} em{color:var(--italic-color)} code{background:var(--code-bg);color:var(--code-text);padding:2px 6px;border-radius:4px;font-family:var(--font-picker-code,monospace);font-size:0.9em} pre{background:var(--code-block-bg);border:1px solid var(--code-border);border-radius:8px;padding:16px;overflow-x:auto;font-family:var(--font-picker-code,monospace);color:var(--syntax-variable,inherit)} pre code{background:transparent;padding:0;color:inherit} blockquote{border-left:4px solid var(--blockquote-border);background:var(--blockquote-bg);padding:12px 20px;margin:1.5em 0;font-style:italic} table{border-collapse:collapse;width:100%;margin:1.5em 0} th{background:var(--table-header-bg);padding:12px;border:1px solid var(--table-border);font-weight:600;text-align:left} td{padding:10px 12px;border:1px solid var(--table-border)} tr:nth-child(even){background:var(--bg-secondary)} img{max-width:100%;height:auto;border-radius:8px} hr{border:none;border-top:2px solid var(--border-color);margin:2em 0} ul,ol{padding-left:2em;margin:1em 0} li{margin:0.5em 0} ' + tokenCSS + ' ' + admonCSS + ' @media print{@page{size:A4;margin:2cm} pre{break-inside:avoid} .no-print{display:none!important}}</style></head><body>' + content + '<div style="margin-top:60px;padding:24px 0;border-top:2px solid var(--border-color,rgba(0,0,0,0.08));text-align:center;font-family:var(--font-picker-preview,system-ui,sans-serif)"><p style="font-size:11px;color:var(--text-secondary,#888);margin:0 0 6px;letter-spacing:0.02em">Exported from <strong style="color:var(--h1-color,#7aa2f7);font-weight:600">Markdown Viewer Pro</strong></p><p style="font-size:10px;color:var(--text-secondary,#999);margin:0 0 12px;opacity:0.7">Made with ♥ by <a href="https://prax-portfolio-one.vercel.app/" style="color:var(--h1-color,#7aa2f7);text-decoration:none;font-weight:500" target="_blank">Prax Lannister</a> · <a href="https://github.com/PrakharMNNIT" style="color:var(--text-secondary,#999);text-decoration:none" target="_blank">GitHub</a> · <a href="https://x.com/ByteByByteSrSDE" style="color:var(--text-secondary,#999);text-decoration:none" target="_blank">X (Twitter)</a></p><div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:8px"><a href="https://ko-fi.com/praxlannister" style="display:inline-flex;align-items:center;gap:4px;padding:5px 14px;background:#FF5E5B;color:#fff;border-radius:20px;font-size:10px;font-weight:600;text-decoration:none" target="_blank">☕ Ko-fi</a><a href="https://github.com/sponsors/PrakharMNNIT" style="display:inline-flex;align-items:center;gap:4px;padding:5px 14px;background:#db61a2;color:#fff;border-radius:20px;font-size:10px;font-weight:600;text-decoration:none" target="_blank">♥ GitHub Sponsors</a><a href="https://razorpay.me/@praxlannister007" style="display:inline-flex;align-items:center;gap:4px;padding:5px 14px;background:#FF9933;color:#fff;border-radius:20px;font-size:10px;font-weight:600;text-decoration:none" target="_blank">🇮🇳 UPI / Razorpay</a></div></div></body></html>';
-      }
-
-      // PDF Export: open Export Studio window
-      pdfBtn.addEventListener('click', () => {
-        panel.classList.remove('open'); isOpen = false;
-        const html = buildExportHTML();
-        const w = window.open('', '_blank');
-        if (!w) { alert('Popup blocked — please allow popups for this site'); return; }
-        w.document.write(html);
-        w.document.close();
-        // Add print toolbar (hidden in print)
-        const toolbar = w.document.createElement('div');
-        toolbar.className = 'no-print';
-        toolbar.style.cssText = 'position:fixed;top:0;left:0;right:0;padding:12px 20px;background:#1a1b26;color:#c0caf5;display:flex;align-items:center;gap:12px;z-index:9999;font-family:system-ui;font-size:13px;box-shadow:0 4px 12px rgba(0,0,0,0.3)';
-        toolbar.innerHTML = '<strong style="margin-right:auto">Export Studio</strong><select id="es-size" style="padding:6px 10px;border-radius:6px;border:1px solid #333;background:#24283b;color:#c0caf5"><option value="A4">A4</option><option value="Letter">Letter</option><option value="Legal">Legal</option></select><select id="es-orient" style="padding:6px 10px;border-radius:6px;border:1px solid #333;background:#24283b;color:#c0caf5"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select><select id="es-margin" style="padding:6px 10px;border-radius:6px;border:1px solid #333;background:#24283b;color:#c0caf5"><option value="2cm">Normal</option><option value="1cm">Narrow</option><option value="3cm">Wide</option></select><button id="es-print" style="padding:8px 20px;border-radius:8px;border:none;background:#7aa2f7;color:#fff;font-weight:600;cursor:pointer">Save as PDF</button>';
-        w.document.body.insertBefore(toolbar, w.document.body.firstChild);
-        w.document.body.style.paddingTop = '60px';
-        // Wire controls
-        const updatePage = () => {
-          const size = w.document.getElementById('es-size').value;
-          const orient = w.document.getElementById('es-orient').value;
-          const margin = w.document.getElementById('es-margin').value;
-          let style = w.document.getElementById('es-page-style');
-          if (!style) { style = w.document.createElement('style'); style.id = 'es-page-style'; w.document.head.appendChild(style); }
-          style.textContent = '@page{size:'+size+' '+orient+';margin:'+margin+'}';
+      // Font Picker Controller
+      (function initFontPicker() {
+        const FONTS = {
+          sans: [
+            { name: 'System Default', family: 'inherit', url: null },
+            { name: 'Inter', family: "'Inter',sans-serif", url: 'Inter:wght@300;400;500;600;700' },
+            {
+              name: 'IBM Plex Sans',
+              family: "'IBM Plex Sans',sans-serif",
+              url: 'IBM+Plex+Sans:wght@300;400;500;600;700',
+            },
+            { name: 'DM Sans', family: "'DM Sans',sans-serif", url: 'DM+Sans:wght@400;500;700' },
+            {
+              name: 'Figtree',
+              family: "'Figtree',sans-serif",
+              url: 'Figtree:wght@300;400;500;600;700',
+            },
+            {
+              name: 'Noto Sans',
+              family: "'Noto Sans',sans-serif",
+              url: 'Noto+Sans:wght@300;400;500;700',
+            },
+          ],
+          serif: [
+            {
+              name: 'Merriweather',
+              family: "'Merriweather',serif",
+              url: 'Merriweather:wght@300;400;700',
+            },
+            { name: 'Lora', family: "'Lora',serif", url: 'Lora:wght@400;500;600;700' },
+            {
+              name: 'Crimson Text',
+              family: "'Crimson Text',serif",
+              url: 'Crimson+Text:wght@400;600;700',
+            },
+            {
+              name: 'Source Serif 4',
+              family: "'Source Serif 4',serif",
+              url: 'Source+Serif+4:wght@300;400;600;700',
+            },
+            { name: 'Literata', family: "'Literata',serif", url: 'Literata:wght@300;400;500;700' },
+          ],
+          mono: [
+            {
+              name: 'JetBrains Mono',
+              family: "'JetBrains Mono',monospace",
+              url: 'JetBrains+Mono:wght@400;500;600;700',
+            },
+            {
+              name: 'Fira Code',
+              family: "'Fira Code',monospace",
+              url: 'Fira+Code:wght@400;500;600;700',
+            },
+            {
+              name: 'Source Code Pro',
+              family: "'Source Code Pro',monospace",
+              url: 'Source+Code+Pro:wght@400;500;600;700',
+            },
+            {
+              name: 'IBM Plex Mono',
+              family: "'IBM Plex Mono',monospace",
+              url: 'IBM+Plex+Mono:wght@400;500;600;700',
+            },
+            {
+              name: 'Space Mono',
+              family: "'Space Mono',monospace",
+              url: 'Space+Mono:wght@400;700',
+            },
+          ],
+          quirky: [
+            {
+              name: 'Outfit',
+              family: "'Outfit',sans-serif",
+              url: 'Outfit:wght@300;400;500;600;700',
+            },
+            {
+              name: 'Space Grotesk',
+              family: "'Space Grotesk',sans-serif",
+              url: 'Space+Grotesk:wght@400;500;600;700',
+            },
+            {
+              name: 'Recursive',
+              family: "'Recursive',sans-serif",
+              url: 'Recursive:wght@400;500;700',
+            },
+            { name: 'Comic Neue', family: "'Comic Neue',cursive", url: 'Comic+Neue:wght@400;700' },
+            { name: 'Caveat', family: "'Caveat',cursive", url: 'Caveat:wght@400;500;600;700' },
+            {
+              name: 'Architects Daughter',
+              family: "'Architects Daughter',cursive",
+              url: 'Architects+Daughter',
+            },
+          ],
         };
-        setTimeout(() => {
-          w.document.getElementById('es-size').addEventListener('change', updatePage);
-          w.document.getElementById('es-orient').addEventListener('change', updatePage);
-          w.document.getElementById('es-margin').addEventListener('change', updatePage);
-          w.document.getElementById('es-print').addEventListener('click', () => w.print());
-          updatePage();
-        }, 100);
-      });
-
-      // HTML Export: download file
-      htmlBtn.addEventListener('click', () => {
-        panel.classList.remove('open'); isOpen = false;
-        const html = buildExportHTML();
-        const blob = new Blob([html], {type:'text/html'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url; a.download = 'markdown-export.html'; a.click();
-        URL.revokeObjectURL(url);
-      });
-
-      // Copy HTML
-      copyBtn.addEventListener('click', () => {
-        panel.classList.remove('open'); isOpen = false;
-        const content = document.getElementById('markdown-preview').innerHTML;
-        navigator.clipboard.writeText(content).then(() => {
-          copyBtn.querySelector('.export-dropdown__opt-title').textContent = 'Copied!';
-          setTimeout(() => { copyBtn.querySelector('.export-dropdown__opt-title').textContent = 'Copy HTML'; }, 2000);
+        const loadedFonts = new Set(),
+          root = document.documentElement,
+          trigger = document.getElementById('font-picker-trigger'),
+          panel = document.getElementById('font-picker-panel');
+        let isOpen = false,
+          settings = JSON.parse(localStorage.getItem('fontSettings') || '{}');
+        function loadFont(f) {
+          if (!f.url || loadedFonts.has(f.name)) return;
+          const l = document.createElement('link');
+          l.rel = 'stylesheet';
+          l.href = 'https://fonts.googleapis.com/css2?family=' + f.url + '&display=swap';
+          document.head.appendChild(l);
+          loadedFonts.add(f.name);
+        }
+        function applySettings() {
+          const all = [...FONTS.sans, ...FONTS.serif, ...FONTS.quirky];
+          if (settings.previewBody && settings.previewBody !== 'System Default') {
+            const f = all.find(x => x.name === settings.previewBody);
+            if (f) {
+              loadFont(f);
+              root.style.setProperty('--font-picker-preview', f.family);
+            }
+          } else root.style.removeProperty('--font-picker-preview');
+          if (settings.editor) {
+            const f = FONTS.mono.find(x => x.name === settings.editor);
+            if (f) {
+              loadFont(f);
+              root.style.setProperty('--font-picker-editor', f.family);
+            }
+          } else root.style.removeProperty('--font-picker-editor');
+          if (settings.codeBlock) {
+            const f = FONTS.mono.find(x => x.name === settings.codeBlock);
+            if (f) {
+              loadFont(f);
+              root.style.setProperty('--font-picker-code', f.family);
+            }
+          } else root.style.removeProperty('--font-picker-code');
+          if (settings.baseSize)
+            root.style.setProperty('--font-picker-size', settings.baseSize + 'px');
+          else root.style.removeProperty('--font-picker-size');
+          localStorage.setItem('fontSettings', JSON.stringify(settings));
+        }
+        function buildPanel() {
+          const pf = [...FONTS.sans, ...FONTS.serif, ...FONTS.quirky];
+          let h =
+            '<div class="font-picker__section-label">Preview Font</div><div class="font-picker__grid">';
+          pf.forEach(f => {
+            const s = settings.previewBody === f.name ? ' selected' : '';
+            h +=
+              '<button class="font-picker__card' +
+              s +
+              '" data-font="' +
+              f.name +
+              '" data-url="' +
+              (f.url || '') +
+              '" style="font-family:' +
+              f.family +
+              '"><div class="font-picker__card-name">' +
+              f.name +
+              '</div><div class="font-picker__card-preview" style="font-family:' +
+              f.family +
+              '">The quick fox</div></button>';
+          });
+          h += '</div>';
+          h +=
+            '<div class="font-picker__section-label">Editor Font</div><select class="font-picker__select" id="fp-editor-select">';
+          FONTS.mono.forEach(f => {
+            h +=
+              '<option value="' +
+              f.name +
+              '"' +
+              (settings.editor === f.name ? ' selected' : '') +
+              '>' +
+              f.name +
+              '</option>';
+          });
+          h += '</select>';
+          h +=
+            '<div class="font-picker__section-label">Code Block Font</div><select class="font-picker__select" id="fp-code-select">';
+          FONTS.mono.forEach(f => {
+            h +=
+              '<option value="' +
+              f.name +
+              '"' +
+              (settings.codeBlock === f.name ? ' selected' : '') +
+              '>' +
+              f.name +
+              '</option>';
+          });
+          h += '</select>';
+          h +=
+            '<div class="font-picker__section-label">Base Size</div><div class="font-picker__size-row"><button class="font-picker__size-btn" id="fp-size-down">-</button><span class="font-picker__size-value" id="fp-size-val">' +
+            (settings.baseSize || 16) +
+            'px</span><button class="font-picker__size-btn" id="fp-size-up">+</button></div>';
+          h += '<button class="font-picker__reset" id="fp-reset">Reset to defaults</button>';
+          panel.innerHTML = h;
+          panel.querySelectorAll('.font-picker__card').forEach(c => {
+            c.addEventListener('mouseenter', () => {
+              if (c.dataset.url) loadFont({ name: c.dataset.font, url: c.dataset.url });
+            });
+            c.addEventListener('click', () => {
+              panel
+                .querySelectorAll('.font-picker__card')
+                .forEach(x => x.classList.remove('selected'));
+              c.classList.add('selected');
+              settings.previewBody = c.dataset.font;
+              applySettings();
+            });
+          });
+          document.getElementById('fp-editor-select').addEventListener('change', e => {
+            settings.editor = e.target.value;
+            applySettings();
+          });
+          document.getElementById('fp-code-select').addEventListener('change', e => {
+            settings.codeBlock = e.target.value;
+            applySettings();
+          });
+          document.getElementById('fp-size-down').addEventListener('click', () => {
+            settings.baseSize = Math.max(12, (settings.baseSize || 16) - 1);
+            document.getElementById('fp-size-val').textContent = settings.baseSize + 'px';
+            applySettings();
+          });
+          document.getElementById('fp-size-up').addEventListener('click', () => {
+            settings.baseSize = Math.min(24, (settings.baseSize || 16) + 1);
+            document.getElementById('fp-size-val').textContent = settings.baseSize + 'px';
+            applySettings();
+          });
+          document.getElementById('fp-reset').addEventListener('click', () => {
+            settings = {};
+            localStorage.removeItem('fontSettings');
+            [
+              '--font-picker-preview',
+              '--font-picker-editor',
+              '--font-picker-code',
+              '--font-picker-size',
+            ].forEach(v => root.style.removeProperty(v));
+            buildPanel();
+          });
+        }
+        trigger.addEventListener('click', e => {
+          e.stopPropagation();
+          if (!isOpen) {
+            buildPanel();
+            panel.classList.add('open');
+            isOpen = true;
+          } else {
+            panel.classList.remove('open');
+            isOpen = false;
+          }
         });
-      });
-    })();
+        document.addEventListener('click', e => {
+          if (isOpen && !e.target.closest('.font-picker')) {
+            panel.classList.remove('open');
+            isOpen = false;
+          }
+        });
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && isOpen) {
+            panel.classList.remove('open');
+            isOpen = false;
+          }
+        });
+        applySettings();
+      })();
 
-    // Font Picker Controller
-    (function initFontPicker() {
-      const FONTS = {
-        sans: [
-          {name:'System Default',family:'inherit',url:null},
-          {name:'Inter',family:"'Inter',sans-serif",url:'Inter:wght@300;400;500;600;700'},
-          {name:'IBM Plex Sans',family:"'IBM Plex Sans',sans-serif",url:'IBM+Plex+Sans:wght@300;400;500;600;700'},
-          {name:'DM Sans',family:"'DM Sans',sans-serif",url:'DM+Sans:wght@400;500;700'},
-          {name:'Figtree',family:"'Figtree',sans-serif",url:'Figtree:wght@300;400;500;600;700'},
-          {name:'Noto Sans',family:"'Noto Sans',sans-serif",url:'Noto+Sans:wght@300;400;500;700'},
-        ],
-        serif: [
-          {name:'Merriweather',family:"'Merriweather',serif",url:'Merriweather:wght@300;400;700'},
-          {name:'Lora',family:"'Lora',serif",url:'Lora:wght@400;500;600;700'},
-          {name:'Crimson Text',family:"'Crimson Text',serif",url:'Crimson+Text:wght@400;600;700'},
-          {name:'Source Serif 4',family:"'Source Serif 4',serif",url:'Source+Serif+4:wght@300;400;600;700'},
-          {name:'Literata',family:"'Literata',serif",url:'Literata:wght@300;400;500;700'},
-        ],
-        mono: [
-          {name:'JetBrains Mono',family:"'JetBrains Mono',monospace",url:'JetBrains+Mono:wght@400;500;600;700'},
-          {name:'Fira Code',family:"'Fira Code',monospace",url:'Fira+Code:wght@400;500;600;700'},
-          {name:'Source Code Pro',family:"'Source Code Pro',monospace",url:'Source+Code+Pro:wght@400;500;600;700'},
-          {name:'IBM Plex Mono',family:"'IBM Plex Mono',monospace",url:'IBM+Plex+Mono:wght@400;500;600;700'},
-          {name:'Space Mono',family:"'Space Mono',monospace",url:'Space+Mono:wght@400;700'},
-        ],
-        quirky: [
-          {name:'Outfit',family:"'Outfit',sans-serif",url:'Outfit:wght@300;400;500;600;700'},
-          {name:'Space Grotesk',family:"'Space Grotesk',sans-serif",url:'Space+Grotesk:wght@400;500;600;700'},
-          {name:'Recursive',family:"'Recursive',sans-serif",url:'Recursive:wght@400;500;700'},
-          {name:'Comic Neue',family:"'Comic Neue',cursive",url:'Comic+Neue:wght@400;700'},
-          {name:'Caveat',family:"'Caveat',cursive",url:'Caveat:wght@400;500;600;700'},
-          {name:'Architects Daughter',family:"'Architects Daughter',cursive",url:'Architects+Daughter'},
-        ]
-      };
-      const loadedFonts=new Set(),root=document.documentElement,trigger=document.getElementById('font-picker-trigger'),panel=document.getElementById('font-picker-panel');
-      let isOpen=false,settings=JSON.parse(localStorage.getItem('fontSettings')||'{}');
-      function loadFont(f){if(!f.url||loadedFonts.has(f.name))return;const l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+f.url+'&display=swap';document.head.appendChild(l);loadedFonts.add(f.name);}
-      function applySettings(){const all=[...FONTS.sans,...FONTS.serif,...FONTS.quirky];if(settings.previewBody&&settings.previewBody!=='System Default'){const f=all.find(x=>x.name===settings.previewBody);if(f){loadFont(f);root.style.setProperty('--font-picker-preview',f.family);}}else root.style.removeProperty('--font-picker-preview');if(settings.editor){const f=FONTS.mono.find(x=>x.name===settings.editor);if(f){loadFont(f);root.style.setProperty('--font-picker-editor',f.family);}}else root.style.removeProperty('--font-picker-editor');if(settings.codeBlock){const f=FONTS.mono.find(x=>x.name===settings.codeBlock);if(f){loadFont(f);root.style.setProperty('--font-picker-code',f.family);}}else root.style.removeProperty('--font-picker-code');if(settings.baseSize)root.style.setProperty('--font-picker-size',settings.baseSize+'px');else root.style.removeProperty('--font-picker-size');localStorage.setItem('fontSettings',JSON.stringify(settings));}
-      function buildPanel(){const pf=[...FONTS.sans,...FONTS.serif,...FONTS.quirky];let h='<div class="font-picker__section-label">Preview Font</div><div class="font-picker__grid">';pf.forEach(f=>{const s=settings.previewBody===f.name?' selected':'';h+='<button class="font-picker__card'+s+'" data-font="'+f.name+'" data-url="'+(f.url||'')+'" style="font-family:'+f.family+'"><div class="font-picker__card-name">'+f.name+'</div><div class="font-picker__card-preview" style="font-family:'+f.family+'">The quick fox</div></button>';});h+='</div>';h+='<div class="font-picker__section-label">Editor Font</div><select class="font-picker__select" id="fp-editor-select">';FONTS.mono.forEach(f=>{h+='<option value="'+f.name+'"'+(settings.editor===f.name?' selected':'')+'>'+f.name+'</option>';});h+='</select>';h+='<div class="font-picker__section-label">Code Block Font</div><select class="font-picker__select" id="fp-code-select">';FONTS.mono.forEach(f=>{h+='<option value="'+f.name+'"'+(settings.codeBlock===f.name?' selected':'')+'>'+f.name+'</option>';});h+='</select>';h+='<div class="font-picker__section-label">Base Size</div><div class="font-picker__size-row"><button class="font-picker__size-btn" id="fp-size-down">-</button><span class="font-picker__size-value" id="fp-size-val">'+(settings.baseSize||16)+'px</span><button class="font-picker__size-btn" id="fp-size-up">+</button></div>';h+='<button class="font-picker__reset" id="fp-reset">Reset to defaults</button>';panel.innerHTML=h;panel.querySelectorAll('.font-picker__card').forEach(c=>{c.addEventListener('mouseenter',()=>{if(c.dataset.url)loadFont({name:c.dataset.font,url:c.dataset.url});});c.addEventListener('click',()=>{panel.querySelectorAll('.font-picker__card').forEach(x=>x.classList.remove('selected'));c.classList.add('selected');settings.previewBody=c.dataset.font;applySettings();});});document.getElementById('fp-editor-select').addEventListener('change',e=>{settings.editor=e.target.value;applySettings();});document.getElementById('fp-code-select').addEventListener('change',e=>{settings.codeBlock=e.target.value;applySettings();});document.getElementById('fp-size-down').addEventListener('click',()=>{settings.baseSize=Math.max(12,(settings.baseSize||16)-1);document.getElementById('fp-size-val').textContent=settings.baseSize+'px';applySettings();});document.getElementById('fp-size-up').addEventListener('click',()=>{settings.baseSize=Math.min(24,(settings.baseSize||16)+1);document.getElementById('fp-size-val').textContent=settings.baseSize+'px';applySettings();});document.getElementById('fp-reset').addEventListener('click',()=>{settings={};localStorage.removeItem('fontSettings');['--font-picker-preview','--font-picker-editor','--font-picker-code','--font-picker-size'].forEach(v=>root.style.removeProperty(v));buildPanel();});}
-      trigger.addEventListener('click',e=>{e.stopPropagation();if(!isOpen){buildPanel();panel.classList.add('open');isOpen=true;}else{panel.classList.remove('open');isOpen=false;}});
-      document.addEventListener('click',e=>{if(isOpen&&!e.target.closest('.font-picker')){panel.classList.remove('open');isOpen=false;}});
-      document.addEventListener('keydown',e=>{if(e.key==='Escape'&&isOpen){panel.classList.remove('open');isOpen=false;}});
-      applySettings();
-    })();
-
-
-    // UPI Popover Controller
-    (function initUPIPopover() {
-      const btn = document.getElementById('upi-popover-btn');
-      const pop = document.getElementById('upi-popover');
-      const copyBtn = document.getElementById('upi-pop-copy');
-      if (!btn || !pop) return;
-      let isOpen = false;
-      btn.addEventListener('mouseenter', () => {
-        pop.style.display = 'block'; isOpen = true;
-      });
-      document.getElementById('upi-popover-wrap').addEventListener('mouseleave', () => {
-        pop.style.display = 'none'; isOpen = false;
-      });
-      document.addEventListener('click', (e) => {
-        if (isOpen && !e.target.closest('#upi-popover-wrap')) {
+      // UPI Popover Controller
+      (function initUPIPopover() {
+        const btn = document.getElementById('upi-popover-btn');
+        const pop = document.getElementById('upi-popover');
+        const copyBtn = document.getElementById('upi-pop-copy');
+        if (!btn || !pop) return;
+        let isOpen = false;
+        btn.addEventListener('mouseenter', () => {
+          pop.style.display = 'block';
+          isOpen = true;
+        });
+        document.getElementById('upi-popover-wrap').addEventListener('mouseleave', () => {
           pop.style.display = 'none';
           isOpen = false;
+        });
+        document.addEventListener('click', e => {
+          if (isOpen && !e.target.closest('#upi-popover-wrap')) {
+            pop.style.display = 'none';
+            isOpen = false;
+          }
+        });
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && isOpen) {
+            pop.style.display = 'none';
+            isOpen = false;
+          }
+        });
+        if (copyBtn) {
+          copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText('praxlannister@upi').then(() => {
+              copyBtn.textContent = 'Copied!';
+              copyBtn.style.background = '#22c55e';
+              copyBtn.style.color = '#fff';
+              copyBtn.style.borderColor = '#22c55e';
+              setTimeout(() => {
+                copyBtn.textContent = 'Copy';
+                copyBtn.style.background = '';
+                copyBtn.style.color = '';
+                copyBtn.style.borderColor = '';
+              }, 2000);
+            });
+          });
         }
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isOpen) { pop.style.display = 'none'; isOpen = false; }
-      });
-      if (copyBtn) {
-        copyBtn.addEventListener('click', () => {
-          navigator.clipboard.writeText('praxlannister@upi').then(() => {
-            copyBtn.textContent = 'Copied!';
-            copyBtn.style.background = '#22c55e';
-            copyBtn.style.color = '#fff';
-            copyBtn.style.borderColor = '#22c55e';
-            setTimeout(() => {
-              copyBtn.textContent = 'Copy';
-              copyBtn.style.background = '';
-              copyBtn.style.color = '';
-              copyBtn.style.borderColor = '';
-            }, 2000);
+      })();
+
+      // Footer: UPI toggle + Copy UPI ID
+      (function initFooter() {
+        const upiToggle = document.getElementById('upi-toggle-btn');
+        const upiPanel = document.getElementById('upi-panel');
+        const copyBtn = document.getElementById('copy-upi-btn');
+
+        if (upiToggle && upiPanel) {
+          upiToggle.addEventListener('click', () => {
+            upiPanel.classList.toggle('open');
+            upiToggle.textContent = upiPanel.classList.contains('open')
+              ? 'Hide UPI'
+              : 'In India? Use UPI';
           });
-        });
-      }
-    })();
+        }
 
-    // Footer: UPI toggle + Copy UPI ID
-    (function initFooter() {
-      const upiToggle = document.getElementById('upi-toggle-btn');
-      const upiPanel = document.getElementById('upi-panel');
-      const copyBtn = document.getElementById('copy-upi-btn');
-
-      if (upiToggle && upiPanel) {
-        upiToggle.addEventListener('click', () => {
-          upiPanel.classList.toggle('open');
-          upiToggle.textContent = upiPanel.classList.contains('open') ? 'Hide UPI' : 'In India? Use UPI';
-        });
-      }
-
-      if (copyBtn) {
-        copyBtn.addEventListener('click', () => {
-          navigator.clipboard.writeText('praxlannister@upi').then(() => {
-            copyBtn.textContent = 'Copied!';
-            copyBtn.classList.add('copied');
-            setTimeout(() => {
-              copyBtn.textContent = 'Copy';
-              copyBtn.classList.remove('copied');
-            }, 2000);
+        if (copyBtn) {
+          copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText('praxlannister@upi').then(() => {
+              copyBtn.textContent = 'Copied!';
+              copyBtn.classList.add('copied');
+              setTimeout(() => {
+                copyBtn.textContent = 'Copy';
+                copyBtn.classList.remove('copied');
+              }, 2000);
+            });
           });
-        });
-      }
-    })();
+        }
+      })();
     </script>
 
     <!-- Main Script -->

@@ -236,9 +236,7 @@ describe('FolderBrowserService', () => {
     });
 
     it('returns 0 for directories only', () => {
-      const items = [
-        { type: 'directory', name: 'empty', children: [] },
-      ];
+      const items = [{ type: 'directory', name: 'empty', children: [] }];
       expect(service.countFiles(items)).toBe(0);
     });
   });
@@ -255,9 +253,7 @@ describe('FolderBrowserService', () => {
             {
               type: 'directory',
               name: 'nested',
-              children: [
-                { type: 'file', name: 'deep.md' },
-              ],
+              children: [{ type: 'file', name: 'deep.md' }],
             },
           ],
         },
@@ -281,9 +277,7 @@ describe('FolderBrowserService', () => {
       {
         type: 'directory',
         name: 'docs',
-        children: [
-          { type: 'file', name: 'README-API.md' },
-        ],
+        children: [{ type: 'file', name: 'README-API.md' }],
       },
     ];
 
@@ -524,7 +518,7 @@ describe('FolderBrowserService', () => {
       const mockDirHandle = {
         name: 'test-project',
         values: vi.fn().mockReturnValue({
-          async *[Symbol.asyncIterator] () {
+          async *[Symbol.asyncIterator]() {
             yield mockFileEntry;
           },
         }),
@@ -543,12 +537,12 @@ describe('FolderBrowserService', () => {
 
   describe('scanDirectory()', () => {
     it('respects max depth limit', async () => {
-      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => { });
+      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
       const mockDirHandle = {
         name: 'deep-folder',
         values: vi.fn().mockReturnValue({
-          async *[Symbol.asyncIterator] () {
+          async *[Symbol.asyncIterator]() {
             // No entries
           },
         }),
@@ -564,14 +558,14 @@ describe('FolderBrowserService', () => {
     });
 
     it('respects max files limit', async () => {
-      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => { });
+      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
       service.fileCount = 1000; // Set to max
 
       const mockDirHandle = {
         name: 'folder',
         values: vi.fn().mockReturnValue({
-          async *[Symbol.asyncIterator] () {
+          async *[Symbol.asyncIterator]() {
             yield { kind: 'file', name: 'test.md' };
           },
         }),
@@ -589,7 +583,7 @@ describe('FolderBrowserService', () => {
       const mockDirHandle = {
         name: 'folder',
         values: vi.fn().mockReturnValue({
-          async *[Symbol.asyncIterator] () {
+          async *[Symbol.asyncIterator]() {
             yield { kind: 'file', name: '.hidden.md' };
             yield { kind: 'file', name: 'visible.md' };
           },
@@ -606,12 +600,12 @@ describe('FolderBrowserService', () => {
       const mockDirHandle = {
         name: 'project',
         values: vi.fn().mockReturnValue({
-          async *[Symbol.asyncIterator] () {
+          async *[Symbol.asyncIterator]() {
             yield {
               kind: 'directory',
               name: 'node_modules',
               values: vi.fn().mockReturnValue({
-                async *[Symbol.asyncIterator] () {
+                async *[Symbol.asyncIterator]() {
                   yield { kind: 'file', name: 'package.md' };
                 },
               }),
@@ -632,7 +626,7 @@ describe('FolderBrowserService', () => {
         kind: 'directory',
         name: 'docs',
         values: vi.fn().mockReturnValue({
-          async *[Symbol.asyncIterator] () {
+          async *[Symbol.asyncIterator]() {
             yield { kind: 'file', name: 'guide.md' };
           },
         }),
@@ -641,7 +635,7 @@ describe('FolderBrowserService', () => {
       const mockDirHandle = {
         name: 'project',
         values: vi.fn().mockReturnValue({
-          async *[Symbol.asyncIterator] () {
+          async *[Symbol.asyncIterator]() {
             yield mockSubDir;
             yield { kind: 'file', name: 'README.md' };
           },
@@ -659,7 +653,7 @@ describe('FolderBrowserService', () => {
     });
 
     it('handles scan errors gracefully', async () => {
-      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       const mockDirHandle = {
         name: 'broken',
@@ -680,14 +674,14 @@ describe('FolderBrowserService', () => {
       const mockDirHandle = {
         name: 'project',
         values: vi.fn().mockReturnValue({
-          async *[Symbol.asyncIterator] () {
+          async *[Symbol.asyncIterator]() {
             yield { kind: 'file', name: 'zebra.md' };
             yield { kind: 'file', name: 'alpha.md' };
             yield {
               kind: 'directory',
               name: 'beta',
               values: vi.fn().mockReturnValue({
-                async *[Symbol.asyncIterator] () {
+                async *[Symbol.asyncIterator]() {
                   yield { kind: 'file', name: 'nested.md' };
                 },
               }),
@@ -725,7 +719,7 @@ describe('FolderBrowserService', () => {
     });
 
     it('handles read errors', async () => {
-      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       const mockFileHandle = {
         getFile: vi.fn().mockRejectedValue(new Error('File locked')),
@@ -785,7 +779,9 @@ describe('FolderBrowserService', () => {
         name: 'test-dir',
         queryPermission: vi.fn().mockResolvedValue('granted'),
         getFileHandle: vi.fn().mockImplementation((name, options) => {
-          if (!options?.create) {throw notFoundError;}
+          if (!options?.create) {
+            throw notFoundError;
+          }
           return {
             createWritable: vi.fn().mockResolvedValue({
               write: vi.fn(),
@@ -813,7 +809,9 @@ describe('FolderBrowserService', () => {
         name: 'test',
         queryPermission: vi.fn().mockResolvedValue('granted'),
         getFileHandle: vi.fn().mockImplementation((name, options) => {
-          if (!options?.create) {throw notFoundError;}
+          if (!options?.create) {
+            throw notFoundError;
+          }
           return {
             createWritable: vi.fn().mockResolvedValue({
               write: vi.fn(),
@@ -832,7 +830,7 @@ describe('FolderBrowserService', () => {
     });
 
     it('handles unexpected errors during file check', async () => {
-      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       const unexpectedError = new Error('Unexpected');
       unexpectedError.name = 'UnexpectedError';
@@ -885,7 +883,7 @@ describe('FolderBrowserService', () => {
     it('handles picker errors', async () => {
       window.showDirectoryPicker = vi.fn();
 
-      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
       window.showSaveFilePicker = vi.fn().mockRejectedValue(new Error('Picker failed'));
 
       const result = await service.createFileWithPicker('test.md', '');
@@ -969,7 +967,7 @@ describe('FolderBrowserService', () => {
     });
 
     it('returns null on navigation error', async () => {
-      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       const rootDir = {
         name: 'root',
@@ -1037,7 +1035,7 @@ describe('FolderBrowserService', () => {
     });
 
     it('handles creation errors', async () => {
-      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       const mockDirHandle = {
         name: 'root',
@@ -1083,7 +1081,7 @@ describe('FolderBrowserService', () => {
         name: 'test-project',
         queryPermission: vi.fn().mockResolvedValue('granted'),
         values: vi.fn().mockReturnValue({
-          async *[Symbol.asyncIterator] () {
+          async *[Symbol.asyncIterator]() {
             yield mockFileEntry;
           },
         }),
@@ -1106,7 +1104,7 @@ describe('FolderBrowserService', () => {
         queryPermission: vi.fn().mockResolvedValue('prompt'),
         requestPermission: vi.fn().mockResolvedValue('granted'),
         values: vi.fn().mockReturnValue({
-          async *[Symbol.asyncIterator] () {
+          async *[Symbol.asyncIterator]() {
             yield mockFileEntry;
           },
         }),
@@ -1121,7 +1119,7 @@ describe('FolderBrowserService', () => {
     });
 
     it('handles refresh errors', async () => {
-      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       const mockDirHandle = {
         name: 'test',
@@ -1160,7 +1158,7 @@ describe('FolderBrowserService', () => {
     });
 
     it('handles write errors', async () => {
-      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       const mockFileHandle = {
         name: 'test.md',

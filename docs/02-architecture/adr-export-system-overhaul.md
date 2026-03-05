@@ -10,6 +10,7 @@
 ## Context
 
 The current PDF export uses `html2pdf.js` (which wraps html2canvas + jsPDF). It has multiple issues:
+
 - Crashes on CSS `color-mix()` — required a `pdf-export-mode` hack
 - Rasterizes DOM to canvas — losing text selectability and vector quality
 - Font picker fonts don't survive export (no font embedding)
@@ -32,37 +33,37 @@ The current PDF export uses `html2pdf.js` (which wraps html2canvas + jsPDF). It 
 
 ### What Changes
 
-| Removed | Added |
-|---------|-------|
-| `html2pdf.js` dependency (~150KB) | `print.css` (~50 lines) |
-| `PDFService.js` (410 lines) | Print preview function (~30 lines) |
-| PDF settings modal (HTML + CSS + JS) | Export dropdown component |
-| `pdf-export-mode` CSS hack | — |
-| Safari color sanitization | — |
+| Removed                              | Added                              |
+| ------------------------------------ | ---------------------------------- |
+| `html2pdf.js` dependency (~150KB)    | `print.css` (~50 lines)            |
+| `PDFService.js` (410 lines)          | Print preview function (~30 lines) |
+| PDF settings modal (HTML + CSS + JS) | Export dropdown component          |
+| `pdf-export-mode` CSS hack           | —                                  |
+| Safari color sanitization            | —                                  |
 
 ### Export Dropdown (replaces two buttons)
 
 ```
 [Export ▼]
 ├── PDF — Opens print-optimized view with Save as PDF
-├── HTML — Downloads standalone .html file  
+├── HTML — Downloads standalone .html file
 └── Copy HTML — Copies rendered HTML to clipboard
 ```
 
 ## Why This Is Better
 
-| Dimension | html2pdf.js (current) | Print CSS (proposed) |
-|-----------|----------------------|---------------------|
-| **Text quality** | Rasterized (blurry at zoom) | Vector (crisp at any zoom) |
-| **Text selectable** | No (it's an image) | Yes |
-| **Font picker fonts** | Not supported | Automatic (browser loads them) |
-| **Mermaid diagrams** | Fragile (canvas rendering) | Perfect (SVG → vector) |
-| **KaTeX math** | Fragile | Perfect (HTML/CSS) |
-| **Bundle size** | +150KB | 0KB (browser API) |
-| **Browser compat** | Needs hacks for Safari | Works natively everywhere |
-| **Page settings** | Custom modal (buggy) | Native print dialog (reliable) |
-| **Code complexity** | ~500 lines + hacks | ~80 lines total |
-| **Dark theme** | Exports dark (bad for print) | Forces light mode for print |
+| Dimension             | html2pdf.js (current)        | Print CSS (proposed)           |
+| --------------------- | ---------------------------- | ------------------------------ |
+| **Text quality**      | Rasterized (blurry at zoom)  | Vector (crisp at any zoom)     |
+| **Text selectable**   | No (it's an image)           | Yes                            |
+| **Font picker fonts** | Not supported                | Automatic (browser loads them) |
+| **Mermaid diagrams**  | Fragile (canvas rendering)   | Perfect (SVG → vector)         |
+| **KaTeX math**        | Fragile                      | Perfect (HTML/CSS)             |
+| **Bundle size**       | +150KB                       | 0KB (browser API)              |
+| **Browser compat**    | Needs hacks for Safari       | Works natively everywhere      |
+| **Page settings**     | Custom modal (buggy)         | Native print dialog (reliable) |
+| **Code complexity**   | ~500 lines + hacks           | ~80 lines total                |
+| **Dark theme**        | Exports dark (bad for print) | Forces light mode for print    |
 
 ## Trade-offs
 
@@ -96,24 +97,24 @@ The Export Studio is a new browser window with a toolbar + fully-resolved conten
 
 For EVERY export, we resolve ALL CSS variables to computed values:
 
-| What | How | Result |
-|------|-----|--------|
+| What             | How                                                             | Result                                      |
+| ---------------- | --------------------------------------------------------------- | ------------------------------------------- |
 | Font picker font | Read `--font-picker-preview` → computed `'Merriweather', serif` | `<link>` Google Font + inline `font-family` |
-| Font size | Read `--font-picker-size` → `18px` | Inline `font-size: 18px` |
-| Theme colors | Read all `--h1-color`, `--bg-primary` etc → hex | Inline CSS block |
-| Syntax theme | Resolve `--syntax-*` vars → values | Inline `<style>` |
-| Code font | Read `--font-picker-code` → computed | Inline on `pre, code` |
+| Font size        | Read `--font-picker-size` → `18px`                              | Inline `font-size: 18px`                    |
+| Theme colors     | Read all `--h1-color`, `--bg-primary` etc → hex                 | Inline CSS block                            |
+| Syntax theme     | Resolve `--syntax-*` vars → values                              | Inline `<style>`                            |
+| Code font        | Read `--font-picker-code` → computed                            | Inline on `pre, code`                       |
 
 The exported content is **self-contained** — no CSS variables, no external deps except Google Fonts CDN.
 
 ### PDF Page Controls (via dynamic `@page` CSS)
 
-| Control | Options | Injected CSS |
-|---------|---------|-------------|
-| Page Size | A4, Letter, Legal | `@page { size: A4; }` |
-| Orientation | Portrait, Landscape | `@page { size: A4 landscape; }` |
-| Margins | Narrow (1cm), Normal (2cm), Wide (3cm) | `@page { margin: 2cm; }` |
-| Theme | Light (forced), Current theme | Inline color overrides |
+| Control     | Options                                | Injected CSS                    |
+| ----------- | -------------------------------------- | ------------------------------- |
+| Page Size   | A4, Letter, Legal                      | `@page { size: A4; }`           |
+| Orientation | Portrait, Landscape                    | `@page { size: A4 landscape; }` |
+| Margins     | Narrow (1cm), Normal (2cm), Wide (3cm) | `@page { margin: 2cm; }`        |
+| Theme       | Light (forced), Current theme          | Inline color overrides          |
 
 User selects in toolbar → content updates live → click "Print / Save PDF" → browser dialog with settings pre-applied.
 

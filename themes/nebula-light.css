@@ -1,8 +1,8 @@
 /* ==================== NEBULA LIGHT THEME ==================== */
 /* Maps Core Nebula Tokens to App Variables */
 
-[data-theme="nebula-light"] {
-    /* Use Nebula Light tokens by default in this scope if needed,
+[data-theme='nebula-light'] {
+  /* Use Nebula Light tokens by default in this scope if needed,
        but here we map generic vars to those tokens */
 }
 
@@ -44,11 +44,11 @@
   /* ==================== SYNTAX TOKENS (Light Mode Adjusted) ==================== */
   --syntax-comment: #a0aec0;
   --syntax-punctuation: #718096;
-  --syntax-number: #d53f8c;       /* Pink/Purple */
-  --syntax-keyword: #00b5d8;      /* Cyan */
-  --syntax-class-name: #3182ce;   /* Blue */
+  --syntax-number: #d53f8c; /* Pink/Purple */
+  --syntax-keyword: #00b5d8; /* Cyan */
+  --syntax-class-name: #3182ce; /* Blue */
   --syntax-property: #d53f8c;
-  --syntax-string: #38a169;       /* Green */
+  --syntax-string: #38a169; /* Green */
   --syntax-function: #3182ce;
   --syntax-variable: #718096;
   --syntax-operator: #d53f8c;
@@ -56,28 +56,27 @@
 
 /* Specific overrides for Nebula feel */
 body {
-    /* Light Mode Gradients */
-    background-image:
-    background-image:
-        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(0, 188, 212, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(156, 39, 176, 0.03) 0%, transparent 50%);
-    background-attachment: fixed;
-    /* Force Light Mode tokens when this file is loaded, assuming JS adds data-theme attribute,
+  /* Light Mode Gradients */
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(0, 188, 212, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(156, 39, 176, 0.03) 0%, transparent 50%);
+  background-attachment: fixed;
+  /* Force Light Mode tokens when this file is loaded, assuming JS adds data-theme attribute,
        BUT simpler: The variables.css handles [data-theme="nebula-light"].
        However, the theme loader (Service) just injecting this CSS file.
        If variables.css depends on [data-theme] attribute on HTML,
        we must ensure JS sets it.
        OR we can just hardcode the Light Tokens here since this IS the light theme file. */
 
-    /* HARDCODED TOKENS (Safety net if data-theme attr isn't set) */
-    --bg-universe: #f0f4f8;
-    --bg-element: #ffffff;
-    --bg-glass: rgba(255, 255, 255, 0.65);
-    --bg-glass-heavy: rgba(255, 255, 255, 0.85);
-    --border-glass: rgba(0, 0, 0, 0.06);
-    --text-star: #1a202c;
-    --text-stardust: #4a5568;
-    --accent-cyan: #00bcd4;
-    --accent-violet: #9c27b0;
+  /* HARDCODED TOKENS (Safety net if data-theme attr isn't set) */
+  --bg-universe: #f0f4f8;
+  --bg-element: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.65);
+  --bg-glass-heavy: rgba(255, 255, 255, 0.85);
+  --border-glass: rgba(0, 0, 0, 0.06);
+  --text-star: #1a202c;
+  --text-stardust: #4a5568;
+  --accent-cyan: #00bcd4;
+  --accent-violet: #9c27b0;
 }

@@ -447,8 +447,10 @@ export class FolderBrowserService {
 
     // Ensure .md extension
     let finalFilename = filename.trim();
-    if (!finalFilename.toLowerCase().endsWith('.md') &&
-      !finalFilename.toLowerCase().endsWith('.markdown')) {
+    if (
+      !finalFilename.toLowerCase().endsWith('.md') &&
+      !finalFilename.toLowerCase().endsWith('.markdown')
+    ) {
       finalFilename += '.md';
     }
 

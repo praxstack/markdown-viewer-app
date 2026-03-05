@@ -2,37 +2,75 @@
 
 /* Keyframes */
 @keyframes nebula-fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes nebula-float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 @keyframes nebula-pulse-glow {
-  0% { box-shadow: 0 0 5px var(--accent-glow); }
-  50% { box-shadow: 0 0 20px var(--accent-glow), 0 0 10px var(--accent-cyan); }
-  100% { box-shadow: 0 0 5px var(--accent-glow); }
+  0% {
+    box-shadow: 0 0 5px var(--accent-glow);
+  }
+  50% {
+    box-shadow:
+      0 0 20px var(--accent-glow),
+      0 0 10px var(--accent-cyan);
+  }
+  100% {
+    box-shadow: 0 0 5px var(--accent-glow);
+  }
 }
 
 @keyframes nebula-bg-drift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes hologram-scan {
-    0% { top: -100%; opacity: 0; }
-    50% { opacity: 0.5; }
-    100% { top: 100%; opacity: 0; }
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
 }
 
 /* Transitions */
-.animate-fast { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-.animate-smooth { transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.animate-fast {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.animate-smooth {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
 /* Utility Classes */
 .fade-in-up {
@@ -54,6 +92,12 @@
 }
 
 /* Stagger delays for list items */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+.stagger-3 {
+  animation-delay: 0.3s;
+}

@@ -11,6 +11,7 @@
 ### Major Features
 
 #### 📁 Folder Browser
+
 A powerful local file system integration for browsing and managing markdown files.
 
 - **Open Folder** - Browse local folders using File System Access API
@@ -22,6 +23,7 @@ A powerful local file system integration for browsing and managing markdown file
 - **State Persistence** - Sidebar width and collapsed state saved to localStorage
 
 #### 🧘 Zen Mode
+
 Distraction-free reading mode for focused content consumption.
 
 - **Full Screen Preview** - 100% width and height coverage
@@ -30,6 +32,7 @@ Distraction-free reading mode for focused content consumption.
 - **Centered Content** - Max-width 900px for optimal readability
 
 #### ↔️ Split View Resizer
+
 Flexible panel sizing for comfortable editing.
 
 - **Draggable Divider** - Resize editor and preview panels
@@ -38,6 +41,7 @@ Flexible panel sizing for comfortable editing.
 - **Visual Feedback** - Animated handles on hover and drag
 
 #### 🔗 TOC Anchor Navigation
+
 Smart in-document navigation for table of contents links.
 
 - **Smooth Scrolling** - Click TOC links to scroll to headings
@@ -48,6 +52,7 @@ Smart in-document navigation for table of contents links.
 - **Deep Linking** - Direct URL hash support (#section-name)
 
 #### ➗ LaTeX Math Support (Enhanced)
+
 Full mathematical formula rendering with multiple delimiter formats.
 
 - **Inline Math** - `$...$` and `\(...\)` delimiters
@@ -60,12 +65,14 @@ Full mathematical formula rendering with multiple delimiter formats.
 ## 🐛 Bug Fixes
 
 ### Safari Compatibility
+
 - **CSS Loading Fix** - Enterprise-grade CSS loading for Safari browsers
 - **Color Parsing Fix** - Resolved color parsing errors on Safari
 - **iPhone Preview Fix** - Fixed preview rendering issues on Safari iOS
 - **PDF Export Fix** - Fixed color-mix() function compatibility
 
 ### UI/UX Fixes
+
 - **Sidebar Collapse Layout** - Fixed blank space when sidebar collapses in split view
 - **Sidebar Resize in Split View** - Resize handle now works correctly in split view mode
 - **Resize Handle UX** - Improved drag handle visibility and interaction
@@ -75,6 +82,7 @@ Full mathematical formula rendering with multiple delimiter formats.
 - **PDF Modal** - Better modal sizing and controls on mobile
 
 ### Core Fixes
+
 - **Active File Refresh** - Refresh folder now updates the content of currently open file
 - **Theme Restoration** - Proper theme loading on page reload
 
@@ -83,17 +91,20 @@ Full mathematical formula rendering with multiple delimiter formats.
 ## ✨ Improvements
 
 ### Testing & Quality
+
 - **Zero Technical Debt** - All ESLint errors fixed
 - **Comprehensive Tests** - 155+ tests with >85% coverage
 - **Centralized Error Messages** - All error strings in errorMessages.js
 - **New Test Suites** - validators.test.js, colorHelpers.test.js, errorMessages.test.js
 
 ### Performance
+
 - **Optimized Rendering** - Faster markdown parsing and preview updates
 - **Lazy Loading** - Mermaid diagrams render on demand
 - **Debounced Input** - 300ms debounce on editor input
 
 ### Code Quality
+
 - **Modular Architecture** - 9 well-organized modules
 - **Service Layer Pattern** - Clear separation of concerns
 - **Documentation** - Comprehensive JSDoc comments
@@ -102,30 +113,34 @@ Full mathematical formula rendering with multiple delimiter formats.
 
 ## 📦 New Dependencies
 
-| Package | Purpose |
-|---------|---------|
-| `marked-footnote` | Footnote support in markdown |
-| `dompurify` | HTML sanitization for security |
+| Package           | Purpose                        |
+| ----------------- | ------------------------------ |
+| `marked-footnote` | Footnote support in markdown   |
+| `dompurify`       | HTML sanitization for security |
 
 ---
 
 ## 🔧 Technical Changes
 
 ### New Services
+
 - `FolderBrowserService.js` - File System Access API wrapper
 - `HTMLService.js` - HTML export functionality
 - `PDFService.js` - PDF generation and preview
 
 ### New Config Files
+
 - `errorMessages.js` - Centralized error message definitions
 
 ### New Test Files
+
 - `FolderBrowserService.test.js`
 - `errorMessages.test.js`
 - `validators.test.js`
 - `colorHelpers.test.js`
 
 ### CSS Updates
+
 - `animations.css` - Premium animations for UI elements
 - `variables.css` - New CSS custom properties for theming
 
@@ -175,11 +190,13 @@ b9f2f36 - 📝 docs(review): update AI code review documentation
 ### From Previous Versions
 
 1. **Pull latest changes**
+
    ```bash
    git pull origin main
    ```
 
 2. **Install new dependencies**
+
    ```bash
    npm install
    ```
@@ -201,6 +218,7 @@ None in this release.
 ## 🔮 Roadmap
 
 ### Planned for v1.1.0
+
 - [ ] Real-time collaboration support
 - [ ] Cloud storage integration (Google Drive, Dropbox)
 - [ ] Plugin system for custom extensions
@@ -208,6 +226,7 @@ None in this release.
 - [ ] Presentation mode (slide-by-slide)
 
 ### Planned for v1.2.0
+
 - [ ] Image paste and upload
 - [ ] Version history for documents
 - [ ] AI-powered writing assistance

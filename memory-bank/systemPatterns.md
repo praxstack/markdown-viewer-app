@@ -118,10 +118,10 @@ Markdown Viewer Pro follows a **client-side monolithic architecture** with stric
 
 ```javascript
 localStorage = {
-  "markdownContent": "string",      // Current editor content
-  "selectedTheme": "string",        // Active theme identifier
-  "customTheme": "JSON string"      // Custom color palette object
-}
+  markdownContent: 'string', // Current editor content
+  selectedTheme: 'string', // Active theme identifier
+  customTheme: 'JSON string', // Custom color palette object
+};
 ```
 
 ## Data Flow Architecture
@@ -353,17 +353,20 @@ User Input → State Update → DOM Update → localStorage Sync
 
 ```javascript
 // Mermaid rendering - async callback
-mermaid.render(id, code).then(result => {
+mermaid
+  .render(id, code)
+  .then(result => {
     element.innerHTML = result.svg;
-}).catch(err => {
+  })
+  .catch(err => {
     element.innerHTML = errorMessage;
-});
+  });
 
 // Theme fetching - promise chain
 fetch(`themes/${themeName}.css`)
-    .then(response => response.text())
-    .then(css => generateHTML(css))
-    .catch(err => fallbackGeneration());
+  .then(response => response.text())
+  .then(css => generateHTML(css))
+  .catch(err => fallbackGeneration());
 ```
 
 **Race Condition Prevention**:
@@ -384,9 +387,9 @@ fetch(`themes/${themeName}.css`)
 
 ```javascript
 if (typeof marked === 'undefined') {
-    console.error('Required libraries not loaded. Retrying...');
-    setTimeout(initializeApp, 100);  // Retry
-    return;
+  console.error('Required libraries not loaded. Retrying...');
+  setTimeout(initializeApp, 100); // Retry
+  return;
 }
 ```
 
@@ -396,10 +399,10 @@ if (typeof marked === 'undefined') {
 
 ```javascript
 try {
-    html = marked.parse(markdownText);
+  html = marked.parse(markdownText);
 } catch (error) {
-    console.error('Render error:', error);
-    preview.innerHTML = '<p style="color: red;">Error rendering markdown</p>';
+  console.error('Render error:', error);
+  preview.innerHTML = '<p style="color: red;">Error rendering markdown</p>';
 }
 ```
 
@@ -409,7 +412,7 @@ try {
 
 ```javascript
 mermaid.render(id, code).catch(err => {
-    element.innerHTML = '<p style="color: red;">Mermaid diagram error</p>';
+  element.innerHTML = '<p style="color: red;">Mermaid diagram error</p>';
 });
 ```
 
@@ -419,12 +422,12 @@ mermaid.render(id, code).catch(err => {
 
 ```javascript
 try {
-    localStorage.setItem('markdownContent', text);
+  localStorage.setItem('markdownContent', text);
 } catch (e) {
-    if (e.name === 'QuotaExceededError') {
-        console.warn('Storage quota exceeded');
-        // Notify user (future enhancement)
-    }
+  if (e.name === 'QuotaExceededError') {
+    console.warn('Storage quota exceeded');
+    // Notify user (future enhancement)
+  }
 }
 ```
 
@@ -434,8 +437,8 @@ try {
 
 ```javascript
 fetch(`themes/${theme}.css`).catch(err => {
-    console.error('Error loading theme:', err);
-    generateHTML();  // Continue without theme CSS
+  console.error('Error loading theme:', err);
+  generateHTML(); // Continue without theme CSS
 });
 ```
 
@@ -507,9 +510,9 @@ editor.addEventListener('input', renderMarkdown);
 
 ```javascript
 if (themeName === 'custom') {
-    applyCustomTheme();
+  applyCustomTheme();
 } else {
-    loadThemeFile(themeName);
+  loadThemeFile(themeName);
 }
 ```
 
@@ -519,9 +522,9 @@ if (themeName === 'custom') {
 
 ```javascript
 function generateHTML() {
-    const template = `<!DOCTYPE html>...`;
-    // Fill in theme and content
-    return template;
+  const template = `<!DOCTYPE html>...`;
+  // Fill in theme and content
+  return template;
 }
 ```
 
@@ -530,8 +533,8 @@ function generateHTML() {
 **Usage**: Single application instance per page
 
 ```javascript
-window.addEventListener('DOMContentLoaded', function() {
-    initializeApp();  // Called once
+window.addEventListener('DOMContentLoaded', function () {
+  initializeApp(); // Called once
 });
 ```
 
@@ -541,10 +544,10 @@ window.addEventListener('DOMContentLoaded', function() {
 
 ```javascript
 function renderMarkdown() {
-    // Facade over Marked, Prism, Mermaid
-    const html = marked.parse(text);
-    applyPrism(html);
-    renderMermaid(html);
+  // Facade over Marked, Prism, Mermaid
+  const html = marked.parse(text);
+  applyPrism(html);
+  renderMermaid(html);
 }
 ```
 

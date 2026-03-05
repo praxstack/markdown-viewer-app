@@ -75,12 +75,16 @@ function generateSlug(text, seen = headingSlugMap) {
     .replace(/^-+|-+$/g, '');
 
   // Fallback for empty result
-  if (!slug) {slug = 'section';}
+  if (!slug) {
+    slug = 'section';
+  }
 
   // Handle duplicates (header, header-1, header-2)
   const baseSlug = slug;
   const count = seen.get(baseSlug) || 0;
-  if (count > 0) {slug = `${baseSlug}-${count}`;}
+  if (count > 0) {
+    slug = `${baseSlug}-${count}`;
+  }
   seen.set(baseSlug, count + 1);
 
   return slug;
@@ -122,10 +126,14 @@ const AnchorNavigation = {
    */
   handleClick(event) {
     const link = event.target.closest('a[href^="#"]');
-    if (!link) {return;}
+    if (!link) {
+      return;
+    }
 
     // Ignore external links
-    if (link.hostname && link.hostname !== window.location.hostname) {return;}
+    if (link.hostname && link.hostname !== window.location.hostname) {
+      return;
+    }
 
     event.preventDefault();
 
@@ -166,7 +174,9 @@ const AnchorNavigation = {
     }
 
     const target = this.resolveTarget(hash);
-    if (!target) {return;}
+    if (!target) {
+      return;
+    }
 
     target.scrollIntoView({
       behavior: smooth ? 'smooth' : 'instant',
@@ -192,7 +202,9 @@ const AnchorNavigation = {
    * @returns {Element|null} Target element or null
    */
   resolveTarget(hash) {
-    if (!hash) {return null;}
+    if (!hash) {
+      return null;
+    }
 
     // Decode URI components safely
     let decodedHash;
@@ -204,21 +216,29 @@ const AnchorNavigation = {
 
     // Priority 1: Exact ID (SCOPED to container)
     let target = this.container.querySelector(`#${CSS.escape(decodedHash)}`);
-    if (target) {return target;}
+    if (target) {
+      return target;
+    }
 
     // Priority 2: Normalized ID with our custom replacements (C++ → cpp)
     const normalized = this.normalizeHash(decodedHash);
     target = this.container.querySelector(`#${CSS.escape(normalized)}`);
-    if (target) {return target;}
+    if (target) {
+      return target;
+    }
 
     // Priority 3: GitHub-style normalization (C++ → c, keeps double hyphens)
     const githubStyle = this.normalizeHashGitHub(decodedHash);
     target = this.container.querySelector(`#${CSS.escape(githubStyle)}`);
-    if (target) {return target;}
+    if (target) {
+      return target;
+    }
 
     // Priority 4: Try all headings for fuzzy match (last resort)
     const fuzzyTarget = this.fuzzyMatchHeading(decodedHash);
-    if (fuzzyTarget) {return fuzzyTarget;}
+    if (fuzzyTarget) {
+      return fuzzyTarget;
+    }
 
     console.warn(`[AnchorNav] Target not found: "${hash}"`);
     return null;
@@ -511,22 +531,24 @@ window.toggleSupportRegion = toggleSupportRegion;
  */
 function renderSupportWidget(region) {
   const container = document.getElementById('support-widget');
-  if (!container) {return;}
+  if (!container) {
+    return;
+  }
 
   const config =
     region === 'india'
       ? {
-        text: '🇮🇳 Support via UPI',
-        url: 'https://razorpay.me/@prakharshekharparthasarthi?notes[source]=webapp_footer',
-        className: 'support-button--india',
-        toggleText: 'Not in India?',
-      }
+          text: '🇮🇳 Support via UPI',
+          url: 'https://razorpay.me/@prakharshekharparthasarthi?notes[source]=webapp_footer',
+          className: 'support-button--india',
+          toggleText: 'Not in India?',
+        }
       : {
-        text: '☕ Support via Ko-fi',
-        url: 'https://ko-fi.com/praxlannister?ref=webapp_footer',
-        className: 'support-button--global',
-        toggleText: 'In India? Use UPI',
-      };
+          text: '☕ Support via Ko-fi',
+          url: 'https://ko-fi.com/praxlannister?ref=webapp_footer',
+          className: 'support-button--global',
+          toggleText: 'In India? Use UPI',
+        };
 
   container.innerHTML = `
     <a href="${config.url}" target="_blank" rel="noopener noreferrer" class="support-button ${config.className}">
@@ -585,41 +607,62 @@ function configureMarkedExtensions() {
         name: 'admonition',
         level: 'block',
         start(src) {
-          return src.match(/^> \[!/)?.index;
+          return src.match(/^> \[!/i)?.index;
         },
         tokenizer(src) {
-          const match = src.match(
-            /^> \[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*\n((?:> .*\n?)*)/,
-          );
+          // Updated regex to catch the case where title and text are ALL ON ONE LINE (with no line breaks except the end of the line)
+          // Match `> [!tip] Title and potentially text here\n> More text`
+          const rule =
+            /^> \[!(note|tip|important|warning|caution)\][ \t]*(.*)\n?((?:> .*(?:\n|$))*)/i;
+          const match = src.match(rule);
+
           if (match) {
-            const type = match[1];
-            const content = match[2].replace(/^> ?/gm, '').trim();
+            const raw = match[0];
+            const type = match[1].toUpperCase();
+            const titleContent = match[2].trim();
+            let parsedTitle = type;
+            const content = match[3] ? match[3].replace(/^> ?/gm, '').trim() : '';
+
+            if (titleContent) {
+              parsedTitle = titleContent;
+            }
+
             return {
               type: 'admonition',
-              raw: match[0],
+              raw,
               admonitionType: type,
+              title: parsedTitle,
               text: content,
             };
           }
         },
         renderer(token) {
-          const icons = {
-            NOTE: 'ℹ️',
-            TIP: '💡',
-            IMPORTANT: '❗',
-            WARNING: '⚠️',
-            CAUTION: '🚨',
-          };
-          const icon = icons[token.admonitionType] || 'ℹ️';
           const typeClass = token.admonitionType.toLowerCase();
+
+          const icons = {
+            NOTE: `<svg class="octicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>`,
+            TIP: `<svg class="octicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>`,
+            IMPORTANT: `<svg class="octicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>`,
+            WARNING: `<svg class="octicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.397A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.556Zm1.763 1.256a.25.25 0 0 0-.44 0L1.698 13.69a.25.25 0 0 0 .22.36h12.164a.25.25 0 0 0 .22-.36Zm.905 3.947a.75.75 0 0 1-1.5 0v3.5a.75.75 0 0 1 1.5 0ZM8 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>`,
+            CAUTION: `<svg class="octicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>`,
+          };
+
+          const icon = icons[token.admonitionType] || icons.NOTE;
+
+          // Parse the title inline
+          const parsedTitle = marked.parseInline(token.title);
+
+          let contentHtml = '';
+          if (token.text && token.text.trim().length > 0) {
+            contentHtml = `<div class="admonition-content">${marked.parse(token.text)}</div>`;
+          }
 
           return `<div class="admonition admonition-${typeClass}">
             <div class="admonition-title">
               <span class="admonition-icon">${icon}</span>
-              <strong>${token.admonitionType}</strong>
-            </div>
-            <div class="admonition-content">${marked.parseInline(token.text)}</div>
-          </div>`;
+              <span class="admonition-title-text">${parsedTitle}</span>
+            </div>${contentHtml ? `\n            ${ contentHtml}` : ''}
+          </div>\n`;
         },
       },
     ],
@@ -1980,8 +2023,8 @@ graph TD
     if (!folderBrowserService.isSupported()) {
       alert(
         'Folder browsing requires File System Access API.\n\n' +
-        'Please use Chrome 86+ or Edge 86+.\n\n' +
-        'Firefox and Safari are not currently supported.',
+          'Please use Chrome 86+ or Edge 86+.\n\n' +
+          'Firefox and Safari are not currently supported.',
       );
       return;
     }
@@ -2595,7 +2638,9 @@ Wrap up your thoughts and include a call to action.
       });
     }
 
-    console.log(`[App] Loaded from link: ${fileData.path}${fileData.anchor ? `#${ fileData.anchor}` : ''}`);
+    console.log(
+      `[App] Loaded from link: ${fileData.path}${fileData.anchor ? `#${fileData.anchor}` : ''}`,
+    );
   });
 
   // Initialize link interceptor on preview container

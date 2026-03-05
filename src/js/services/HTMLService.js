@@ -132,7 +132,9 @@ export class HTMLService {
       const variablesRes = responses[1];
       const nebulaElementsRes = responses[2]; // Undefined if not nebula
 
-      if (!themeRes.ok) { throw new Error(`Failed to load theme: ${themeRes.statusText}`); }
+      if (!themeRes.ok) {
+        throw new Error(`Failed to load theme: ${themeRes.statusText}`);
+      }
 
       let cssContent = '';
 

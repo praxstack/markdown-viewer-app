@@ -84,9 +84,9 @@ Current System (Working) ──────────> Keep Running
 ```javascript
 // config/featureFlags.js
 export const FEATURE_FLAGS = {
-  USE_NEW_THEME_MANAGER: false,  // Toggle to test new code
+  USE_NEW_THEME_MANAGER: false, // Toggle to test new code
   USE_NEW_RENDERER: false,
-  USE_NEW_EXPORTER: false
+  USE_NEW_EXPORTER: false,
 };
 
 // In code:
@@ -112,14 +112,14 @@ if (FEATURE_FLAGS.USE_NEW_THEME_MANAGER) {
 
 ```javascript
 // ❌ BREAKING - Changes function signature
-function changeTheme(themeName, options) { }
+function changeTheme(themeName, options) {}
 
 // ✅ NON-BREAKING - Adds optional parameter
-function changeTheme(themeName, options = {}) { }
+function changeTheme(themeName, options = {}) {}
 
 // ✅ NON-BREAKING - Maintains old function, adds new
-function changeTheme(themeName) { } // Keep this
-function changeThemeAdvanced(themeName, options) { } // Add this
+function changeTheme(themeName) {} // Keep this
+function changeThemeAdvanced(themeName, options) {} // Add this
 ```
 
 ---
@@ -130,7 +130,7 @@ function changeThemeAdvanced(themeName, options) { } // Add this
 
 Create tests that document **exactly** how things work now:
 
-```javascript
+````javascript
 // tests/baseline/current-functionality.test.js
 describe('Baseline Functionality Tests', () => {
   describe('Markdown Rendering', () => {
@@ -151,8 +151,7 @@ describe('Baseline Functionality Tests', () => {
   describe('Theme System', () => {
     it('should load default-dark theme', () => {
       changeTheme('default-dark');
-      const h1Color = getComputedStyle(document.documentElement)
-        .getPropertyValue('--h1-color');
+      const h1Color = getComputedStyle(document.documentElement).getPropertyValue('--h1-color');
       expect(h1Color).toBeTruthy();
     });
 
@@ -165,7 +164,7 @@ describe('Baseline Functionality Tests', () => {
 
   // ... tests for ALL current features
 });
-```
+````
 
 #### **Step 2: Regression Test Suite**
 
@@ -318,7 +317,7 @@ describe('Feature Parity Tests', () => {
     'export HTML',
     'export PDF',
     'view modes',
-    'custom themes'
+    'custom themes',
   ];
 
   features.forEach(feature => {
@@ -428,20 +427,20 @@ if (VERSION === 'v1') {
 
    ```javascript
    // THESE ARE API CONTRACTS
-   'markdownContent'
-   'selectedTheme'
-   'customTheme'
-   'viewMode'
-   'previewZoom'
+   'markdownContent';
+   'selectedTheme';
+   'customTheme';
+   'viewMode';
+   'previewZoom';
    ```
 
 2. **DOM Element IDs**
 
    ```javascript
    // THESE ARE API CONTRACTS
-   '#markdown-editor'
-   '#markdown-preview'
-   '#theme-selector'
+   '#markdown-editor';
+   '#markdown-preview';
+   '#theme-selector';
    // ... all IDs
    ```
 
@@ -509,7 +508,7 @@ export const ZOOM = {
   MIN: 50,
   MAX: 200,
   DEFAULT: 100,
-  STEP: 10
+  STEP: 10,
 };
 
 // script.js (MODIFIED - but backward compatible)
@@ -540,10 +539,7 @@ function changeTheme(themeName) {
 
   // Compare results
   if (DEV_MODE) {
-    console.assert(
-      deepEqual(oldResult, newResult),
-      'Theme systems diverged!'
-    );
+    console.assert(deepEqual(oldResult, newResult), 'Theme systems diverged!');
   }
 
   // Use OLD until NEW is proven
@@ -602,7 +598,7 @@ const themeProxy = new Proxy(originalThemeManager, {
   get(target, prop) {
     console.log(`Theme ${prop} accessed`);
     return target[prop];
-  }
+  },
 });
 ```
 
@@ -631,8 +627,10 @@ export const USE_NEW_CODE = false; // ← Instant rollback
 
 ```html
 <!-- Load old or new based on query param -->
-<script src="script.js?v=1"></script>  <!-- Stable -->
-<script src="src/js/app.js?v=2"></script>  <!-- New -->
+<script src="script.js?v=1"></script>
+<!-- Stable -->
+<script src="src/js/app.js?v=2"></script>
+<!-- New -->
 ```
 
 ---
@@ -783,17 +781,17 @@ Before merging any refactoring PR:
 
 ```yaml
 Quality Gates:
-  - name: "All Tests Pass"
+  - name: 'All Tests Pass'
     status: REQUIRED
-  - name: "Code Coverage > 80%"
+  - name: 'Code Coverage > 80%'
     status: REQUIRED
-  - name: "No ESLint Errors"
+  - name: 'No ESLint Errors'
     status: REQUIRED
-  - name: "Visual Regression Pass"
+  - name: 'Visual Regression Pass'
     status: REQUIRED
-  - name: "Performance < 110% baseline"
+  - name: 'Performance < 110% baseline'
     status: REQUIRED
-  - name: "Manual QA Approval"
+  - name: 'Manual QA Approval'
     status: REQUIRED
 ```
 

@@ -20,7 +20,7 @@ export const ERROR_MESSAGES = {
   // File Operations
   INVALID_FILENAME: 'Invalid filename. Please provide a valid name.',
   INVALID_FILENAME_PROVIDED: 'Invalid filename provided.',
-  FILE_EXISTS: (filename) => `File "${filename}" already exists. Please choose a different name.`,
+  FILE_EXISTS: filename => `File "${filename}" already exists. Please choose a different name.`,
   FILE_CREATE_FAILED: 'Failed to create file.',
   FILE_SAVE_FAILED: 'Failed to save file.',
   NO_FILE_HANDLE: 'No file handle provided.',
@@ -30,7 +30,7 @@ export const ERROR_MESSAGES = {
 
   // Validation
   MAX_DEPTH_REACHED: (depth, path) => `Max depth ${depth} reached at: ${path}`,
-  MAX_FILES_REACHED: (count) => `Max files ${count} reached`,
+  MAX_FILES_REACHED: count => `Max files ${count} reached`,
 };
 
 /**

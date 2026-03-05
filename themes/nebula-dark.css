@@ -42,13 +42,13 @@
   /* ==================== SYNTAX TOKENS (Prism Mapped) ==================== */
   --syntax-comment: #6272a4;
   --syntax-punctuation: #f8f8f2;
-  --syntax-number: var(--accent-violet);      /* Purple */
-  --syntax-keyword: var(--accent-cyan);       /* Cyan */
+  --syntax-number: var(--accent-violet); /* Purple */
+  --syntax-keyword: var(--accent-cyan); /* Cyan */
   --syntax-class-name: var(--accent-cyan);
-  --syntax-property: #ff79c6;                 /* Pink */
+  --syntax-property: #ff79c6; /* Pink */
   --syntax-tag: #ff79c6;
-  --syntax-string: #f1fa8c;                   /* Yellow */
-  --syntax-function: #50fa7b;                 /* Green */
+  --syntax-string: #f1fa8c; /* Yellow */
+  --syntax-function: #50fa7b; /* Green */
   --syntax-variable: #f8f8f2;
   --syntax-operator: #ff79c6;
   --syntax-url: var(--link-color);
@@ -56,15 +56,24 @@
 
 /* Specific overrides for Nebula feel */
 body {
-    background-image:
-        radial-gradient(circle at 20% 20%, rgba(188, 19, 254, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(0, 243, 255, 0.1) 0%, transparent 40%);
-    background-attachment: fixed;
-    backdrop-filter: blur(100px); /* Creates the deep atmosphere */
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(188, 19, 254, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(0, 243, 255, 0.1) 0%, transparent 40%);
+  background-attachment: fixed;
+  backdrop-filter: blur(100px); /* Creates the deep atmosphere */
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-glass); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent-cyan); }
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-glass);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}

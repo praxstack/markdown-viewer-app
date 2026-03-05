@@ -36,6 +36,7 @@
 This document specifies the implementation of in-document anchor navigation for Markdown Viewer Pro. The feature enables clicking Table of Contents links to scroll the preview container to the target heading, with full accessibility support and legacy link compatibility.
 
 **Key Features:**
+
 - Smooth scroll to headings on TOC link click
 - Support for emoji and special character headings
 - Legacy link compatibility (non-standard ID formats)
@@ -66,6 +67,7 @@ The application shell has elements with IDs like `sidebar`, `preview`, `editor`.
 ### 2.5 marked.js Singleton Constraint
 
 `marked` is imported as a global singleton. Calling `marked.use()` inside `renderMarkdown()` (which runs on every keystroke) would stack infinite extensions, causing:
+
 - **Memory leak:** `marked.defaults.extensions` grows infinitely
 - **Performance degradation:** After 100 keystrokes, marked runs 100 identical renderers
 
@@ -75,43 +77,43 @@ The application shell has elements with IDs like `sidebar`, `preview`, `editor`.
 
 ### 3.1 Functional Requirements
 
-| ID | Requirement | Priority | Acceptance Criteria |
-|----|-------------|----------|---------------------|
-| FR-1 | Internal anchor clicks scroll preview to target | P0 | Target heading visible within 800ms |
-| FR-2 | Scrolled content not occluded by toolbar | P0 | 20px gap between toolbar and heading |
-| FR-3 | URL hash updates on navigation | P0 | URL reflects current section |
-| FR-4 | Deep linking works on page load | P0 | `URL#section` scrolls on load |
-| FR-5 | Browser back/forward navigates history | P1 | Hash changes scroll correctly |
-| FR-6 | Legacy links work (emoji, special chars) | P0 | See compatibility matrix |
-| FR-7 | Focus moves to target for screen readers | P0 | Screen reader announces heading |
-| FR-8 | Empty hash (`#`) scrolls to top | P1 | Container scrollTop = 0 |
-| FR-9 | No collision with app shell IDs | P0 | User `## Sidebar` != app `#sidebar` |
-| FR-10 | Duplicate headings get unique IDs | P0 | `header`, `header-1`, `header-2` |
+| ID    | Requirement                                     | Priority | Acceptance Criteria                  |
+| ----- | ----------------------------------------------- | -------- | ------------------------------------ |
+| FR-1  | Internal anchor clicks scroll preview to target | P0       | Target heading visible within 800ms  |
+| FR-2  | Scrolled content not occluded by toolbar        | P0       | 20px gap between toolbar and heading |
+| FR-3  | URL hash updates on navigation                  | P0       | URL reflects current section         |
+| FR-4  | Deep linking works on page load                 | P0       | `URL#section` scrolls on load        |
+| FR-5  | Browser back/forward navigates history          | P1       | Hash changes scroll correctly        |
+| FR-6  | Legacy links work (emoji, special chars)        | P0       | See compatibility matrix             |
+| FR-7  | Focus moves to target for screen readers        | P0       | Screen reader announces heading      |
+| FR-8  | Empty hash (`#`) scrolls to top                 | P1       | Container scrollTop = 0              |
+| FR-9  | No collision with app shell IDs                 | P0       | User `## Sidebar` != app `#sidebar`  |
+| FR-10 | Duplicate headings get unique IDs               | P0       | `header`, `header-1`, `header-2`     |
 
 ### 3.2 Non-Functional Requirements
 
-| ID | Requirement | Target |
-|----|-------------|--------|
-| NFR-1 | Click-to-scroll latency | < 16ms (1 frame) |
-| NFR-2 | Scroll animation duration | 300-800ms (distance-based) |
-| NFR-3 | No layout thrashing | 0 forced reflows |
-| NFR-4 | Memory overhead | < 1KB per session |
-| NFR-5 | No memory leaks | Zero extension stacking |
-| NFR-6 | Stateless rendering | Module-level map with reset |
+| ID    | Requirement               | Target                      |
+| ----- | ------------------------- | --------------------------- |
+| NFR-1 | Click-to-scroll latency   | < 16ms (1 frame)            |
+| NFR-2 | Scroll animation duration | 300-800ms (distance-based)  |
+| NFR-3 | No layout thrashing       | 0 forced reflows            |
+| NFR-4 | Memory overhead           | < 1KB per session           |
+| NFR-5 | No memory leaks           | Zero extension stacking     |
+| NFR-6 | Stateless rendering       | Module-level map with reset |
 
 ### 3.3 Edge Cases
 
-| Case | Input | Expected Behavior |
-|------|-------|-------------------|
-| Empty hash | `href="#"` | Scroll to top (scrollTop = 0) |
-| Non-existent target | `href="#nonexistent"` | Console warning, no action |
-| External link | `href="https://..."` | Browser default behavior |
-| Duplicate headers | Two `## Header` | IDs: `header`, `header-1` |
-| App shell collision | `## Sidebar` | Resolves to user content, not `#sidebar` |
-| Special chars | `## C++` | ID: `cpp` |
-| Emoji | `## 🎯 Goal` | ID: `goal` |
-| Concurrent clicks | Click A, then B rapidly | Cancel A, execute B |
-| Already visible | Target in viewport | Smooth scroll anyway |
+| Case                | Input                   | Expected Behavior                        |
+| ------------------- | ----------------------- | ---------------------------------------- |
+| Empty hash          | `href="#"`              | Scroll to top (scrollTop = 0)            |
+| Non-existent target | `href="#nonexistent"`   | Console warning, no action               |
+| External link       | `href="https://..."`    | Browser default behavior                 |
+| Duplicate headers   | Two `## Header`         | IDs: `header`, `header-1`                |
+| App shell collision | `## Sidebar`            | Resolves to user content, not `#sidebar` |
+| Special chars       | `## C++`                | ID: `cpp`                                |
+| Emoji               | `## 🎯 Goal`            | ID: `goal`                               |
+| Concurrent clicks   | Click A, then B rapidly | Cancel A, execute B                      |
+| Already visible     | Target in viewport      | Smooth scroll anyway                     |
 
 ---
 
@@ -208,22 +210,22 @@ function generateSlug(text, seen = new Map()) {
 
 **Transformation Examples:**
 
-| Input | Output | Reason |
-|-------|--------|--------|
-| `Hello World` | `hello-world` | Standard |
-| `🎯 Standard Assumptions` | `standard-assumptions` | Emoji stripped |
-| `C++` | `cpp` | Special replacement |
-| `C#` | `csharp` | Special replacement |
-| `.NET Framework` | `dotnet-framework` | Special replacement |
-| `F#` | `fsharp` | Special replacement |
-| `API v2.0` | `api-v20` | Period stripped |
-| `1. Introduction` | `1-introduction` | Numbers preserved |
-| `hello_world` | `hello_world` | Underscores preserved |
-| `Header` (1st) | `header` | First occurrence |
-| `Header` (2nd) | `header-1` | Duplicate handling |
-| `Header` (3rd) | `header-2` | Duplicate handling |
-| `😀😀😀` | `section` | Fallback for empty |
-| `--test--` | `test` | Trimmed |
+| Input                     | Output                 | Reason                |
+| ------------------------- | ---------------------- | --------------------- |
+| `Hello World`             | `hello-world`          | Standard              |
+| `🎯 Standard Assumptions` | `standard-assumptions` | Emoji stripped        |
+| `C++`                     | `cpp`                  | Special replacement   |
+| `C#`                      | `csharp`               | Special replacement   |
+| `.NET Framework`          | `dotnet-framework`     | Special replacement   |
+| `F#`                      | `fsharp`               | Special replacement   |
+| `API v2.0`                | `api-v20`              | Period stripped       |
+| `1. Introduction`         | `1-introduction`       | Numbers preserved     |
+| `hello_world`             | `hello_world`          | Underscores preserved |
+| `Header` (1st)            | `header`               | First occurrence      |
+| `Header` (2nd)            | `header-1`             | Duplicate handling    |
+| `Header` (3rd)            | `header-2`             | Duplicate handling    |
+| `😀😀😀`                  | `section`              | Fallback for empty    |
+| `--test--`                | `test`                 | Trimmed               |
 
 ### 4.3 State Management (Singleton-Safe)
 
@@ -245,13 +247,13 @@ marked.use({
       const level = token.depth;
       const slug = generateSlug(text, headingSlugMap);
       return `<h${level} id="${slug}">${text}</h${level}>\n`;
-    }
-  }
+    },
+  },
 });
 
 // In renderMarkdown() - called on every keystroke
 function renderMarkdown() {
-  resetSlugMap();  // Clear state, NOT re-register extension
+  resetSlugMap(); // Clear state, NOT re-register extension
   const html = marked.parse(text);
   // ...
 }
@@ -302,11 +304,13 @@ function normalizeHash(hash) {
     slug = slug.replace(pattern, replacement);
   }
 
-  return slug
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-+|-+$/g, '') || 'section';
+  return (
+    slug
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-+|-+$/g, '') || 'section'
+  );
 }
 ```
 
@@ -317,6 +321,7 @@ function normalizeHash(hash) {
 ### 5.1 CSS Configuration
 
 **File: `variables.css`** (add to existing `:root`)
+
 ```css
 :root {
   /* Existing variables... */
@@ -329,6 +334,7 @@ function normalizeHash(hash) {
 ```
 
 **File: `style.css`** (add new section)
+
 ```css
 /* ==================== ANCHOR NAVIGATION ==================== */
 
@@ -343,8 +349,12 @@ function normalizeHash(hash) {
 }
 
 @keyframes anchor-highlight {
-  0% { background-color: rgba(255, 255, 0, 0.3); }
-  100% { background-color: transparent; }
+  0% {
+    background-color: rgba(255, 255, 0, 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
 }
 
 /* Focus management - conditional outline */
@@ -559,11 +569,13 @@ const AnchorNavigation = {
       slug = slug.replace(pattern, replacement);
     }
 
-    return slug
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-')
-      .replace(/^-+|-+$/g, '') || 'section';
+    return (
+      slug
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-+|-+$/g, '') || 'section'
+    );
   },
 
   /**
@@ -598,6 +610,7 @@ const AnchorNavigation = {
 ### 5.3 Integration Points
 
 **In `configureMarkedExtensions()`:**
+
 ```javascript
 function configureMarkedExtensions() {
   // ... existing extensions ...
@@ -610,14 +623,15 @@ function configureMarkedExtensions() {
         const level = token.depth;
         const slug = generateSlug(text, headingSlugMap);
         return `<h${level} id="${slug}">${text}</h${level}>\n`;
-      }
-    }
+      },
+    },
   });
   console.log('✅ Custom heading renderer enabled (ID generation)');
 }
 ```
 
 **In `renderMarkdown()`:**
+
 ```javascript
 function renderMarkdown() {
   try {
@@ -631,6 +645,7 @@ function renderMarkdown() {
 ```
 
 **In `setupEditor()` (at end):**
+
 ```javascript
 // Initialize anchor navigation
 AnchorNavigation.init(previewContainer);
@@ -640,13 +655,13 @@ AnchorNavigation.init(previewContainer);
 
 ## 6. Browser Compatibility
 
-| Feature | Chrome | Firefox | Safari | Edge | Fallback |
-|---------|--------|---------|--------|------|----------|
-| `scrollIntoView({ behavior })` | 61+ | 36+ | 15.4+ | 79+ | Instant scroll |
-| `scrollend` event | 114+ | 109+ | 17+ | 114+ | setTimeout (1000ms max) |
-| `scroll-padding-top` | 69+ | 68+ | 14.1+ | 79+ | None needed |
-| `CSS.escape()` | 46+ | 31+ | 10+ | 79+ | None needed |
-| `:focus-visible` | 86+ | 85+ | 15.4+ | 86+ | Always show outline |
+| Feature                        | Chrome | Firefox | Safari | Edge | Fallback                |
+| ------------------------------ | ------ | ------- | ------ | ---- | ----------------------- |
+| `scrollIntoView({ behavior })` | 61+    | 36+     | 15.4+  | 79+  | Instant scroll          |
+| `scrollend` event              | 114+   | 109+    | 17+    | 114+ | setTimeout (1000ms max) |
+| `scroll-padding-top`           | 69+    | 68+     | 14.1+  | 79+  | None needed             |
+| `CSS.escape()`                 | 46+    | 31+     | 10+    | 79+  | None needed             |
+| `:focus-visible`               | 86+    | 85+     | 15.4+  | 86+  | Always show outline     |
 
 **Minimum Supported:** Chrome 86, Firefox 85, Safari 15.4, Edge 86
 
@@ -771,43 +786,43 @@ describe('normalizeHash', () => {
 
 ### 7.2 Manual Test Cases
 
-| # | Scenario | Steps | Expected Result |
-|---|----------|-------|-----------------|
-| 1 | Standard TOC click | Click TOC link `#introduction` | Scrolls to heading, visible below toolbar |
-| 2 | Emoji header | Click `#🎯-goal` | Resolves to `#goal`, scrolls correctly |
-| 3 | C++ header | Click `#c++` | Resolves to `#cpp`, scrolls correctly |
-| 4 | Deep link | Load `URL#section-1` | Page scrolls to section on load |
-| 5 | Browser back | Click link, then browser back | Returns to previous scroll position |
-| 6 | Empty hash | Click `href="#"` | Scrolls to top of container |
-| 7 | Invalid target | Click `#nonexistent` | Console warning, no crash |
-| 8 | Duplicate headers | Two `## Header` | First is `#header`, second is `#header-1` |
-| 9 | App shell collision | `## Sidebar` heading | Scrolls to user heading, not app `#sidebar` |
-| 10 | Accessibility | Tab to link, press Enter | Focus moves to heading, screen reader announces |
-| 11 | Concurrent clicks | Click A, immediately click B | Only B executes |
+| #   | Scenario            | Steps                          | Expected Result                                 |
+| --- | ------------------- | ------------------------------ | ----------------------------------------------- |
+| 1   | Standard TOC click  | Click TOC link `#introduction` | Scrolls to heading, visible below toolbar       |
+| 2   | Emoji header        | Click `#🎯-goal`               | Resolves to `#goal`, scrolls correctly          |
+| 3   | C++ header          | Click `#c++`                   | Resolves to `#cpp`, scrolls correctly           |
+| 4   | Deep link           | Load `URL#section-1`           | Page scrolls to section on load                 |
+| 5   | Browser back        | Click link, then browser back  | Returns to previous scroll position             |
+| 6   | Empty hash          | Click `href="#"`               | Scrolls to top of container                     |
+| 7   | Invalid target      | Click `#nonexistent`           | Console warning, no crash                       |
+| 8   | Duplicate headers   | Two `## Header`                | First is `#header`, second is `#header-1`       |
+| 9   | App shell collision | `## Sidebar` heading           | Scrolls to user heading, not app `#sidebar`     |
+| 10  | Accessibility       | Tab to link, press Enter       | Focus moves to heading, screen reader announces |
+| 11  | Concurrent clicks   | Click A, immediately click B   | Only B executes                                 |
 
 ---
 
 ## 8. Performance Budget
 
-| Metric | Budget | Measurement Method |
-|--------|--------|-------------------|
-| Click-to-scroll latency | < 16ms | `performance.now()` delta |
-| Slug generation per heading | < 1ms | Profile in DevTools |
-| DOM queries per click | ≤ 2 | Code review |
-| Memory per session | < 1KB | DevTools heap snapshot |
-| Extension stack size | 1 (no growth) | `marked.defaults.extensions.length` |
+| Metric                      | Budget        | Measurement Method                  |
+| --------------------------- | ------------- | ----------------------------------- |
+| Click-to-scroll latency     | < 16ms        | `performance.now()` delta           |
+| Slug generation per heading | < 1ms         | Profile in DevTools                 |
+| DOM queries per click       | ≤ 2           | Code review                         |
+| Memory per session          | < 1KB         | DevTools heap snapshot              |
+| Extension stack size        | 1 (no growth) | `marked.defaults.extensions.length` |
 
 ---
 
 ## 9. Security Considerations
 
-| Concern | Risk | Mitigation |
-|---------|------|------------|
-| XSS via hash | Low | Hash is never inserted into innerHTML |
-| Open redirect | Low | Only same-origin hashes processed |
-| DoS (rapid clicks) | Low | Pending scroll cancellation |
-| Invalid ID injection | Low | `CSS.escape()` for selectors |
-| HTML in headings | Medium | Tags stripped before slug generation |
+| Concern              | Risk   | Mitigation                            |
+| -------------------- | ------ | ------------------------------------- |
+| XSS via hash         | Low    | Hash is never inserted into innerHTML |
+| Open redirect        | Low    | Only same-origin hashes processed     |
+| DoS (rapid clicks)   | Low    | Pending scroll cancellation           |
+| Invalid ID injection | Low    | `CSS.escape()` for selectors          |
+| HTML in headings     | Medium | Tags stripped before slug generation  |
 
 ---
 
@@ -815,11 +830,11 @@ describe('normalizeHash', () => {
 
 ### 10.1 Affected Files
 
-| File | Changes |
-|------|---------|
-| `script.js` | Add AnchorNavigation module, generateSlug, heading renderer |
-| `style.css` | Add scroll-padding, focus-visible styles |
-| `variables.css` | Add --scroll-offset variable |
+| File            | Changes                                                     |
+| --------------- | ----------------------------------------------------------- |
+| `script.js`     | Add AnchorNavigation module, generateSlug, heading renderer |
+| `style.css`     | Add scroll-padding, focus-visible styles                    |
+| `variables.css` | Add --scroll-offset variable                                |
 
 ### 10.2 Rollback Command
 
@@ -847,53 +862,61 @@ git checkout HEAD~1 -- script.js style.css variables.css
 ## 11. FAQ
 
 **Q1: Will this break existing functionality?**
+
 > No. This is an additive feature. Existing markdown rendering is unchanged.
 
 **Q2: What if a heading contains only emoji?**
+
 > The slug becomes `section` (fallback for empty result).
 
 **Q3: Will this affect HTML export?**
+
 > Exported HTML will include the generated IDs. Navigation will work if opened in a browser.
 
 **Q4: What about very long headings?**
+
 > No length limit. The full heading becomes the slug (performance tested up to 1000 chars).
 
 **Q5: Can users manually specify IDs?**
+
 > Not currently. This would require parsing `{#custom-id}` syntax, which is a future enhancement.
 
 **Q6: What if `marked.use()` is accidentally called in `renderMarkdown()`?**
+
 > This would cause extension stacking (memory leak). The design explicitly prevents this by registering ONCE in `configureMarkedExtensions()` and only calling `resetSlugMap()` per render.
 
 **Q7: Why use `CSS.escape()` instead of simple string matching?**
+
 > IDs can contain special CSS selector characters (`.`, `#`, `:`). `CSS.escape()` ensures the querySelector doesn't break.
 
 **Q8: What's the maximum scroll duration?**
+
 > Capped at 1000ms for the `scrollend` fallback timeout. Smooth scroll itself is browser-controlled.
 
 ---
 
 ## 12. Approval
 
-| Role | Name | Date | Status |
-|------|------|------|--------|
-| Author | Principal SDE | 2025-12-19 | ✅ Complete |
-| Reviewer | Gemini | 2025-12-19 | ✅ Approved |
-| Implementation | Pending | - | ⏳ Ready |
+| Role           | Name          | Date       | Status      |
+| -------------- | ------------- | ---------- | ----------- |
+| Author         | Principal SDE | 2025-12-19 | ✅ Complete |
+| Reviewer       | Gemini        | 2025-12-19 | ✅ Approved |
+| Implementation | Pending       | -          | ⏳ Ready    |
 
 ---
 
 ## 13. Change Log
 
-| Version | Date | Author | Changes |
-|---------|------|--------|---------|
-| 1.0 | 2025-12-19 | Principal SDE | Initial draft |
-| 2.0 | 2025-12-19 | Principal SDE | Added requirements, edge cases |
-| 3.0 | 2025-12-19 | Gemini | Strict compliance version |
-| 4.0 | 2025-12-19 | Principal SDE | Production-ready with full implementation |
-| 4.1 | 2025-12-19 | Principal SDE | Fixed double offset, pre-compiled regex |
-| 4.2 | 2025-12-19 | Principal SDE | Scoped selection, focus-visible |
-| 4.3 | 2025-12-19 | Gemini | Identified singleton bug |
-| 5.0 | 2025-12-19 | Principal SDE | **FINAL** - Module-level map, reset pattern, singleton-safe |
+| Version | Date       | Author        | Changes                                                     |
+| ------- | ---------- | ------------- | ----------------------------------------------------------- |
+| 1.0     | 2025-12-19 | Principal SDE | Initial draft                                               |
+| 2.0     | 2025-12-19 | Principal SDE | Added requirements, edge cases                              |
+| 3.0     | 2025-12-19 | Gemini        | Strict compliance version                                   |
+| 4.0     | 2025-12-19 | Principal SDE | Production-ready with full implementation                   |
+| 4.1     | 2025-12-19 | Principal SDE | Fixed double offset, pre-compiled regex                     |
+| 4.2     | 2025-12-19 | Principal SDE | Scoped selection, focus-visible                             |
+| 4.3     | 2025-12-19 | Gemini        | Identified singleton bug                                    |
+| 5.0     | 2025-12-19 | Principal SDE | **FINAL** - Module-level map, reset pattern, singleton-safe |
 
 ---
 

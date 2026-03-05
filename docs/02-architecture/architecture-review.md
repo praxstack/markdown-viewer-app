@@ -318,7 +318,8 @@ export function shouldUseNewCode() {
 
 ```javascript
 class ThemeManager {
-  constructor(storageManager) {  // ✅ Good DI
+  constructor(storageManager) {
+    // ✅ Good DI
     this.storage = storageManager;
   }
 }
@@ -408,9 +409,12 @@ describe('Performance Baseline', () => {
 
     expect(duration).toBeLessThan(50);
     // Save baseline for comparison
-    fs.writeFileSync('baseline-metrics.json', JSON.stringify({
-      renderTime: duration
-    }));
+    fs.writeFileSync(
+      'baseline-metrics.json',
+      JSON.stringify({
+        renderTime: duration,
+      })
+    );
   });
 });
 ```
@@ -431,8 +435,8 @@ describe('Performance Baseline', () => {
 // Add validation constants
 export const VALIDATION = {
   MAX_MARKDOWN_SIZE: 5 * 1024 * 1024, // 5MB
-  MAX_EXPORT_SIZE: 10 * 1024 * 1024,  // 10MB
-  SUPPORTED_BROWSERS: ['chrome', 'firefox', 'safari', 'edge']
+  MAX_EXPORT_SIZE: 10 * 1024 * 1024, // 10MB
+  SUPPORTED_BROWSERS: ['chrome', 'firefox', 'safari', 'edge'],
 };
 ```
 
@@ -540,9 +544,9 @@ import legacy from '@vitejs/plugin-legacy';
 export default defineConfig({
   plugins: [
     legacy({
-      targets: ['defaults', 'not IE 11']
-    })
-  ]
+      targets: ['defaults', 'not IE 11'],
+    }),
+  ],
 });
 ```
 
@@ -714,7 +718,7 @@ Telemetry.trackPerformance('MarkdownRender', renderDuration);
 const ENV = {
   DEVELOPMENT: 'development',
   PRODUCTION: 'production',
-  TEST: 'test'
+  TEST: 'test',
 };
 
 export class AppConfig {
@@ -748,11 +752,11 @@ export class AppConfig {
 ```javascript
 // src/js/utils/errorMessages.js
 export const ERROR_MESSAGES = {
-  LIBRARY_NOT_LOADED: (lib) => `${lib} library not loaded. Please refresh.`,
-  THEME_NOT_FOUND: (theme) => `Theme "${theme}" not found. Using default.`,
-  EXPORT_FAILED: (format) => `Failed to export as ${format}. Please try again.`,
+  LIBRARY_NOT_LOADED: lib => `${lib} library not loaded. Please refresh.`,
+  THEME_NOT_FOUND: theme => `Theme "${theme}" not found. Using default.`,
+  EXPORT_FAILED: format => `Failed to export as ${format}. Please try again.`,
   INVALID_MARKDOWN: 'Invalid markdown syntax detected.',
-  STORAGE_QUOTA_EXCEEDED: 'Browser storage is full. Clear some data.'
+  STORAGE_QUOTA_EXCEEDED: 'Browser storage is full. Clear some data.',
 };
 
 // Usage:
@@ -893,31 +897,31 @@ echo "✅ All checks passed!"
 
 ### **Code Quality Metrics:**
 
-| Metric | Target | Tool |
-|--------|--------|------|
-| Test Coverage | >85% | Vitest |
-| Cyclomatic Complexity | <10 per function | ESLint |
-| Code Duplication | <5% | SonarQube (optional) |
-| Bundle Size | <100KB (gzipped) | Vite analyze |
-| Lighthouse Score | >90 | Chrome DevTools |
+| Metric                | Target           | Tool                 |
+| --------------------- | ---------------- | -------------------- |
+| Test Coverage         | >85%             | Vitest               |
+| Cyclomatic Complexity | <10 per function | ESLint               |
+| Code Duplication      | <5%              | SonarQube (optional) |
+| Bundle Size           | <100KB (gzipped) | Vite analyze         |
+| Lighthouse Score      | >90              | Chrome DevTools      |
 
 ### **Performance Metrics:**
 
-| Metric | Baseline | Target |
-|--------|----------|--------|
-| Initial Load | ~200ms | <220ms |
-| Markdown Render | <50ms | <55ms |
-| Theme Switch | <100ms | <110ms |
-| PDF Export | 1-3s | <3.3s |
+| Metric          | Baseline | Target |
+| --------------- | -------- | ------ |
+| Initial Load    | ~200ms   | <220ms |
+| Markdown Render | <50ms    | <55ms  |
+| Theme Switch    | <100ms   | <110ms |
+| PDF Export      | 1-3s     | <3.3s  |
 
 ### **Reliability Metrics:**
 
-| Metric | Target |
-|--------|--------|
-| Error Rate | <0.1% of renders |
-| Crash Rate | 0% |
-| Test Pass Rate | 100% |
-| Build Success Rate | 100% |
+| Metric             | Target           |
+| ------------------ | ---------------- |
+| Error Rate         | <0.1% of renders |
+| Crash Rate         | 0%               |
+| Test Pass Rate     | 100%             |
+| Build Success Rate | 100%             |
 
 ---
 
@@ -940,10 +944,12 @@ echo "✅ All checks passed!"
 
 ```html
 <!-- index.html - Add CSP meta tag -->
-<meta http-equiv="Content-Security-Policy"
-      content="default-src 'self';
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self';
                script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
-               style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;">
+               style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;"
+/>
 ```
 
 ### **3. Sanitize User Input (Already done, verify it stays):**
@@ -953,7 +959,7 @@ echo "✅ All checks passed!"
 marked.setOptions({
   sanitize: false, // We trust our own markdown
   breaks: true,
-  gfm: true
+  gfm: true,
 });
 
 // But add validation for external input if ever added

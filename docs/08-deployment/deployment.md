@@ -217,13 +217,13 @@ vercel domains add yourdomain.com
 
 ## 📊 Comparison Table
 
-| Platform | Setup Time | Free Tier | Custom Domain | Auto Deploy | Speed | CDN |
-|----------|-----------|-----------|---------------|-------------|-------|-----|
-| **Vercel** | ⚡ 1 min | ✅ Generous | ✅ Free | ✅ Yes | ⚡⚡⚡ | ✅ Global |
-| **Netlify** | 2 min | ✅ Good | ✅ Free | ✅ Yes | ⚡⚡⚡ | ✅ Global |
-| **GitHub Pages** | 3 min | ✅ Unlimited | ✅ Free | ✅ Yes | ⚡⚡ | ✅ GitHub |
-| **Cloudflare** | 3 min | ✅ Unlimited | ✅ Free | ✅ Yes | ⚡⚡⚡ | ✅ Best |
-| **Render** | 4 min | ✅ Limited | ✅ Paid | ✅ Yes | ⚡ | ✅ Yes |
+| Platform         | Setup Time | Free Tier    | Custom Domain | Auto Deploy | Speed  | CDN       |
+| ---------------- | ---------- | ------------ | ------------- | ----------- | ------ | --------- |
+| **Vercel**       | ⚡ 1 min   | ✅ Generous  | ✅ Free       | ✅ Yes      | ⚡⚡⚡ | ✅ Global |
+| **Netlify**      | 2 min      | ✅ Good      | ✅ Free       | ✅ Yes      | ⚡⚡⚡ | ✅ Global |
+| **GitHub Pages** | 3 min      | ✅ Unlimited | ✅ Free       | ✅ Yes      | ⚡⚡   | ✅ GitHub |
+| **Cloudflare**   | 3 min      | ✅ Unlimited | ✅ Free       | ✅ Yes      | ⚡⚡⚡ | ✅ Best   |
+| **Render**       | 4 min      | ✅ Limited   | ✅ Paid       | ✅ Yes      | ⚡     | ✅ Yes    |
 
 ---
 

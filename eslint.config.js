@@ -13,13 +13,7 @@ export default [
 
   // Global ignores
   {
-    ignores: [
-      'node_modules/**',
-      'dist/**',
-      'coverage/**',
-      '*.min.js',
-      'codebase_audit/**',
-    ],
+    ignores: ['node_modules/**', 'dist/**', 'coverage/**', '*.min.js', 'codebase_audit/**'],
   },
 
   // Main configuration for all JS files
@@ -51,8 +45,8 @@ export default [
       'no-redeclare': 'error',
 
       // Best Practices
-      'eqeqeq': ['error', 'always'],
-      'curly': ['error', 'all'],
+      eqeqeq: ['error', 'always'],
+      curly: ['error', 'all'],
       'no-eval': 'error',
       'no-implied-eval': 'error',
       'no-extend-native': 'error',
@@ -71,7 +65,7 @@ export default [
       'no-useless-concat': 'error',
       'no-useless-return': 'error',
       'prefer-promise-reject-errors': 'error',
-      'radix': 'error',
+      radix: 'error',
 
       // ES6+
       'prefer-const': 'error',
@@ -92,7 +86,7 @@ export default [
       'no-console': ['warn', { allow: ['warn', 'error', 'log'] }],
 
       // Complexity
-      'complexity': ['warn', { max: 15 }],
+      complexity: ['warn', { max: 15 }],
       'max-depth': ['warn', { max: 4 }],
       'max-lines-per-function': ['warn', { max: 100, skipBlankLines: true, skipComments: true }],
       'max-params': ['warn', { max: 5 }],
@@ -103,8 +97,8 @@ export default [
       'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1 }],
       'eol-last': ['error', 'always'],
       'comma-dangle': ['error', 'always-multiline'],
-      'semi': ['error', 'always'],
-      'quotes': ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
+      semi: ['error', 'always'],
+      quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
     },
   },
 
