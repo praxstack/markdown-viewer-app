@@ -9,7 +9,7 @@ import {
   isExternalUrl,
   isMarkdownFile,
   normalizePath,
-  resolveRelativePath
+  resolveRelativePath,
 } from '../utils/pathHelpers.js';
 
 /**
@@ -59,7 +59,7 @@ export class LinkNavigationService {
    * @param {string} basePath - Base path for recursion
    */
   async buildFileCache(dirHandle, basePath = '') {
-    if (!dirHandle) return;
+    if (!dirHandle) {return;}
 
     this.currentFolderHandle = dirHandle;
     this.fileHandleCache.clear();
@@ -121,10 +121,10 @@ export class LinkNavigationService {
    */
   async handleLinkClick(event) {
     const link = event.target.closest('a');
-    if (!link) return;
+    if (!link) {return;}
 
     const href = link.getAttribute('href');
-    if (!href) return;
+    if (!href) {return;}
 
     // Anchor links - let default handler scroll
     if (isAnchorLink(href)) {
@@ -150,7 +150,7 @@ export class LinkNavigationService {
    * @returns {boolean} True if markdown file with anchor
    */
   isMarkdownFileWithAnchor(href) {
-    if (!href) return false;
+    if (!href) {return false;}
     // Match patterns like: file.md#heading, ./path/file.md#section
     return /\.md#/i.test(href);
   }
@@ -163,7 +163,7 @@ export class LinkNavigationService {
     if (!this.currentFilePath) {
       this.showWarning(
         'No file currently open',
-        'Please open a file from the folder browser first.'
+        'Please open a file from the folder browser first.',
       );
       return;
     }
@@ -173,7 +173,7 @@ export class LinkNavigationService {
 
     // Resolve absolute path
     const targetPath = this.resolveTargetPath(cleanPath);
-    console.log(`[LinkNav] Navigating: ${this.currentFilePath} → ${targetPath}${anchor ? '#' + anchor : ''}`);
+    console.log(`[LinkNav] Navigating: ${this.currentFilePath} → ${targetPath}${anchor ? `#${ anchor}` : ''}`);
 
     // Check cache
     if (this.fileHandleCache.has(targetPath)) {
@@ -192,16 +192,16 @@ export class LinkNavigationService {
    * @returns {{filePath: string, anchor: string|null}} Parsed path and anchor
    */
   parsePathWithAnchor(href) {
-    if (!href) return { filePath: '', anchor: null };
-    
+    if (!href) {return { filePath: '', anchor: null };}
+
     const hashIndex = href.indexOf('#');
     if (hashIndex === -1) {
       return { filePath: href, anchor: null };
     }
-    
+
     return {
       filePath: href.substring(0, hashIndex),
-      anchor: href.substring(hashIndex + 1) || null
+      anchor: href.substring(hashIndex + 1) || null,
     };
   }
 
@@ -245,7 +245,7 @@ export class LinkNavigationService {
         });
       }
 
-      console.log(`[LinkNav] ✅ Loaded: ${filePath}${anchor ? '#' + anchor : ''}`);
+      console.log(`[LinkNav] ✅ Loaded: ${filePath}${anchor ? `#${ anchor}` : ''}`);
     } catch (error) {
       console.error('[LinkNav] File load error:', error);
       this.showWarning('Failed to load file', `Could not read file: ${error.message}`);
@@ -310,7 +310,7 @@ export class LinkNavigationService {
     closeModalBtn?.addEventListener('click', closeHandler);
 
     modal.addEventListener('click', e => {
-      if (e.target === modal) closeHandler();
+      if (e.target === modal) {closeHandler();}
     });
 
     return modal;
