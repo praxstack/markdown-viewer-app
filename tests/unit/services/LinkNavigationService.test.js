@@ -54,7 +54,7 @@ describe('LinkNavigationService', () => {
     it('should clear cache before building', async () => {
       service.fileHandleCache.set('old-file.md', {});
       const mockDirHandle = {
-        values: async function* () {},
+        async *values () {},
       };
 
       await service.buildFileCache(mockDirHandle);
@@ -68,7 +68,7 @@ describe('LinkNavigationService', () => {
 
     it('should cache markdown files only', async () => {
       const mockDirHandle = {
-        values: async function* () {
+        async *values () {
           yield { kind: 'file', name: 'test.md' };
           yield { kind: 'file', name: 'test.txt' };
           yield { kind: 'file', name: 'README.MD' };
@@ -84,13 +84,13 @@ describe('LinkNavigationService', () => {
 
     it('should recursively cache files in subdirectories', async () => {
       const mockSubDir = {
-        values: async function* () {
+        async *values () {
           yield { kind: 'file', name: 'nested.md' };
         },
       };
 
       const mockDirHandle = {
-        values: async function* () {
+        async *values () {
           yield { kind: 'file', name: 'root.md' };
           yield { kind: 'directory', name: 'subfolder', ...mockSubDir };
         },
@@ -202,7 +202,7 @@ describe('LinkNavigationService', () => {
       await service.navigateToMarkdownFile('test.md');
       expect(showWarningSpy).toHaveBeenCalledWith(
         'No file currently open',
-        'Please open a file from the folder browser first.'
+        'Please open a file from the folder browser first.',
       );
     });
 
@@ -224,6 +224,7 @@ describe('LinkNavigationService', () => {
         name: 'test.md',
         path: 'docs/test.md',
         handle: mockFileHandle,
+        anchor: null,
       });
     });
 
@@ -253,6 +254,7 @@ describe('LinkNavigationService', () => {
         name: 'test.md',
         path: 'docs/test.md',
         handle: mockFileHandle,
+        anchor: null,
       });
     });
 
@@ -278,7 +280,7 @@ describe('LinkNavigationService', () => {
 
       expect(showWarningSpy).toHaveBeenCalledWith(
         'Failed to load file',
-        'Could not read file: Permission denied'
+        'Could not read file: Permission denied',
       );
     });
   });
@@ -338,7 +340,7 @@ describe('LinkNavigationService', () => {
     });
 
     it('should handle very long file paths', async () => {
-      const longPath = 'a/'.repeat(100) + 'file.md';
+      const longPath = `${'a/'.repeat(100) }file.md`;
       service.setCurrentFile(longPath);
       expect(service.currentFilePath).toBe(longPath);
     });

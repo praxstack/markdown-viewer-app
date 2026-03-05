@@ -5,6 +5,7 @@
  * Provides preview functionality before download.
  */
 
+import DOMPurify from 'dompurify';
 import { PDF_CONFIG } from '../config/constants.js';
 
 /**
@@ -46,7 +47,7 @@ export class PDFService {
 
     // Handle rgba/rgb
     const rgbaMatch = color.match(
-      /rgba?\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*[\d.]+)?\s*\)/i
+      /rgba?\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*[\d.]+)?\s*\)/i,
     );
     if (rgbaMatch) {
       const r = parseInt(rgbaMatch[1], 10);
@@ -189,7 +190,10 @@ export class PDFService {
 
     // Handle content as either a Node or a string
     if (typeof content === 'string') {
-      contentWrapper.innerHTML = content;
+      // Security: Sanitize HTML string to prevent DOM XSS when generating PDF
+      contentWrapper.innerHTML = DOMPurify.sanitize(content, {
+        USE_PROFILES: { html: true }, // Allow standard HTML
+      });
     } else if (content instanceof Node) {
       contentWrapper.appendChild(content.cloneNode(true));
     } else {
@@ -294,7 +298,7 @@ export class PDFService {
         mergedConfig,
         mergedConfig.themeName,
         mergedConfig.customTheme,
-        margins
+        margins,
       );
 
       // Build html2pdf config

@@ -24,13 +24,13 @@ describe('pathHelpers', () => {
 
     it('should resolve ./ correctly', () => {
       expect(resolveRelativePath('docs/folder/current.md', './sibling.md')).toBe(
-        'docs/folder/sibling.md'
+        'docs/folder/sibling.md',
       );
     });
 
     it('should resolve ../../ correctly', () => {
       expect(resolveRelativePath('docs/folder/subfolder/current.md', '../../other.md')).toBe(
-        'docs/other.md'
+        'docs/other.md',
       );
     });
 
@@ -40,13 +40,13 @@ describe('pathHelpers', () => {
 
     it('should ignore . (current directory marker)', () => {
       expect(resolveRelativePath('docs/folder/current.md', './././file.md')).toBe(
-        'docs/folder/file.md'
+        'docs/folder/file.md',
       );
     });
 
     it('should handle backslashes on Windows paths', () => {
       expect(resolveRelativePath('docs\\\\folder\\\\current.md', '..\\\\other.md')).toBe(
-        'docs/other.md'
+        'docs/other.md',
       );
     });
 
@@ -237,9 +237,9 @@ describe('pathHelpers', () => {
 
     it('should handle normalized paths that resolve outside root', () => {
       // Normalization converts 'docs/../secret' to 'secret'
-      // The implementation normalizes the path but doesn't prevent paths that resolved outside root
-      // It only checks if the normalized path starts with '..' or is empty
-      expect(isWithinRoot('docs/../secret', 'docs')).toBe(true); // 'secret' is valid normalized path
+      // The implementation checks if the path starts with the root folder
+      // Since 'secret' does not start with 'docs', it should return false
+      expect(isWithinRoot('docs/../secret', 'docs')).toBe(false); // 'secret' is outside 'docs'
     });
 
     it('should allow nested paths within root', () => {

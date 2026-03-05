@@ -1,0 +1,4 @@
+## 2024-03-05 - DOM XSS in PDFService Generation
+**Vulnerability:** The `PDFService.js` directly assigned unvalidated HTML string to `contentWrapper.innerHTML` during PDF generation or preview when a string was passed as the content element.
+**Learning:** Even internal services converting markdown/HTML string representations to export formats (like PDF) need input sanitization to prevent XSS payloads executing during rendering.
+**Prevention:** Always sanitize user-derived or dynamic HTML strings using `DOMPurify.sanitize(content)` before injecting them into the DOM for export rendering operations.
