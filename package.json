@@ -44,7 +44,7 @@
     "vitest": "4.0.8"
   },
   "dependencies": {
-    "dompurify": "3.3.1",
+    "dompurify": "^3.3.1",
     "html2pdf.js": "0.14.0",
     "katex": "0.16.27",
     "marked": "17.0.1",
