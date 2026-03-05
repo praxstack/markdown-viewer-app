@@ -1121,6 +1121,10 @@ body {
   margin: 2em 0;
   display: flex;
   justify-content: center;
+  /* CRITICAL: Mermaid calculates SVG bounding boxes assuming normal line-height.
+     Inheriting the global 1.6/1.7 line-height causes text to overflow the bottom
+     of nodes and get clipped. Resetting it here fixes the bounding box math. */
+  line-height: normal;
 }
 
 /* ==================== RESPONSIVE DESIGN ==================== */

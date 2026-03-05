@@ -75,12 +75,12 @@ function generateSlug(text, seen = headingSlugMap) {
     .replace(/^-+|-+$/g, '');
 
   // Fallback for empty result
-  if (!slug) slug = 'section';
+  if (!slug) {slug = 'section';}
 
   // Handle duplicates (header, header-1, header-2)
   const baseSlug = slug;
   const count = seen.get(baseSlug) || 0;
-  if (count > 0) slug = `${baseSlug}-${count}`;
+  if (count > 0) {slug = `${baseSlug}-${count}`;}
   seen.set(baseSlug, count + 1);
 
   return slug;
@@ -122,10 +122,10 @@ const AnchorNavigation = {
    */
   handleClick(event) {
     const link = event.target.closest('a[href^="#"]');
-    if (!link) return;
+    if (!link) {return;}
 
     // Ignore external links
-    if (link.hostname && link.hostname !== window.location.hostname) return;
+    if (link.hostname && link.hostname !== window.location.hostname) {return;}
 
     event.preventDefault();
 
@@ -166,7 +166,7 @@ const AnchorNavigation = {
     }
 
     const target = this.resolveTarget(hash);
-    if (!target) return;
+    if (!target) {return;}
 
     target.scrollIntoView({
       behavior: smooth ? 'smooth' : 'instant',
@@ -192,7 +192,7 @@ const AnchorNavigation = {
    * @returns {Element|null} Target element or null
    */
   resolveTarget(hash) {
-    if (!hash) return null;
+    if (!hash) {return null;}
 
     // Decode URI components safely
     let decodedHash;
@@ -204,21 +204,21 @@ const AnchorNavigation = {
 
     // Priority 1: Exact ID (SCOPED to container)
     let target = this.container.querySelector(`#${CSS.escape(decodedHash)}`);
-    if (target) return target;
+    if (target) {return target;}
 
     // Priority 2: Normalized ID with our custom replacements (C++ → cpp)
     const normalized = this.normalizeHash(decodedHash);
     target = this.container.querySelector(`#${CSS.escape(normalized)}`);
-    if (target) return target;
+    if (target) {return target;}
 
     // Priority 3: GitHub-style normalization (C++ → c, keeps double hyphens)
     const githubStyle = this.normalizeHashGitHub(decodedHash);
     target = this.container.querySelector(`#${CSS.escape(githubStyle)}`);
-    if (target) return target;
+    if (target) {return target;}
 
     // Priority 4: Try all headings for fuzzy match (last resort)
     const fuzzyTarget = this.fuzzyMatchHeading(decodedHash);
-    if (fuzzyTarget) return fuzzyTarget;
+    if (fuzzyTarget) {return fuzzyTarget;}
 
     console.warn(`[AnchorNav] Target not found: "${hash}"`);
     return null;
@@ -271,7 +271,7 @@ const AnchorNavigation = {
    */
   fuzzyMatchHeading(hash) {
     const headings = this.container.querySelectorAll(
-      'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]'
+      'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]',
     );
     const normalizedSearch = hash.toLowerCase().replace(/[^\w]/g, '');
 
@@ -485,7 +485,7 @@ async function detectSupportRegion() {
     // 4. Fail open - silent fail to global
     console.warn(
       '[SupportWidget] Geo-lookup failed/timed-out, defaulting to Global.',
-      error.message
+      error.message,
     );
     return SUPPORT_FALLBACK_REGION;
   }
@@ -511,7 +511,7 @@ window.toggleSupportRegion = toggleSupportRegion;
  */
 function renderSupportWidget(region) {
   const container = document.getElementById('support-widget');
-  if (!container) return;
+  if (!container) {return;}
 
   const config =
     region === 'india'
@@ -589,7 +589,7 @@ function configureMarkedExtensions() {
         },
         tokenizer(src) {
           const match = src.match(
-            /^> \[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*\n((?:> .*\n?)*)/
+            /^> \[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*\n((?:> .*\n?)*)/,
           );
           if (match) {
             const type = match[1];
@@ -858,7 +858,7 @@ function configureMarkedExtensions() {
         const text = token.tokens ? this.parser.parseInline(token.tokens) : token.text;
 
         // Defensive: only catch truly broken cases (null/undefined)
-        if (href == null) {
+        if (href === null || href === undefined) {
           return `<a>${text}</a>`;
         }
 
@@ -1092,7 +1092,7 @@ graph TD
           const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
           // Return placeholder div
           return `<div class="mermaid-diagram" id="${id}" data-code="${encodeURIComponent(decodedCode)}">${code}</div>`;
-        }
+        },
       );
 
       // Sanitize HTML using DOMPurify
@@ -1722,7 +1722,7 @@ graph TD
       if (isMobileView()) {
         initializeMobileView();
       }
-    }, 250)
+    }, 250),
   );
 
   // Initialize visibility
@@ -1981,7 +1981,7 @@ graph TD
       alert(
         'Folder browsing requires File System Access API.\n\n' +
         'Please use Chrome 86+ or Edge 86+.\n\n' +
-        'Firefox and Safari are not currently supported.'
+        'Firefox and Safari are not currently supported.',
       );
       return;
     }
@@ -2595,7 +2595,7 @@ Wrap up your thoughts and include a call to action.
       });
     }
 
-    console.log(`[App] Loaded from link: ${fileData.path}${fileData.anchor ? '#' + fileData.anchor : ''}`);
+    console.log(`[App] Loaded from link: ${fileData.path}${fileData.anchor ? `#${ fileData.anchor}` : ''}`);
   });
 
   // Initialize link interceptor on preview container

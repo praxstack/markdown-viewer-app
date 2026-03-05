@@ -161,6 +161,8 @@ export class MermaidService {
       mermaid.initialize({
         startOnLoad: MERMAID_CONFIG.START_ON_LOAD,
         theme: MERMAID_CONFIG.THEME,
+        securityLevel: 'loose', // Allow HTML/style tags inside diagram nodes
+        htmlLabels: true, // Force enable HTML rendering
         themeVariables: {
           // Core Global
           background: get('--mermaid-background', bgPri),
