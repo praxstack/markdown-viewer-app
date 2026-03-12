@@ -224,6 +224,7 @@ describe('LinkNavigationService', () => {
         name: 'test.md',
         path: 'docs/test.md',
         handle: mockFileHandle,
+        anchor: null,
       });
     });
 
@@ -253,6 +254,7 @@ describe('LinkNavigationService', () => {
         name: 'test.md',
         path: 'docs/test.md',
         handle: mockFileHandle,
+        anchor: null,
       });
     });
 
