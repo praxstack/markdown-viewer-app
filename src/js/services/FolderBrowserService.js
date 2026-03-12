@@ -281,6 +281,25 @@ export class FolderBrowserService {
   }
 
   /**
+   * Generic tree traversal helper
+   *
+   * @param {Array} items - Tree items
+   * @param {Function} fileCallback - Function to call for each file item
+   * @private
+   */
+  _traverseTree(items, fileCallback) {
+    // ⚡ Bolt Optimization: Using for...of instead of .forEach in recursive
+    // path avoids creating new closure scopes and function allocations per item
+    for (const item of items) {
+      if (item.type === 'file') {
+        fileCallback(item);
+      } else if (item.type === 'directory' && item.children) {
+        this._traverseTree(item.children, fileCallback);
+      }
+    }
+  }
+
+  /**
    * Count total files in tree
    *
    * @param {Array} items - Tree items
@@ -289,17 +308,7 @@ export class FolderBrowserService {
    */
   countFiles(items) {
     let count = 0;
-
-    // ⚡ Bolt Optimization: Using for...of instead of .forEach in recursive
-    // path avoids creating new closure scopes and function allocations per item
-    for (const item of items) {
-      if (item.type === 'file') {
-        count++;
-      } else if (item.type === 'directory' && item.children) {
-        count += this.countFiles(item.children);
-      }
-    }
-
+    this._traverseTree(items, () => count++);
     return count;
   }
 
@@ -311,17 +320,7 @@ export class FolderBrowserService {
    */
   getAllFiles(items) {
     const files = [];
-
-    // ⚡ Bolt Optimization: Using for...of instead of .forEach in recursive
-    // path avoids creating new closure scopes and function allocations per item
-    for (const item of items) {
-      if (item.type === 'file') {
-        files.push(item);
-      } else if (item.type === 'directory' && item.children) {
-        files.push(...this.getAllFiles(item.children));
-      }
-    }
-
+    this._traverseTree(items, item => files.push(item));
     return files;
   }
 
