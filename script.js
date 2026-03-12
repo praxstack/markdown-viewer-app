@@ -1151,7 +1151,12 @@ graph TD
       storageManager.set('markdownContent', markdownText);
     } catch (error) {
       console.error('Render error:', error);
-      preview.innerHTML = `<p style="color: red;">Error rendering markdown: ${error.message}</p>`;
+      // Use textContent to prevent XSS if error message contains malicious code
+      preview.innerHTML = '';
+      const errorPara = document.createElement('p');
+      errorPara.style.color = 'red';
+      errorPara.textContent = `Error rendering markdown: ${error.message}`;
+      preview.appendChild(errorPara);
     }
   }
 
