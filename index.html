@@ -762,7 +762,11 @@
         <!-- Editor -->
         <div class="editor-container mobile-visible">
           <div class="editor-header">MARKDOWN EDITOR</div>
-          <textarea id="markdown-editor" placeholder="Type your markdown here..."></textarea>
+          <textarea
+            id="markdown-editor"
+            aria-label="Markdown editor input"
+            placeholder="Type your markdown here..."
+          ></textarea>
         </div>
 
         <!-- Split View Resizer -->
@@ -1080,7 +1084,9 @@
       <div class="modal-content pdf-modal-content">
         <div class="modal-header">
           <h2>PDF Export Settings</h2>
-          <button class="close-btn" id="close-pdf-modal">&times;</button>
+          <button class="close-btn" id="close-pdf-modal" aria-label="Close PDF Settings">
+            &times;
+          </button>
         </div>
 
         <!-- PDF Preview Container -->
@@ -1236,7 +1242,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2>Theme Customizer</h2>
-          <button class="close-btn" id="close-modal">&times;</button>
+          <button class="close-btn" id="close-modal" aria-label="Close Customizer">&times;</button>
         </div>
 
         <div class="section-title">Background Colors</div>
