@@ -279,7 +279,6 @@ const AnchorNavigation = {
       const headingId = heading.id.toLowerCase().replace(/[^\w]/g, '');
       // Check if the search term is contained in the ID or vice versa
       if (headingId.includes(normalizedSearch) || normalizedSearch.includes(headingId)) {
-        console.log(`[AnchorNav] Fuzzy matched "${hash}" → "${heading.id}"`);
         return heading;
       }
     }
