@@ -39,6 +39,8 @@ export class FolderBrowserService {
     this.maxFiles = 1000; // Performance cap
     this.fileCount = 0;
     this.lastScanResult = null; // Cache for refresh operations
+    this.flattenedFilesCache = null;
+    this.itemsCache = null;
   }
 
   /**
@@ -78,6 +80,10 @@ export class FolderBrowserService {
 
       this.currentDirectoryHandle = dirHandle;
       this.fileCount = 0;
+
+      // Reset caches
+      this.flattenedFilesCache = null;
+      this.itemsCache = null;
 
       // Scan directory recursively
       const files = await this.scanDirectory(dirHandle);
@@ -330,9 +336,16 @@ export class FolderBrowserService {
     const results = [];
     const lowerQuery = query.toLowerCase();
 
+    // ⚡ Bolt Optimization: Cache the flattened file list if items haven't changed.
+    // This avoids redundant recursive tree traversal on every keystroke.
+    if (this.itemsCache !== items) {
+      this.itemsCache = items;
+      this.flattenedFilesCache = this.getAllFiles(items);
+    }
+
     // ⚡ Bolt Optimization: Using for...of instead of .forEach to avoid
     // closure creation overhead during potentially large array iteration
-    for (const file of this.getAllFiles(items)) {
+    for (const file of this.flattenedFilesCache) {
       if (file.name.toLowerCase().includes(lowerQuery)) {
         results.push(file);
       }
@@ -357,6 +370,8 @@ export class FolderBrowserService {
     this.currentDirectoryHandle = null;
     this.fileCount = 0;
     this.lastScanResult = null;
+    this.flattenedFilesCache = null;
+    this.itemsCache = null;
   }
 
   /**
@@ -395,8 +410,11 @@ export class FolderBrowserService {
         }
       }
 
-      // Reset file count and re-scan
+      // Reset file count and caches before re-scanning
       this.fileCount = 0;
+      this.flattenedFilesCache = null;
+      this.itemsCache = null;
+
       const files = await this.scanDirectory(this.currentDirectoryHandle);
 
       // Update cached result
