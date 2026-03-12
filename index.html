@@ -1553,6 +1553,101 @@
 
     <!-- Theme Picker Controller (syncs custom picker ↔ hidden native select) -->
     <script>
+      const FONTS = {
+        sans: [
+          { name: 'System Default', family: 'inherit', url: null },
+          { name: 'Inter', family: "'Inter',sans-serif", url: 'Inter:wght@300;400;500;600;700' },
+          {
+            name: 'IBM Plex Sans',
+            family: "'IBM Plex Sans',sans-serif",
+            url: 'IBM+Plex+Sans:wght@300;400;500;600;700',
+          },
+          { name: 'DM Sans', family: "'DM Sans',sans-serif", url: 'DM+Sans:wght@400;500;700' },
+          {
+            name: 'Figtree',
+            family: "'Figtree',sans-serif",
+            url: 'Figtree:wght@300;400;500;600;700',
+          },
+          {
+            name: 'Noto Sans',
+            family: "'Noto Sans',sans-serif",
+            url: 'Noto+Sans:wght@300;400;500;700',
+          },
+        ],
+        serif: [
+          {
+            name: 'Merriweather',
+            family: "'Merriweather',serif",
+            url: 'Merriweather:wght@300;400;700',
+          },
+          { name: 'Lora', family: "'Lora',serif", url: 'Lora:wght@400;500;600;700' },
+          {
+            name: 'Crimson Text',
+            family: "'Crimson Text',serif",
+            url: 'Crimson+Text:wght@400;600;700',
+          },
+          {
+            name: 'Source Serif 4',
+            family: "'Source Serif 4',serif",
+            url: 'Source+Serif+4:wght@300;400;600;700',
+          },
+          { name: 'Literata', family: "'Literata',serif", url: 'Literata:wght@300;400;500;700' },
+        ],
+        mono: [
+          {
+            name: 'JetBrains Mono',
+            family: "'JetBrains Mono',monospace",
+            url: 'JetBrains+Mono:wght@400;500;600;700',
+          },
+          {
+            name: 'Fira Code',
+            family: "'Fira Code',monospace",
+            url: 'Fira+Code:wght@400;500;600;700',
+          },
+          {
+            name: 'Source Code Pro',
+            family: "'Source Code Pro',monospace",
+            url: 'Source+Code+Pro:wght@400;500;600;700',
+          },
+          {
+            name: 'IBM Plex Mono',
+            family: "'IBM Plex Mono',monospace",
+            url: 'IBM+Plex+Mono:wght@400;500;600;700',
+          },
+          {
+            name: 'Space Mono',
+            family: "'Space Mono',monospace",
+            url: 'Space+Mono:wght@400;700',
+          },
+        ],
+        quirky: [
+          {
+            name: 'Outfit',
+            family: "'Outfit',sans-serif",
+            url: 'Outfit:wght@300;400;500;600;700',
+          },
+          {
+            name: 'Space Grotesk',
+            family: "'Space Grotesk',sans-serif",
+            url: 'Space+Grotesk:wght@400;500;600;700',
+          },
+          {
+            name: 'Recursive',
+            family: "'Recursive',sans-serif",
+            url: 'Recursive:wght@400;500;700',
+          },
+          { name: 'Comic Neue', family: "'Comic Neue',cursive", url: 'Comic+Neue:wght@400;700' },
+          { name: 'Caveat', family: "'Caveat',cursive", url: 'Caveat:wght@400;500;600;700' },
+          {
+            name: 'Architects Daughter',
+            family: "'Architects Daughter',cursive",
+            url: 'Architects+Daughter',
+          },
+        ],
+      };
+
+      const ALL_FONTS = [...FONTS.sans, ...FONTS.serif, ...FONTS.mono, ...FONTS.quirky];
+
       (function initThemePicker() {
         const trigger = document.getElementById('theme-picker-trigger');
         const dropdown = document.getElementById('theme-picker-dropdown');
@@ -1840,10 +1935,19 @@
         function getFontImports() {
           const settings = JSON.parse(localStorage.getItem('fontSettings') || '{}');
           const urls = [];
-          if (settings.previewBody && settings.previewBody !== 'System Default')
-            urls.push(settings.previewBody.replace(/ /g, '+'));
-          if (settings.editor) urls.push(settings.editor.replace(/ /g, '+'));
-          if (settings.codeBlock) urls.push(settings.codeBlock.replace(/ /g, '+'));
+
+          const validateAndPush = fontName => {
+            if (!fontName || fontName === 'System Default') return;
+            const font = ALL_FONTS.find(f => f.name === fontName);
+            if (font && font.url) {
+              urls.push(font.url);
+            }
+          };
+
+          validateAndPush(settings.previewBody);
+          validateAndPush(settings.editor);
+          validateAndPush(settings.codeBlock);
+
           if (urls.length === 0) return '';
           return (
             '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=' +
@@ -1981,98 +2085,6 @@
 
       // Font Picker Controller
       (function initFontPicker() {
-        const FONTS = {
-          sans: [
-            { name: 'System Default', family: 'inherit', url: null },
-            { name: 'Inter', family: "'Inter',sans-serif", url: 'Inter:wght@300;400;500;600;700' },
-            {
-              name: 'IBM Plex Sans',
-              family: "'IBM Plex Sans',sans-serif",
-              url: 'IBM+Plex+Sans:wght@300;400;500;600;700',
-            },
-            { name: 'DM Sans', family: "'DM Sans',sans-serif", url: 'DM+Sans:wght@400;500;700' },
-            {
-              name: 'Figtree',
-              family: "'Figtree',sans-serif",
-              url: 'Figtree:wght@300;400;500;600;700',
-            },
-            {
-              name: 'Noto Sans',
-              family: "'Noto Sans',sans-serif",
-              url: 'Noto+Sans:wght@300;400;500;700',
-            },
-          ],
-          serif: [
-            {
-              name: 'Merriweather',
-              family: "'Merriweather',serif",
-              url: 'Merriweather:wght@300;400;700',
-            },
-            { name: 'Lora', family: "'Lora',serif", url: 'Lora:wght@400;500;600;700' },
-            {
-              name: 'Crimson Text',
-              family: "'Crimson Text',serif",
-              url: 'Crimson+Text:wght@400;600;700',
-            },
-            {
-              name: 'Source Serif 4',
-              family: "'Source Serif 4',serif",
-              url: 'Source+Serif+4:wght@300;400;600;700',
-            },
-            { name: 'Literata', family: "'Literata',serif", url: 'Literata:wght@300;400;500;700' },
-          ],
-          mono: [
-            {
-              name: 'JetBrains Mono',
-              family: "'JetBrains Mono',monospace",
-              url: 'JetBrains+Mono:wght@400;500;600;700',
-            },
-            {
-              name: 'Fira Code',
-              family: "'Fira Code',monospace",
-              url: 'Fira+Code:wght@400;500;600;700',
-            },
-            {
-              name: 'Source Code Pro',
-              family: "'Source Code Pro',monospace",
-              url: 'Source+Code+Pro:wght@400;500;600;700',
-            },
-            {
-              name: 'IBM Plex Mono',
-              family: "'IBM Plex Mono',monospace",
-              url: 'IBM+Plex+Mono:wght@400;500;600;700',
-            },
-            {
-              name: 'Space Mono',
-              family: "'Space Mono',monospace",
-              url: 'Space+Mono:wght@400;700',
-            },
-          ],
-          quirky: [
-            {
-              name: 'Outfit',
-              family: "'Outfit',sans-serif",
-              url: 'Outfit:wght@300;400;500;600;700',
-            },
-            {
-              name: 'Space Grotesk',
-              family: "'Space Grotesk',sans-serif",
-              url: 'Space+Grotesk:wght@400;500;600;700',
-            },
-            {
-              name: 'Recursive',
-              family: "'Recursive',sans-serif",
-              url: 'Recursive:wght@400;500;700',
-            },
-            { name: 'Comic Neue', family: "'Comic Neue',cursive", url: 'Comic+Neue:wght@400;700' },
-            { name: 'Caveat', family: "'Caveat',cursive", url: 'Caveat:wght@400;500;600;700' },
-            {
-              name: 'Architects Daughter',
-              family: "'Architects Daughter',cursive",
-              url: 'Architects+Daughter',
-            },
-          ],
-        };
         const loadedFonts = new Set(),
           root = document.documentElement,
           trigger = document.getElementById('font-picker-trigger'),
