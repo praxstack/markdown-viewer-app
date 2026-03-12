@@ -77,6 +77,8 @@ export class LinkNavigationService {
    * @private
    */
   async _recursiveCacheBuild(dirHandle, basePath) {
+    const promises = [];
+
     for await (const entry of dirHandle.values()) {
       const fullPath = basePath ? `${basePath}/${entry.name}` : entry.name;
       const normalized = normalizePath(fullPath);
@@ -84,8 +86,12 @@ export class LinkNavigationService {
       if (entry.kind === 'file' && isMarkdownFile(entry.name)) {
         this.fileHandleCache.set(normalized, entry);
       } else if (entry.kind === 'directory') {
-        await this._recursiveCacheBuild(entry, fullPath);
+        promises.push(this._recursiveCacheBuild(entry, fullPath));
       }
+    }
+
+    if (promises.length > 0) {
+      await Promise.all(promises);
     }
   }
 
