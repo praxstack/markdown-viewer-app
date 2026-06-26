@@ -7,3 +7,7 @@
 
 **Learning:** In recursive UI rendering processes (e.g., `renderFileTree` or `populateLocationDropdown`), using `.forEach` leads to excessive closure allocations. Appending elements directly to the live DOM inside recursive loops causes severe layout thrashing. The combination of both leads to unacceptable UI lockup during deep folder expansion.
 **Action:** Always combine `for...of` loops with `document.createDocumentFragment()` to batch DOM insertions before appending them to the container in recursive Vanilla JS DOM manipulation. This prevents both closure allocation bottlenecks and synchronous layout thrashing.
+
+## 2024-05-24 - [Avoid .forEach in Recursive File Scans]
+**Learning:** Using `.forEach()` in recursive tree traversal methods (like `countFiles` and `getAllFiles` in `FolderBrowserService`) causes measurable callback closure overhead and extra allocations. This is particularly problematic in deep or large file tree scans typical of this markdown application's file system structure.
+**Action:** Always prefer `for...of` loops over `.forEach()` when performing recursive scans, high-frequency execution paths, or deep tree operations within this codebase to reduce memory overhead and improve raw execution speed.
