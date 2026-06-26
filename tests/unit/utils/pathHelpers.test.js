@@ -236,10 +236,7 @@ describe('pathHelpers', () => {
     });
 
     it('should handle normalized paths that resolve outside root', () => {
-      // Normalization converts 'docs/../secret' to 'secret'
-      // The implementation normalizes the path but doesn't prevent paths that resolved outside root
-      // It only checks if the normalized path starts with '..' or is empty
-      expect(isWithinRoot('docs/../secret', 'docs')).toBe(true); // 'secret' is valid normalized path
+      expect(isWithinRoot('docs/../secret', 'docs')).toBe(false);
     });
 
     it('should allow nested paths within root', () => {

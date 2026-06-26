@@ -55,10 +55,23 @@ export function resolveRelativePath(basePath, relativePath) {
 export function normalizePath(path) {
   if (!path) return '';
 
-  return path
+  const cleanPath = path
     .replace(/\\/g, '/') // Convert backslashes to forward slashes
     .replace(/\/+/g, '/') // Collapse multiple slashes
     .replace(/^\/|\/$/g, ''); // Remove leading/trailing slashes
+
+  const segments = cleanPath.split('/');
+  const stack = [];
+
+  for (const segment of segments) {
+    if (segment === '..') {
+      stack.pop();
+    } else if (segment !== '.' && segment !== '') {
+      stack.push(segment);
+    }
+  }
+
+  return stack.join('/');
 }
 
 /**
