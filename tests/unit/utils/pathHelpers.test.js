@@ -24,13 +24,13 @@ describe('pathHelpers', () => {
 
     it('should resolve ./ correctly', () => {
       expect(resolveRelativePath('docs/folder/current.md', './sibling.md')).toBe(
-        'docs/folder/sibling.md'
+        'docs/folder/sibling.md',
       );
     });
 
     it('should resolve ../../ correctly', () => {
       expect(resolveRelativePath('docs/folder/subfolder/current.md', '../../other.md')).toBe(
-        'docs/other.md'
+        'docs/other.md',
       );
     });
 
@@ -40,13 +40,13 @@ describe('pathHelpers', () => {
 
     it('should ignore . (current directory marker)', () => {
       expect(resolveRelativePath('docs/folder/current.md', './././file.md')).toBe(
-        'docs/folder/file.md'
+        'docs/folder/file.md',
       );
     });
 
     it('should handle backslashes on Windows paths', () => {
       expect(resolveRelativePath('docs\\\\folder\\\\current.md', '..\\\\other.md')).toBe(
-        'docs/other.md'
+        'docs/other.md',
       );
     });
 
