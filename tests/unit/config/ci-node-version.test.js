@@ -15,7 +15,9 @@ function parseVersion(v) {
 
 function cmp(a, b) {
   for (let i = 0; i < 3; i++) {
-    if (a[i] !== b[i]) return a[i] - b[i];
+    if (a[i] !== b[i]) {
+      return a[i] - b[i];
+    }
   }
   return 0;
 }
@@ -25,13 +27,19 @@ function cmp(a, b) {
 function satisfies(version, range) {
   return range.split('||').some(alt => {
     const part = alt.trim();
-    if (part === '*') return true;
-    if (part.startsWith('>=')) return cmp(version, parseVersion(part.slice(2))) >= 0;
+    if (part === '*') {
+      return true;
+    }
+    if (part.startsWith('>=')) {
+      return cmp(version, parseVersion(part.slice(2))) >= 0;
+    }
     if (part.startsWith('^')) {
       const min = parseVersion(part.slice(1));
       return version[0] === min[0] && cmp(version, min) >= 0;
     }
-    if (/^\d+$/.test(part)) return version[0] === Number(part);
+    if (/^\d+$/.test(part)) {
+      return version[0] === Number(part);
+    }
     throw new Error(`Unsupported engines range "${range}"`);
   });
 }

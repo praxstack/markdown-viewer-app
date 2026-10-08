@@ -12,9 +12,9 @@ const EMBED_PAYLOAD =
 describe('markdown sanitizer (MVA-007)', () => {
   it('script.js sanitizes the preview with the shared SANITIZE_OPTIONS', () => {
     const src = readFileSync(resolve(__dirname, '../../../script.js'), 'utf8');
-    expect(src).toMatch(
-      /import\s*\{\s*SANITIZE_OPTIONS\s*\}\s*from\s*'\.\/src\/js\/config\/sanitizer\.js'/
-    );
+    const importLine =
+      /import\s*\{\s*SANITIZE_OPTIONS\s*\}\s*from\s*'\.\/src\/js\/config\/sanitizer\.js'/;
+    expect(src).toMatch(importLine);
     expect(src).toMatch(/DOMPurify\.sanitize\(\s*html\s*,\s*SANITIZE_OPTIONS\s*\)/);
   });
 
@@ -32,10 +32,10 @@ describe('markdown sanitizer (MVA-007)', () => {
   });
 
   it('keeps images and mermaid data attributes', () => {
-    const out = DOMPurify.sanitize(
-      '<img src="https://example.com/a.png" alt="a" loading="lazy"><div class="mermaid-diagram" data-code="graph%20TD">x</div>',
-      SANITIZE_OPTIONS
-    );
+    const input =
+      '<img src="https://example.com/a.png" alt="a" loading="lazy">' +
+      '<div class="mermaid-diagram" data-code="graph%20TD">x</div>';
+    const out = DOMPurify.sanitize(input, SANITIZE_OPTIONS);
     expect(out).toContain('src="https://example.com/a.png"');
     expect(out).toContain('loading="lazy"');
     expect(out).toContain('data-code="graph%20TD"');
