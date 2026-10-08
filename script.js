@@ -1109,12 +1109,10 @@ graph TD
 
       // Sanitize HTML using DOMPurify
       const cleanHtml = DOMPurify.sanitize(html, {
-        ADD_TAGS: ['iframe', 'img'], // Allow iframe and img tags
+        ADD_TAGS: ['img'],
+        // Never allow embedded browsing contexts from untrusted markdown (MVA-007)
+        FORBID_TAGS: ['iframe', 'frame', 'frameset', 'object', 'embed', 'portal'],
         ADD_ATTR: [
-          'allow',
-          'allowfullscreen',
-          'frameborder',
-          'scrolling',
           'target',
           'data-code', // Mermaid diagrams
           'src',
