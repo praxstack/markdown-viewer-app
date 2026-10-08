@@ -122,29 +122,6 @@ describe('Baseline: Current Functionality', () => {
     });
   });
 
-  describe('PDF Configuration', () => {
-    it('should use 0.25 inch margins', () => {
-      const margins = [0.25, 0.25, 0.25, 0.25];
-      expect(margins).toEqual([0.25, 0.25, 0.25, 0.25]);
-    });
-
-    it('should use A4 format', () => {
-      expect('a4').toBe('a4');
-    });
-
-    it('should use portrait orientation', () => {
-      expect('portrait').toBe('portrait');
-    });
-
-    it('should use scale 2', () => {
-      expect(2).toBe(2);
-    });
-
-    it('should use quality 0.98', () => {
-      expect(0.98).toBe(0.98);
-    });
-  });
-
   describe('HTML Entity Decoding', () => {
     it('should decode &lt; to <', () => {
       const textarea = document.createElement('textarea');
@@ -208,7 +185,6 @@ describe('Baseline: Current Functionality', () => {
       'theme-selector',
       'customize-btn',
       'export-html-btn',
-      'export-pdf-btn',
       'customizer-modal',
       'close-modal',
       'reset-btn',
@@ -274,10 +250,6 @@ describe('Baseline: Current Functionality', () => {
   describe('Export Filenames', () => {
     it('should export HTML as markdown-export.html', () => {
       expect('markdown-export.html').toBe('markdown-export.html');
-    });
-
-    it('should export PDF as markdown-export.pdf', () => {
-      expect('markdown-export.pdf').toBe('markdown-export.pdf');
     });
   });
 

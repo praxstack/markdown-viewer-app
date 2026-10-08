@@ -56,34 +56,6 @@ export const THEMES = {
   CUSTOM: 'custom',
 };
 
-// PDF Export Configuration
-export const PDF_CONFIG = {
-  PAGE_SIZES: {
-    A4: { width: 210, height: 297 },
-    LETTER: { width: 216, height: 279 },
-    LEGAL: { width: 216, height: 356 },
-  },
-  ORIENTATIONS: {
-    PORTRAIT: 'portrait',
-    LANDSCAPE: 'landscape',
-  },
-  DEFAULT_MARGINS: [0.5, 0.5, 0.5, 0.5], // inches: [top, right, bottom, left]
-  MARGIN_LIMITS: {
-    MIN: 0,
-    MAX: 2,
-    STEP: 0.25,
-  },
-  FONT_SIZES: {
-    MIN: 8,
-    MAX: 24,
-    DEFAULT: 12,
-    STEP: 1,
-  },
-  FILENAME: 'markdown-export.pdf',
-  SCALE: 2,
-  QUALITY: 0.98,
-};
-
 // HTML Export Configuration
 export const HTML_EXPORT = {
   FILENAME: 'markdown-export.html',
@@ -110,7 +82,6 @@ export const ELEMENT_IDS = {
   THEME_STYLESHEET: 'theme-stylesheet',
   CUSTOMIZE_BTN: 'customize-btn',
   EXPORT_HTML_BTN: 'export-html-btn',
-  EXPORT_PDF_BTN: 'export-pdf-btn',
   MODAL: 'customizer-modal',
   CLOSE_MODAL: 'close-modal',
   RESET_BTN: 'reset-btn',
