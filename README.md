@@ -23,7 +23,7 @@
 - 📊 **Mermaid Diagrams** - Flowcharts, sequences, class diagrams, and more
 - ➗ **LaTeX Math Support** - Full KaTeX rendering with `$...$`, `$$...$$`, `\(...\)`, and `\[...\]` delimiters
 - 🎨 **Custom Theme Builder** - Create and save your own color schemes
-- 📤 **Export Options** - HTML and PDF with theme preservation
+- 📤 **Export Options** - HTML export, and PDF through Export Studio (browser print dialog, "Save as PDF")
 - 👁️ **View Modes** - Editor-only, split-view, or preview-only
 - 🔍 **Zoom Controls** - Scale preview from 50% to 200%
 - 💾 **Auto-save** - Content automatically saved to localStorage
@@ -94,6 +94,7 @@ markdown-viewer-app/
 │   ├── config/                     # Configuration files
 │   │   ├── constants.js            # App constants (12 groups)
 │   │   ├── errorMessages.js        # Centralized error messages
+│   │   ├── sanitizer.js            # DOMPurify options for the preview
 │   │   └── featureFlags.js         # Feature flag system
 │   │
 │   ├── utils/                      # Utility functions
@@ -105,7 +106,6 @@ markdown-viewer-app/
 │   │   ├── FolderBrowserService.js # File system access (NEW)
 │   │   ├── HTMLService.js          # HTML export
 │   │   ├── MermaidService.js       # Mermaid diagram rendering
-│   │   ├── PDFService.js           # PDF export with preview
 │   │   └── PrismService.js         # Syntax highlighting
 │   │
 │   └── core/                       # Core application modules
@@ -187,7 +187,7 @@ npm run dev
 5. **Zen Mode** - Click for distraction-free reading
 6. Switch themes from the dropdown
 7. Customize colors with the theme builder
-8. Export to HTML or PDF
+8. Export to HTML, or to PDF via Export Studio (opens the browser print dialog)
 
 ### Keyboard Shortcuts
 
@@ -261,7 +261,6 @@ npm run review       # Run AI code review
 - `FolderBrowserService.js`: File System Access API integration
 - `HTMLService.js`: HTML export with theme embedding
 - `MermaidService.js`: Theme-aware diagram rendering (5 methods)
-- `PDFService.js`: PDF generation with html2pdf.js
 - `PrismService.js`: Syntax highlighting with error recovery (5 methods)
 
 #### **core/** - Core Modules
@@ -278,7 +277,6 @@ import { ThemeManager } from './src/js/core/ThemeManager.js';
 import { MermaidService } from './src/js/services/MermaidService.js';
 import { PrismService } from './src/js/services/PrismService.js';
 import { FolderBrowserService } from './src/js/services/FolderBrowserService.js';
-import { PDFService } from './src/js/services/PDFService.js';
 import { HTMLService } from './src/js/services/HTMLService.js';
 
 // Initialize with dependency injection
@@ -287,7 +285,6 @@ const themeManager = new ThemeManager(storageManager);
 const mermaidService = new MermaidService();
 const prismService = new PrismService();
 const folderBrowserService = new FolderBrowserService(storageManager);
-const pdfService = new PDFService();
 const htmlService = new HTMLService();
 
 // Configure observer pattern
@@ -507,26 +504,6 @@ if (mermaidService.isReady()) {
 }
 ```
 
-### PDFService (NEW)
-
-```javascript
-const pdfService = new PDFService();
-
-// Generate PDF with options
-const blob = await pdfService.generatePDF(previewElement, {
-  pageSize: 'A4',
-  orientation: 'portrait',
-  margins: [10, 10, 10, 10],
-  fontSize: 12,
-});
-
-// Preview PDF in iframe
-const url = await pdfService.previewPDF(previewElement, config);
-
-// Download PDF
-pdfService.downloadPDF();
-```
-
 ---
 
 ## 🤝 Contributing
@@ -630,10 +607,10 @@ npm run build
 - Firefox/Safari don't support File System Access API
 - Check for permission prompts
 
-**PDF export fails on Safari?**
+**How do I export a PDF?**
 
-- This is fixed in the latest version
-- Uses fallback colors for Safari compatibility
+- Export -> "Export as PDF" opens Export Studio in a new window
+- Click its "Save as PDF" button, then pick "Save as PDF" as the destination in the browser print dialog
 
 ---
 
@@ -651,9 +628,20 @@ npm run build
 - `npm audit --omit=dev` reports 0 known vulnerabilities as of 2026-10-08 (re-run before releases)
 - Input sanitization via DOMPurify
 - XSS prevention with proper encoding
-- CSP headers recommended for production
+- Content-Security-Policy set via a `<meta>` tag in `index.html` (`frame-src 'none'`, `object-src 'none'`, `base-uri 'self'`, `form-action 'self'`). It still allows `script-src 'unsafe-inline'` because of the inline script in `index.html`, so it does not stop injected inline script; DOMPurify is the primary XSS control. Hosts that can send HTTP headers should send the same policy as a header.
 - Regular security audits with `npm audit`
 - File system access scoped to selected folders only
+
+### What the sanitizer and CSP block (changed 2026-10)
+
+These are deliberate security trade-offs. Markdown is treated as untrusted input.
+
+- **Embedded frames are stripped.** `<iframe>`, `<frame>`, `<frameset>`, `<object>`, `<embed>` and `<portal>` are removed from rendered markdown, so YouTube, CodePen and similar iframe embeds no longer appear in the preview. Use a link or a thumbnail image instead.
+- **Images must be HTTPS (or same-origin, `data:` or `blob:`).** `img-src` allows `'self' data: blob: https:`, so plain `http://` images are blocked.
+- **Remote audio and video are blocked.** `media-src` is not set and falls back to `default-src 'self'`, so `<video>`/`<audio>` sources only load from the app's own origin.
+- **Fonts and stylesheets:** only the app's own origin and Google Fonts (`fonts.googleapis.com`, `fonts.gstatic.com`) are allowed.
+
+The DOMPurify options live in `src/js/config/sanitizer.js`; the CSP lives in the `<meta http-equiv="Content-Security-Policy">` tag in `index.html`.
 
 ---
 
@@ -669,7 +657,6 @@ MIT License - See LICENSE file for details
 - [Prism.js](https://prismjs.com/) - Syntax highlighting
 - [Mermaid.js](https://mermaid-js.github.io/) - Diagram rendering
 - [KaTeX](https://katex.org/) - LaTeX math rendering
-- [html2pdf.js](https://github.com/eKoopmans/html2pdf.js) - PDF generation
 - [DOMPurify](https://github.com/cure53/DOMPurify) - HTML sanitization
 - [Vite](https://vitejs.dev/) - Build tooling
 - [Vitest](https://vitest.dev/) - Testing framework
