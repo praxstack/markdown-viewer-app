@@ -648,7 +648,7 @@ npm run build
 
 ## 🔒 Security
 
-- No dependencies with known vulnerabilities
+- `npm audit --omit=dev` reports 0 known vulnerabilities as of 2026-10-08 (re-run before releases)
 - Input sanitization via DOMPurify
 - XSS prevention with proper encoding
 - CSP headers recommended for production
