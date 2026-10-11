@@ -1,0 +1,3 @@
+# Audit reports (2026-10)
+
+These files come from a repository audit run between 2026-10-02 and 2026-10-11, and accompanied PR #29 (`fix/audit-2026-10`). `UNDERSTANDING.md` is the architecture and codebase walkthrough, `SETUP.md` gives verified local install, build, test and run steps, `GRAPH_REPORT.md` is the generated code-graph summary, `FIXES.md` lists what the PR fixed and how it was verified, and `REVIEW.md` is the independent review of the fix branch. This is a public repository, so security details (open findings, scan results and the security review) are kept privately by the owner and are not included here.
