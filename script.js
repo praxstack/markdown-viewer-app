@@ -2,7 +2,6 @@
 
 // Import constants, utilities, services, and core modules
 import DOMPurify from 'dompurify';
-import html2pdf from 'html2pdf.js';
 import katex from 'katex';
 import 'katex/dist/katex.min.css'; // Import KaTeX CSS
 import { marked } from 'marked';
@@ -13,13 +12,13 @@ import Prism from 'prismjs';
 // PrismJS is now handled by vite-plugin-prismjs
 // which automatically loads all languages and themes
 
+import { SANITIZE_OPTIONS } from './src/js/config/sanitizer.js';
 import { StorageManager } from './src/js/core/StorageManager.js';
 import { ThemeManager } from './src/js/core/ThemeManager.js';
 import { FolderBrowserService } from './src/js/services/FolderBrowserService.js';
 import { HTMLService } from './src/js/services/HTMLService.js';
 import { LinkNavigationService } from './src/js/services/LinkNavigationService.js';
 import { MermaidService } from './src/js/services/MermaidService.js';
-import { PDFService } from './src/js/services/PDFService.js';
 import { PrismService } from './src/js/services/PrismService.js';
 
 // Make libraries available globally for services if needed (backward compatibility)
@@ -27,7 +26,6 @@ window.marked = marked;
 window.Prism = Prism;
 window.mermaid = mermaid;
 window.katex = katex;
-window.html2pdf = html2pdf;
 window.markedFootnote = markedFootnote;
 
 // ==================== ANCHOR NAVIGATION ====================
@@ -341,7 +339,6 @@ const storageManager = new StorageManager();
 const themeManager = new ThemeManager(storageManager);
 const mermaidService = new MermaidService();
 const prismService = new PrismService();
-const pdfService = new PDFService();
 const htmlService = new HTMLService();
 const folderBrowserService = new FolderBrowserService(storageManager);
 
@@ -1002,7 +999,6 @@ graph TD
   const themeSelector = document.getElementById('theme-selector');
   const customizeBtn = document.getElementById('customize-btn');
   const exportHtmlBtn = document.getElementById('export-html-btn');
-  const exportPdfBtn = document.getElementById('export-pdf-btn');
   const modal = document.getElementById('customizer-modal');
   const closeModal = document.getElementById('close-modal');
   const resetBtn = document.getElementById('reset-btn');
@@ -1113,24 +1109,7 @@ graph TD
       );
 
       // Sanitize HTML using DOMPurify
-      const cleanHtml = DOMPurify.sanitize(html, {
-        ADD_TAGS: ['iframe', 'img'], // Allow iframe and img tags
-        ADD_ATTR: [
-          'allow',
-          'allowfullscreen',
-          'frameborder',
-          'scrolling',
-          'target',
-          'data-code', // Mermaid diagrams
-          'src',
-          'alt',
-          'title',
-          'width',
-          'height',
-          'loading', // Image attributes
-        ],
-        USE_PROFILES: { html: true, svg: true, mathml: true },
-      });
+      const cleanHtml = DOMPurify.sanitize(html, SANITIZE_OPTIONS);
 
       preview.innerHTML = cleanHtml;
 
@@ -1275,147 +1254,9 @@ graph TD
     modal.classList.remove('active');
   });
 
-  // PDF Modal and Controls
-  const pdfModal = document.getElementById('pdf-modal');
-  const closePdfModal = document.getElementById('close-pdf-modal');
-  const pdfPreviewFrame = document.getElementById('pdf-preview-frame');
-  const pdfPageSize = document.getElementById('pdf-page-size');
-  const pdfOrientation = document.getElementById('pdf-orientation');
-  const pdfMarginTop = document.getElementById('pdf-margin-top');
-  const pdfMarginRight = document.getElementById('pdf-margin-right');
-  const pdfMarginBottom = document.getElementById('pdf-margin-bottom');
-  const pdfMarginLeft = document.getElementById('pdf-margin-left');
-  const pdfFontDecrease = document.getElementById('pdf-font-decrease');
-  const pdfFontIncrease = document.getElementById('pdf-font-increase');
-  const pdfFontSizeDisplay = document.getElementById('pdf-font-size-display');
-  const pdfPreviewBtn = document.getElementById('pdf-preview-btn');
-  const pdfDownloadBtn = document.getElementById('pdf-download-btn');
-
-  let currentFontSize = 12;
-
-  // Open PDF modal
-  function openPDFModal() {
-    if (!pdfService.isReady()) {
-      alert('PDF library is still loading. Please try again in a moment.');
-      return;
-    }
-    pdfModal.classList.add('active');
-    updatePDFPreview();
-  }
-
-  // Close PDF modal
-  closePdfModal.addEventListener('click', () => {
-    pdfModal.classList.remove('active');
-    // Clean up iframe
-    pdfPreviewFrame.src = '';
-  });
-
-  pdfModal.addEventListener('click', e => {
-    if (e.target === pdfModal) {
-      pdfModal.classList.remove('active');
-      pdfPreviewFrame.src = '';
-    }
-  });
-
-  // Get current PDF configuration from UI
-  function getPDFConfig() {
-    return {
-      pageSize: pdfPageSize.value,
-      orientation: pdfOrientation.value,
-      margins: [
-        parseFloat(pdfMarginTop.value),
-        parseFloat(pdfMarginRight.value),
-        parseFloat(pdfMarginBottom.value),
-        parseFloat(pdfMarginLeft.value),
-      ],
-      fontSize: currentFontSize,
-    };
-  }
-
-  // Update PDF preview
-  async function updatePDFPreview() {
-    try {
-      pdfPreviewBtn.textContent = '⏳ Generating Preview...';
-      pdfPreviewBtn.disabled = true;
-
-      const config = getPDFConfig();
-      const previewUrl = await pdfService.previewPDF(preview, config);
-      pdfPreviewFrame.src = previewUrl;
-
-      pdfPreviewBtn.textContent = '👁️ Update Preview';
-      pdfPreviewBtn.disabled = false;
-    } catch (error) {
-      console.error('PDF preview error:', error);
-      alert(`Error generating preview: ${error.message}`);
-      pdfPreviewBtn.textContent = '👁️ Update Preview';
-      pdfPreviewBtn.disabled = false;
-    }
-  }
-
-  // Download PDF
-  async function downloadPDF() {
-    try {
-      pdfDownloadBtn.textContent = '⏳ Downloading...';
-      pdfDownloadBtn.disabled = true;
-
-      const success = pdfService.downloadPDF();
-      if (success) {
-        setTimeout(() => {
-          pdfModal.classList.remove('active');
-          pdfPreviewFrame.src = '';
-        }, 500);
-      }
-
-      pdfDownloadBtn.textContent = '💾 Download PDF';
-      pdfDownloadBtn.disabled = false;
-    } catch (error) {
-      console.error('PDF download error:', error);
-      alert(`Error downloading PDF: ${error.message}`);
-      pdfDownloadBtn.textContent = '💾 Download PDF';
-      pdfDownloadBtn.disabled = false;
-    }
-  }
-
-  // Font size controls with auto-update
-  pdfFontDecrease.addEventListener('click', () => {
-    if (currentFontSize > 8) {
-      currentFontSize -= 1;
-      pdfFontSizeDisplay.textContent = `${currentFontSize}pt`;
-      updatePDFPreview();
-    }
-  });
-
-  pdfFontIncrease.addEventListener('click', () => {
-    if (currentFontSize < 24) {
-      currentFontSize += 1;
-      pdfFontSizeDisplay.textContent = `${currentFontSize}pt`;
-      updatePDFPreview();
-    }
-  });
-
-  // Auto-update preview when settings change
-  pdfPageSize.addEventListener('change', updatePDFPreview);
-  pdfOrientation.addEventListener('change', updatePDFPreview);
-  pdfMarginTop.addEventListener('input', updatePDFPreview);
-  pdfMarginRight.addEventListener('input', updatePDFPreview);
-  pdfMarginBottom.addEventListener('input', updatePDFPreview);
-  pdfMarginLeft.addEventListener('input', updatePDFPreview);
-
-  // PDF Event Listeners
-  pdfPreviewBtn.addEventListener('click', updatePDFPreview);
-  pdfDownloadBtn.addEventListener('click', downloadPDF);
-
   // Event listeners for export buttons
   exportHtmlBtn?.addEventListener('click', exportHTML);
-  exportPdfBtn?.addEventListener('click', () => {
-    console.log('Export PDF button clicked');
-    openPDFModal();
-  });
 
-  // Debug: Verify elements are found
-  console.log('Export PDF Button:', exportPdfBtn);
-  console.log('PDF Modal:', pdfModal);
-  console.log('PDF Service Ready:', pdfService.isReady());
 
   // Check if mobile view (defined early for setViewMode)
   function isMobileView() {

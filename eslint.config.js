@@ -37,7 +37,6 @@ export default [
         // Libraries loaded via window.xxx pattern in script.js
         mermaid: 'readonly',
         Prism: 'readonly',
-        html2pdf: 'readonly',
         katex: 'readonly',
         marked: 'readonly',
       },

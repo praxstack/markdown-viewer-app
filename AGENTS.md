@@ -90,7 +90,7 @@ Layered skill stack (discover → spec → implement → review → security →
 
 ## Project context
 
-- **Stack:** Vite + vanilla JavaScript (marked, DOMPurify, Prism, Mermaid, KaTeX, html2pdf)
+- **Stack:** Vite + vanilla JavaScript (marked, DOMPurify, Prism, Mermaid, KaTeX)
 - **Tests:** Vitest (`npm test`)
 - **Lint:** ESLint (`npm run lint`)
 - **Deploy:** GitHub Pages
