@@ -107,6 +107,11 @@ need global Cursor slash commands).
 Cloud Agents: this repo's `.cursor/environment.json` runs the script during
 `install` after `npm ci`.
 
+**Cursor skill names:** After setup, flat `gstack-*` symlinks (e.g. `gstack-plan-ceo-review`)
+appear under `.claude/skills/` for Cursor discovery. Claude Code uses short slash names
+(`/plan-ceo-review`); Cursor uses the `gstack-` prefix. Nested vendored paths
+(`gstack/plan-ceo-review/`) work when you attach or invoke by path either way.
+
 **Cursor host:** Upstream [gstack#2361](https://github.com/garrytan/gstack/issues/2361) fixed `./setup --host cursor` rejection. If an older cache rejects `cursor`, run `GSTACK_REF=main bash scripts/setup-gstack-full.sh`.
 
 **Manual upstream install** (alternative):

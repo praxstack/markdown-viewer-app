@@ -39,6 +39,23 @@ Use **`find-skills`** to discover capabilities; do not load all ~693 skills into
 are fetched at setup time. Cloud Agents run `bash scripts/setup-gstack-full.sh` via
 `.cursor/environment.json`.
 
+### gstack in Cursor (not Claude Code)
+
+gstack is installed, but **Cursor and Claude Code use different skill names**:
+
+| Claude Code slash | Cursor skill name | Vendored path |
+| --- | --- | --- |
+| `/plan-ceo-review` | `gstack-plan-ceo-review` | `.claude/skills/gstack/plan-ceo-review/` |
+| `/office-hours` | `gstack-office-hours` | `.claude/skills/gstack/office-hours/` |
+| `/qa` | `gstack-qa` | `.claude/skills/gstack/qa/` |
+| `/ship` | `gstack-ship` | `.claude/skills/gstack/ship/` |
+
+After `bash scripts/setup-gstack-full.sh`, flat `gstack-*` symlinks also appear under
+`.claude/skills/` (and via `.cursor/skills`) for Cursor discovery. Without the setup script,
+only the nested `gstack/<skill>/` markdown is present — skills work when attached or invoked
+by name, but slash autocomplete may not list them.
+
+**One-time setup (local or Cloud Agent):**
 **Full workstation setup:** `bash scripts/install-praxstack-agent-workstation.sh` — gstack slash
 commands, skill arsenal, 2026 discovery/research/UI skills, OpenSpec, Graphify, Impeccable,
 and praxstack skills/personas.
@@ -67,6 +84,24 @@ skill folders under `~/.cursor/skills/gstack-*` on your machine. Run locally onc
 bash scripts/setup-gstack-full.sh
 ```
 
+## Skill routing
+
+When the user's request matches an available skill, invoke it via the Skill tool. When in doubt, invoke the skill.
+
+Key routing rules:
+- Product ideas/brainstorming → invoke `gstack/office-hours` or `gstack-office-hours`
+- Strategy/scope → invoke `gstack/plan-ceo-review` or `gstack-plan-ceo-review`
+- Architecture → invoke `gstack/plan-eng-review` or `gstack-plan-eng-review`
+- Design system/plan review → invoke `gstack/design-consultation` or `gstack-plan-design-review`
+- Full review pipeline → invoke `gstack/autoplan`
+- Bugs/errors → invoke `gstack/investigate`
+- QA/testing site behavior → invoke `gstack/qa` or `gstack-qa-only`
+- Code review/diff check → invoke `gstack/review`
+- Visual polish → invoke `gstack/design-review`
+- Ship/deploy/PR → invoke `gstack/ship` or `gstack/land-and-deploy`
+- Save progress → invoke `gstack/context-save`
+- Resume context → invoke `gstack/context-restore`
+- Author a backlog-ready spec/issue → invoke `gstack/spec`
 Then reload Cursor and type `/plan-ceo-review` in chat (or ask the agent to use the
 `plan-ceo-review` skill). See [`docs/agents/native-plugins.md`](docs/agents/native-plugins.md#gstack).
 

@@ -157,6 +157,32 @@ link_repo_and_global_sidecars() {
   link_runtime_sidecar "$GSTACK_CACHE" "$HOME/.claude/skills/gstack"
 }
 
+# Cursor discovers flat gstack-* skill dirs (e.g. gstack-plan-ceo-review), not the
+# nested gstack/plan-ceo-review/ tree used for Claude Code. Link generated cursor
+# skills into the project skill tree so .cursor/skills (→ .claude/skills) picks them up.
+link_cursor_project_skills() {
+  local cursor_src="$GSTACK_CACHE/.cursor/skills"
+  local project_skills="$REPO_ROOT/.claude/skills"
+  local skill_dir skill_name linked=0
+
+  if [ ! -d "$cursor_src" ]; then
+    log "skip cursor project skills (missing $cursor_src — re-run upstream ./setup --host cursor)"
+    return 0
+  fi
+
+  for skill_dir in "$cursor_src"/gstack-*/; do
+    [ -d "$skill_dir" ] || continue
+    [ -f "$skill_dir/SKILL.md" ] || continue
+    skill_name="$(basename "$skill_dir")"
+    link_or_replace "$skill_dir" "$project_skills/$skill_name"
+    linked=$((linked + 1))
+  done
+
+  if [ "$linked" -gt 0 ]; then
+    log "Linked $linked Cursor gstack skill(s) into $project_skills (e.g. gstack-plan-ceo-review)"
+  fi
+}
+
 verify_runtime() {
   local browse_bin="$GSTACK_CACHE/browse/dist/browse"
   local config_bin="$GSTACK_CACHE/bin/gstack-config"
@@ -196,6 +222,7 @@ main() {
   sync_gstack_cache
   ensure_upstream_build
   link_repo_and_global_sidecars
+  link_cursor_project_skills
   verify_runtime
   install_host_skills
   verify_cursor_skills

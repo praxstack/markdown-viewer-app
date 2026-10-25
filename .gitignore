@@ -49,6 +49,7 @@ coverage/
 .vitest/
 
 # gstack runtime sidecars (created by scripts/setup-gstack-full.sh; not vendored in git)
+.claude/skills/gstack-*/
 .claude/skills/gstack/bin
 .claude/skills/gstack/lib
 .claude/skills/gstack/browse/
