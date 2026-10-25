@@ -90,13 +90,19 @@ bash scripts/setup-gstack-full.sh
 
 The script installs [Bun](https://bun.sh) if missing, clones/updates upstream
 gstack into a cache directory (`$XDG_CACHE_HOME/gstack-upstream` by default),
-runs `./setup --host cursor`, and symlinks `bin/`, `lib/`, and `browse/` into:
+builds the runtime if needed, symlinks `bin/`, `lib/`, and `browse/` into:
 
 - `.claude/skills/gstack/` (and via symlink, `.agents/skills/gstack/`)
 - `~/.claude/skills/gstack/` (global binary paths referenced by skill preambles)
 
+Then **always** runs `./setup --host cursor` (default) to register **Cursor slash commands**
+under `~/.cursor/skills/gstack-*`. Without that step, agents can read vendored `SKILL.md`
+files but `/plan-ceo-review` will not appear in chat autocomplete.
+
 Override the cache location with `GSTACK_CACHE_DIR`, the upstream ref with
 `GSTACK_REF` (default `main`), or the host with `GSTACK_HOST` (e.g. `codex`, `claude`).
+Set `GSTACK_INSTALL_HOST_SKILLS=0` to link runtime sidecars only (Cloud Agents that do not
+need global Cursor slash commands).
 
 Cloud Agents: this repo's `.cursor/environment.json` runs the script during
 `install` after `npm ci`.

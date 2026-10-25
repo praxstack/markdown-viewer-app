@@ -31,6 +31,7 @@
   "homepage": "https://github.com/PrakharMNNIT/markdown-viewer-app#readme",
   "devDependencies": {
     "@eslint/js": "9.39.2",
+    "@fission-ai/openspec": "^1.11.0",
     "@vitest/coverage-v8": "4.0.8",
     "@vitest/ui": "4.0.8",
     "agent-browser": "^0.27.0",
@@ -45,12 +46,14 @@
     "vitest": "4.0.8"
   },
   "dependencies": {
-    "dompurify": "^3.3.1",
-    "html2pdf.js": "0.14.0",
-    "katex": "0.16.27",
+    "dompurify": "^3.4.16",
+    "katex": "0.19.0",
     "marked": "17.0.1",
     "marked-footnote": "1.4.0",
-    "mermaid": "11.12.2",
+    "mermaid": "^11.17.2",
     "prismjs": "1.30.0"
+  },
+  "overrides": {
+    "katex": "0.19.0"
   }
 }

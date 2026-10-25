@@ -110,14 +110,30 @@ link_runtime_sidecar() {
   fi
 }
 
-run_upstream_setup() {
+ensure_upstream_build() {
   local config_bin="$GSTACK_CACHE/bin/gstack-config"
   if [ -x "$config_bin" ] && [ -f "$GSTACK_CACHE/VERSION" ]; then
-    log "Upstream runtime already built, skipping ./setup"
+    log "Upstream runtime already built, skipping initial build"
     return 0
   fi
 
-  log "Running upstream ./setup --host $GSTACK_HOST in $GSTACK_CACHE"
+  log "Building upstream gstack runtime in $GSTACK_CACHE"
+  (
+    cd "$GSTACK_CACHE"
+    ./setup --host "$GSTACK_HOST"
+  )
+}
+
+install_host_skills() {
+  # Slash commands (e.g. /plan-ceo-review) are registered by upstream ./setup into
+  # host-specific global skill dirs (~/.cursor/skills/gstack-* for Cursor).
+  # Vendored .claude/skills/gstack/ markdown alone does NOT create slash commands.
+  if [ "${GSTACK_INSTALL_HOST_SKILLS:-1}" != "1" ]; then
+    log "Skipping host skill install (GSTACK_INSTALL_HOST_SKILLS=0)"
+    return 0
+  fi
+
+  log "Installing gstack skills for host '$GSTACK_HOST' (slash-command discovery)"
   (
     cd "$GSTACK_CACHE"
     ./setup --host "$GSTACK_HOST"
@@ -185,14 +201,32 @@ verify_runtime() {
   log "browse binary: $browse_bin"
 }
 
+verify_cursor_skills() {
+  if [ "$GSTACK_HOST" != "cursor" ]; then
+    return 0
+  fi
+
+  local cursor_skills="${CURSOR_SKILLS_DIR:-$HOME/.cursor/skills}"
+  if [ -d "$cursor_skills/gstack-plan-ceo-review" ] || [ -L "$cursor_skills/gstack-plan-ceo-review" ]; then
+    log "Cursor slash skills: OK (~/.cursor/skills/gstack-*)"
+    return 0
+  fi
+
+  echo "setup-gstack-full: expected Cursor skill missing: $cursor_skills/gstack-plan-ceo-review" >&2
+  echo "setup-gstack-full: re-run with GSTACK_REF=main if an old cache rejected --host cursor (gstack#2361)" >&2
+  exit 1
+}
+
 main() {
   ensure_bun
   sync_gstack_cache
-  run_upstream_setup
+  ensure_upstream_build
   link_repo_and_global_sidecars
   link_cursor_project_skills
   verify_runtime
-  log "Full gstack runtime is ready (cache: $GSTACK_CACHE, ref: $GSTACK_REF)"
+  install_host_skills
+  verify_cursor_skills
+  log "Full gstack runtime is ready (cache: $GSTACK_CACHE, ref: $GSTACK_REF, host: $GSTACK_HOST)"
 }
 
 main "$@"

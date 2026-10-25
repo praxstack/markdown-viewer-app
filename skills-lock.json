@@ -109,6 +109,12 @@
       "skillPath": ".github/skills/agentic-workflows/SKILL.md",
       "computedHash": "f0c90d536526973b1f63c34cdbaf6e5911a027b5fdb827429d34ed73105d5042"
     },
+    "ai-debt-detector": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "skillPath": "plugins/skill-forge-essentials/skills/ai-debt-detector/SKILL.md",
+      "computedHash": "10ed4b31b5e05ed44777b739fbadbc89806141a6d9987c80cbefc976822f5cb2"
+    },
     "ai-prompt-engineering-safety-review": {
       "source": "github/awesome-copilot",
       "sourceType": "github",
@@ -949,6 +955,12 @@
       "skillPath": "skills/declarative-agents/SKILL.md",
       "computedHash": "cbfcbb1f6916629db484acc9d08f0895f55158cc38d5c3f506dc317639eb917f"
     },
+    "deep-research": {
+      "source": "24601/agent-deep-research",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "73f047e4f2346b0fa7156c81e973d1392afbff84d51a089a8ee8b4b044daeaf0"
+    },
     "dependabot": {
       "source": "github/awesome-copilot",
       "sourceType": "github",
@@ -1531,6 +1543,12 @@
       "skillPath": "plugins/building-secure-contracts/skills/guidelines-advisor/SKILL.md",
       "computedHash": "1b63b6db44862d3b71c6f283c5a667191e5cf8b8b8e30cca0d44961753ff107f"
     },
+    "hallmark": {
+      "source": "nutlope/hallmark",
+      "sourceType": "github",
+      "skillPath": "skills/hallmark/SKILL.md",
+      "computedHash": "579f86b27cdd7eb972107f7aecedd537f472891c5fd7c7c821bea15f64e0fe86"
+    },
     "harness-engineering": {
       "source": "github/awesome-copilot",
       "sourceType": "github",
@@ -1680,6 +1698,12 @@
       "sourceType": "github",
       "skillPath": "skills/landing-page-conversion-audit/SKILL.md",
       "computedHash": "55925d3c6953ea31247b0b091b7e98fd85ea1de16e6ce7219068d3629b1fcf72"
+    },
+    "last30days": {
+      "source": "mvanhorn/last30days-skill",
+      "sourceType": "github",
+      "skillPath": "skills/last30days/SKILL.md",
+      "computedHash": "26794b00df666a1715eb5e92a2241a813ca04d2a90f46e5e4f35ad03c1095f97"
     },
     "latchshot-page-capture": {
       "source": "github/awesome-copilot",
@@ -2604,6 +2628,12 @@
       "sourceType": "github",
       "skillPath": "skills/server-side-conversion-tracking/SKILL.md",
       "computedHash": "7e7e012d88e4af05b07dbe723d73566d47a69408a2435fb33df742838fa4fbbb"
+    },
+    "session-guard": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "skillPath": "plugins/skill-forge-essentials/skills/session-guard/SKILL.md",
+      "computedHash": "745e8a4db73fe94942a7995707be17c7709efe8da11ac71732bed4965ec9e4b1"
     },
     "setup-my-iq": {
       "source": "github/awesome-copilot",

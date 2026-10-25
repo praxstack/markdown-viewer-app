@@ -56,6 +56,29 @@ only the nested `gstack/<skill>/` markdown is present — skills work when attac
 by name, but slash autocomplete may not list them.
 
 **One-time setup (local or Cloud Agent):**
+**Full workstation setup:** `bash scripts/install-praxstack-agent-workstation.sh` — gstack slash
+commands, skill arsenal, 2026 discovery/research/UI skills, OpenSpec, Graphify, Impeccable,
+and praxstack skills/personas.
+
+**praxstack skills & personas:** [`docs/agents/praxstack-skills-personas.md`](docs/agents/praxstack-skills-personas.md) —
+41 canonical skills from [praxstack/skills-and-personas](https://github.com/praxstack/skills-and-personas)
+(kingmode, constellation-team, backend-pe-*, teach-pro-max, etc.). Install:
+
+```bash
+bash scripts/setup-praxstack-skills-personas.sh
+```
+
+Persona source material links to `.claude/skills/_praxstack-source/`. Skills install under
+`.claude/skills/praxstack/`. The `/goal` autonomous work pattern is documented there (paste
+prompt — no dedicated skill).
+
+**MCP governance:** [`docs/agents/mcp-recommendations.md`](docs/agents/mcp-recommendations.md) —
+Context7, Serena, Graphify MCP documented for desktop approval; no shadow MCP in git.
+
+**gstack slash commands (Cursor desktop):** Vendored `.claude/skills/gstack/` gives agents
+**Skill-tool discovery only** — it does **not** register chat slash commands like
+`/plan-ceo-review`. Those come from upstream `./setup --host cursor`, which installs flat
+skill folders under `~/.cursor/skills/gstack-*` on your machine. Run locally once:
 
 ```bash
 bash scripts/setup-gstack-full.sh
@@ -79,6 +102,8 @@ Key routing rules:
 - Save progress → invoke `gstack/context-save`
 - Resume context → invoke `gstack/context-restore`
 - Author a backlog-ready spec/issue → invoke `gstack/spec`
+Then reload Cursor and type `/plan-ceo-review` in chat (or ask the agent to use the
+`plan-ceo-review` skill). See [`docs/agents/native-plugins.md`](docs/agents/native-plugins.md#gstack).
 
 ## Agent skills
 
@@ -100,7 +125,7 @@ Layered skill stack (discover → spec → implement → review → security →
 
 ## Project context
 
-- **Stack:** Vite + vanilla JavaScript (marked, DOMPurify, Prism, Mermaid, KaTeX, html2pdf)
+- **Stack:** Vite + vanilla JavaScript (marked, DOMPurify, Prism, Mermaid, KaTeX)
 - **Tests:** Vitest (`npm test`)
 - **Lint:** ESLint (`npm run lint`)
 - **Deploy:** GitHub Pages
